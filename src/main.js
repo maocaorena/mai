@@ -20,7 +20,6 @@ import 'mint-ui/lib/style.css';
 import '@/assets/css/init.css';
 import '@/assets/css/like.css';
 import '@/assets/css/flex.css';
-import '@/assets/css/iconfont.css';
 
 import Border from './components/border';
 import Shade from './components/shade';

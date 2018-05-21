@@ -1,32 +1,7 @@
 <template>
     <div id="home" :data="loginstate" class="wrapper">
         <div class="content" ref="content">
-            <div class="login-tip flex-zhong">
-                <template v-if="loginstate === 1">
-                    <div class="inin left">
-                        <img class="glod" src="../../assets/img/home/home_glod.png" />
-                        <p class="balance ellipsis">
-                            {{balance.balance}}
-                        </p>
-                        <img class="recharge" src="../../assets/img/home/home_recharge.png" @click="goRecharge" alt="" />
-                    </div>
-                    <sign></sign>
-                    <div class="inin right" @click="goWhere">
-                        <img class="glod" src="../../assets/img/home/home_bag.png" />
-                        <p class="balance ellipsis">
-                            {{userType === 1?userName:'游客模式'}}
-                            <i class="iconfont icon-bofangqianwang"></i>
-                        </p>
-                    </div>
-                </template>
-                <template v-if="loginstate === 2">
-                    <p class="noLogin" @click="goLogin"> 立即登录，享受在线娃娃机的乐趣
-                        <i class="iconfont icon-bofangqianwang"></i>
-                    </p>
-                </template>
-            </div>
             <banner></banner>
-            <hometab v-on:selectThis="selectTag"></hometab>
             <div class="rooms flex flex-hc page-infinite-wrapper" ref="wrapper">
                 <ul ref="roolist" class="room-list page-infinite-list" v-infinite-scroll="getRoomList" infinite-scroll-disabled="loading"
                     infinite-scroll-distance="60">
@@ -85,7 +60,7 @@
         computed: {
             loginstate() {
                 let _loginstate = this.$store.getters.loginstate;
-                this.tantan(_loginstate);
+                // this.tantan(_loginstate);
                 if (_loginstate === 1) {
                     this.userName = this.User.getMemberInfo().nickname;
                 };
