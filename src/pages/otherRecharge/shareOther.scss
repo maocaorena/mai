@@ -1,0 +1,109 @@
+@import "../../assets/scss/rem";
+#shareOther{
+    padding-top: st(20);
+    .share-tit{
+        width: 100%;
+        height: st(172);
+        text-align: center;
+        line-height: st(90);
+        color: #fff;
+        font-size: st(36);
+        font-weight: 600;
+    }
+    .banner{
+        position: relative;
+        width: st(706);
+        height: st(364);
+        .user-head{
+            width: st(148);
+            height: st(148);
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: st(-84);
+            border: 3px solid #ff5b88;
+            background: #ff5b88;
+            border-radius: 50%;
+        }
+        .banner-img{
+            width: 100%;
+            height: 100%;
+        }
+        .banner-txt{
+            position: absolute;
+            width: st(244);
+            height: st(70);
+            left: 0;
+            right: st(6);
+            top: st(18);
+            margin: auto;
+        }
+    }
+    .share-code-in {
+        position: relative;
+        margin-top: st(60);
+        width: st(300);
+        height: st(350);
+        border-radius: st(20);
+        .share-code-bottom {
+            width: 100%;
+            height: 100%;
+            border-radius: st(20);
+            background: #ff5b88;
+        }
+        .share-code-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: st(8);
+            width: 100%;
+            box-shadow: 0 st(2) 0 #ff95bd inset, 0 0 0 #fff inset, 0 st(4) 0 #f41962, 0 0 0 #fff inset;
+            border-radius: st(20);
+        }
+        .img-wrapper{
+            padding: st(10);
+            width: 100%;
+            text-align: center;
+            background: #fff87b;
+            border: 2px solid #ff0068;
+            border-radius: st(20);
+            canvas{
+                display: none;
+            }
+            img{
+                width: st(256);
+                height: st(256);
+            }
+        }
+        .txt{
+            width: 100%;
+            height: st(48);
+            text-align: center;
+            color: #fff;
+            font-weight: 600;
+            line-height: st(64);
+            font-size: st(30);
+        }
+    }
+    .img-finger{
+        margin-top: st(42);
+        width: st(102);
+        height: st(102);
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .tip{
+        margin-top: st(24);
+        width: 100%;
+        height: st(100);
+        color: #ff5b88;
+        text-align: center;
+        font-size: st(28);
+    }
+}
+.shareToast{
+    top: st(550)!important;
+}

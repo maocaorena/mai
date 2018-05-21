@@ -1,0 +1,35 @@
+@import "../../assets/scss/rem";
+#rechargeRechords{
+    .rechargeRechords-list{
+        padding: st(26) st(36) 0;
+        width: 100%;
+        height: auto;
+    }
+    .rechargeRechords-item{
+        margin-bottom: st(26);
+        padding: st(24) 0;
+        width: 100%;
+        border: st(6) solid #edaf80;
+        border-radius: st(20);
+        background: #dba171;
+        .left,.right{
+            padding-right: st(10);
+            padding-left: st(10);
+            width: 50%;
+            p:nth-child(1){
+                width: 100%;
+                height: st(46);
+                font-size: st(28);
+            }
+        }
+        .right p{
+            text-align: right;
+        }
+    }
+    .color11{
+        color: #fcd291;
+    }
+    .color22{
+        color: #fff;
+    }
+}

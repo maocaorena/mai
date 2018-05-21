@@ -1,0 +1,166 @@
+@import "../../assets/scss/rem";
+#login {
+    top: 0;
+    bottom: 0;
+    .content {
+        top: 0;
+        bottom: 0;
+        padding-top: st(34);
+    }
+    .top {
+        width: 100%;
+        height: st(122);
+        img {
+            width: st(120);
+            border-radius: 50%;
+        }
+    }
+    .txt {
+        width: 100%;
+        height: st(80);
+        text-align: center;
+    }
+    .login-border {
+        width: 100%;
+        height: auto;
+    }
+    .login-border-in {
+        width: st(580);
+        padding: 0 st(42);
+    }
+    .tel,
+    .code {
+        position: relative;
+        padding-top: 1px;
+        z-index: 10;
+        width: 100%;
+        height: st(120);
+        input {
+            height: 100%;
+            width: 100%;
+            border: 0;
+            color: #333;
+        }
+        input::-webkit-input-placeholder {
+            color: #9bacc6;
+        }
+        input:-moz-placeholder {
+            /* Firefox 18- */
+            color: #9bacc6;
+        }
+        input::-moz-placeholder {
+            /* Firefox 19+ */
+            color: #9bacc6;
+        }
+        input:-ms-input-placeholder {
+            color: #9bacc6;
+        }
+    }
+    .tel {
+        border-bottom: 1px solid #d8d8d8;
+    }
+    .send-code {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: st(128);
+        height: 100%;
+        font-size: st(24);
+        color: #ff5b88;
+    }
+    .login {
+        display: block;
+        margin: st(26) auto 0;
+        width: st(580);
+        height: st(90);
+        border: 0;
+        border-radius: st(20);
+        position: relative;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            border: 1px solid #d8d8d8;
+            border-radius: st(20);
+            width: 200%;
+            height: 200%;
+            -webkit-transform: scale(0.5);
+            -ms-transform: scale(0.5);
+            -o-transform: scale(0.5);
+            transform: scale(0.5);
+            -webkit-transform-origin: left top;
+            -moz-transform-origin: left top;
+            -ms-transform-origin: left top;
+            transform-origin: left top;
+        }
+    }
+    .login1 {
+        color: #ff5b88;
+        background: #fff;
+    }
+    .login2 {
+        color: #9bacc6;
+        &:after {
+            border-color: #c9c9c9;
+        }
+    }
+    .thirdBottom {
+        margin-top: 50px;
+        width: 100%;
+        height: 115px;
+        .third-top {
+            position: relative;
+            margin: 0 50px 10px;
+            position: relative;
+            &:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                border-top: 1px solid #c1c1c1;
+                width: 200%;
+                height: 200%;
+                -webkit-transform: scale(0.5);
+                -ms-transform: scale(0.5);
+                -o-transform: scale(0.5);
+                transform: scale(0.5);
+                -webkit-transform-origin: left top;
+                -moz-transform-origin: left top;
+                -ms-transform-origin: left top;
+                transform-origin: left top;
+            }
+            p {
+                position: absolute;
+                top: -10px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: 95px;
+                z-index: 10;
+                background-color: #f4f6f8;
+                color: #c1c1c1;
+                font-size: 13px;
+                text-align: center;
+            }
+        }
+        .third-list {
+            width: 100%;
+            height: 113px;
+            .third-item {
+                width: 25%;
+                height: 100%;
+                img {
+                    width: 48px;
+                }
+                p {
+                    margin-top: 5px;
+                    width: 48px;
+                    text-align: center;
+                    font-size: 12px;
+                    color: #999999;
+                }
+            }
+        }
+    }
+}

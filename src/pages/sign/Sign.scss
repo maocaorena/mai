@@ -1,0 +1,97 @@
+@import "../../assets/scss/rem";
+#sign{
+    .banner{
+        width: 100%;
+        height: st(200);
+        background: url(../../assets/img/sign/signin_title.png) no-repeat center;
+        background-size: 100% 100%;
+        text-align: center;
+        line-height: st(200);
+        color: #6d3900;
+        font-size: st(36);
+    }
+    .list-wrapper{
+        width: 100%;
+        padding: st(36) st(68) 0;
+    }
+    .list-row{
+        margin-bottom: st(30);
+        width: 100%;
+    }
+    .sign-item{
+        position: relative;
+        width: st(186);
+        background: url(../../assets/img/sign/signin_gold.png) no-repeat center st(6);
+        background-color: #ffde8e;
+        background-size: st(174) st(174);;
+        border-radius: st(28);
+        .selected{
+            display: none;
+        }
+    }
+    .sign-item3{
+        background-image: url(../../assets/img/sign/signin_gift.png);
+    }
+    .day{
+        margin-bottom: st(144);
+        width: 100%;
+        height: st(46);
+        line-height: st(58);
+        text-align: center;
+        color: #ffff80;
+        font-size: st(28);
+        font-weight: 600;
+    }
+    .money{
+        width: 100%;
+        height: st(46);
+        text-align: center;
+        color: #586b09;
+        font-size: st(28);
+        font-weight: 600;
+    }
+    .sign-item-last{
+        width: 100%;
+        background: url(../../assets/img/sign/signin_seven.png) no-repeat center st(6);
+        background-color: #ffde8e;
+        background-size: st(602) st(174);
+       .day{
+            text-indent: st(66);
+            text-align: left;
+            line-height: st(174);
+       } 
+    }
+    .sign-item1{
+        background-color: #bbce4d;
+        .selected{
+            display: block;
+            position: absolute;
+            right: st(-10);
+            bottom: st(-6);
+            width: st(58);
+            height: st(58);
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+    .btn{
+        margin: 0 auto;
+        width: st(390);
+        height: st(116);
+        background:  no-repeat center;
+        background-size: contain;
+        text-align: center;
+        line-height: st(116);
+        color: #fff;
+        font-size: st(36);
+        font-weight: 600;
+    }
+    .btn1{
+        background-image: url(../../assets/img/recharge/recharge_btn_L.png);
+    }
+    .btn2{
+        background-image: url(../../assets/img/sign/recharge_btn_L_grey.png);
+    }
+}

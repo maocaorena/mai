@@ -1,0 +1,64 @@
+@import "../../../assets/scss/rem";
+#ticketList{
+    .banner{
+        margin-bottom: st(48);
+        width: 100%;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .ticket-list{
+        margin: 0 auto;
+        width: st(660);
+    }
+    .ticket-item{
+        margin-bottom: st(40);
+        padding-left: st(44);
+        padding-right: st(32);
+        width: st(662);
+        height: st(160);
+        .ticket-name{
+            font-size: st(36);
+            color: #fff;
+            font-weight: 600;
+            .top{
+                display: block;
+                margin-bottom: st(16);
+                text-indent: st(6)
+            }
+            .bottom{
+                display: block;
+                color: #ff8022;
+                padding: st(4) st(20);
+                background: #fff;
+                font-size: st(24);
+                border-radius: st(36)
+            }
+        }
+        .now-btn{
+            width: st(160);
+            height: 100%;
+            color: #ff6600;
+            font-size: st(28);
+        }
+    }
+    .nouse{
+        background: url(../../../assets/img/gzh/receive_coupon.gif) no-repeat center;
+        background-size: contain;
+        .ticket-name{
+            .bottom{
+                color: #ff8022;
+            }
+        }
+    }
+    .used{
+        background: url(../../../assets/img/gzh/receive_coupon2.png) no-repeat center;
+        background-size: contain;
+        .ticket-name{
+            .bottom{
+                color: #999;
+            }
+        }
+    }
+}

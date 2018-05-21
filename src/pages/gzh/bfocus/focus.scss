@@ -1,0 +1,107 @@
+@import "../../../assets/scss/rem";
+#focus{
+    .banner{
+        width: 100%;
+        img{
+            width: 100%;
+            vertical-align: bottom;
+        }
+    }
+    .main{
+        padding-top: st(16);
+        width: 100%;
+    }
+    .step{
+        margin-bottom: st(64);
+        width: 100%;
+        .tit{
+            margin-bottom: st(30);
+            width: st(578);
+            height: st(70);
+            background: #80bf81;
+            text-align: center;
+            border-radius: st(70);
+            line-height: st(70);
+            color: #fff;
+            font-size: st(28);
+            font-weight: 600;
+        }
+        .step-main{
+            width: 100%;
+            text-align: center;
+            .img1{
+                width: st(540);
+            }
+            .img2{
+                width: st(656);
+            }
+            .img3{
+                width: st(648);
+            }
+            .left{
+                padding-top: st(36);
+                width: st(276);
+                img{
+                    width: st(200);
+                    height: st(200);
+                }
+            }
+            .middle{
+                width: st(88);
+                color: #49494b;
+                font-size: st(28);
+                font-weight: 600;
+            }
+            .right{
+                padding-top: st(144);
+                width: st(282);
+                height: st(370);
+                background: url(../../../assets/img/gzh/guide2_b.png) no-repeat center;
+                background-size: contain;
+                p{
+                    margin-bottom: st(40);
+                    padding-right: st(36);
+                    width: 100%;
+                    text-align: left;
+                    font-size: st(28);
+                    color: #fff;
+                    font-weight: 600;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    text-align: center;
+                }
+            }
+        }
+    }
+    .step3{
+        margin-bottom: st(130);
+    }
+    .ticket-btn{
+        width: st(142);
+        height: st(66);
+        border: none;
+        background: url(../../../assets/img/gzh/guide2_b_btn.png) no-repeat center;
+        background-size: contain;
+    }
+    .search{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        margin: 0 auto;
+        padding-left: st(160);
+        width: st(750);
+        height: st(126);
+        line-height: st(146);
+        color: #fff;
+        font-weight: 600;
+        background: url(../../../assets/img/gzh/guide_4.png) no-repeat center;
+        background-size: contain;
+        button{
+            display: inline-block;
+            width: st(480);
+            text-align: center;
+            border: none;
+        }
+    }
+}

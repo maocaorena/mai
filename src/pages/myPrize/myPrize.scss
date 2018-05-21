@@ -1,0 +1,295 @@
+@import "../../assets/scss/rem";
+#myPrize{
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    padding-top: st(90);
+    padding-bottom: st(98);
+    .content{
+        top: st(90);
+        bottom: st(98);
+    }
+    .myPrize-top{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 101;
+        width: 100%;
+        height: st(90);
+        background: #fff;
+    }
+    .prize-tip{
+        width: 100%;
+        height: st(146);
+        padding-left: st(36);
+        padding-right: st(36);
+        padding-top: st(48);
+    }
+    .prizeRecords{
+        width: 100%;
+        height: auto;
+        li{
+            position: relative;
+            width: 100%;
+            padding: st(26) st(42);
+        }
+        .selectThis{
+            background: #f4f6f8;
+        }
+        .left{
+            width: st(170);
+            height: st(140);
+        }
+        .left-in{
+            position: relative;
+            width: st(140);
+            height: st(140);
+            border-radius: st(20);
+            overflow: hidden;
+            img{
+                width: 100%;
+                height: 100%;
+            }
+            .prize-date{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: st(36);
+                line-height: st(36);
+                font-size: st(24);
+                text-align: center;
+                background: #c0c9d7;
+                color: #fff;
+            }
+        }
+        .middle{
+            width: st(560);
+            .top{
+                width: 100%;
+                height: st(62);
+                font-size: st(28);
+                color: #333;
+                font-weight: 600;
+            }
+            .mp-row{
+                width: 100%;
+                height: st(24);
+                font-size: st(24);
+                margin-bottom: st(20);
+            }
+        }
+        .right{
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: st(168);
+            height: 100%;
+            img{
+                width: st(48);
+                position: absolute;
+                left: st(75);
+                top: st(75);
+            }
+        }
+    }
+    .prizeRecords-bottom{
+        width: 100%;
+        height: st(98);
+        background: #fff;
+//      border-top: 1px solid #d8d8d8;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-top: 1px solid #d8d8d8;
+            width: 200%;
+            height: 200%;
+            -webkit-transform: scale(0.5);
+            -ms-transform: scale(0.5);
+            -o-transform: scale(0.5);
+            transform: scale(0.5);
+            -webkit-transform-origin: left top;
+            -moz-transform-origin: left top;
+            -ms-transform-origin: left top;
+            transform-origin: left top;
+        }
+        button:nth-child(2){
+            margin-left: st(32);
+        };
+    }
+    .prizeRecords-bottom-btn{
+        position: relative;
+        z-index: 10;
+        width: st(684);
+        height: st(78);
+        border: 0;
+        font-size: st(28);
+        color: #fff;
+        border-radius: st(10);
+    }
+    .fahuo{
+        background: #ff5b88;
+    }
+    .duihuan{
+        background: #ffa31d;
+    }
+    .duihuan-alert{
+        padding-top: st(102);
+        padding-bottom: st(40);
+        width: st(606);
+        background: #fff;
+        border-radius: st(20);
+        p{
+            width: 100%;
+            height: st(150);
+            padding: 0 st(52);
+            font-size: st(28);
+            span{
+                color: #ff5b88;
+            }
+        }
+        .buttons{
+            width: 100%;
+            height: st(90);
+            button{
+                width: st(234);
+                height: st(82);
+                border: 0;
+                color: #fff;
+                border-radius: st(10);
+            }
+            .no{
+                background: #c1cbda;
+                margin-right: st(32);
+            }
+            .yes{
+                background: #ff5b88;
+            }
+        }
+    }
+    .sendOrder{
+        width: 100%;
+        height: auto;
+        li{
+            padding: st(36) st(26) st(20) st(36);
+            width: 100%;
+            border-bottom: 1px solid #d8d8d8;
+            .dian{
+                padding-top: st(10);
+                width: st(44);
+                height: 100%;
+                span{
+                    display: block;
+                    width: st(20);
+                    height: st(20);
+                    border-radius: 50%;
+                    background: #50c9fb;
+                }
+            }
+            .main{
+                width: st(642);
+                height: auto;
+                position: relative;
+                .top{
+                    width: 100%;
+                    height: st(56)
+                }
+            }
+            .send-state{
+                float: left;
+                font-size: st(28);
+                color: #333;
+                font-weight: 600;
+            }
+            .order-num{
+                float: right;
+                color: #9bacc6;
+                font-size: st(24);
+            }
+            .prize-name{
+                width: 60%;
+                height: st(52);
+                color: #9bacc6;
+                font-size: st(28);
+                font-weight: 600;
+            }
+            .prize-num{
+                width: 100%;
+                height: st(46);
+                color: #9bacc6;
+                font-size: st(24);
+            }
+            .prize-img{
+                width: 100%;
+                img{
+                    margin-right: st(10);
+                    width: st(120);
+                    height: st(120);
+                }
+            }
+            .look-car{
+                position: absolute;
+                right: 0;
+                top: st(90);
+                width: st(218);
+                height: st(64);
+                border-radius: st(20);
+                border: 1px solid #d8d8d8;
+                font-size: st(24);
+            }
+        }
+    }
+    .wuliu-message{
+        padding-left: st(12);
+        padding-top: st(46);
+        width: 100%;
+        max-height: st(600);
+        min-height: st(400);
+        overflow-y: auto;
+    }
+    .wuliu-message-in{
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-left: 1px solid #d8d8d8;
+    }
+    .wuliu-progress{
+        position: relative;
+        width: 100%;
+        padding-bottom: st(56);
+        padding-left: st(34);
+        color: #9bacc6;
+        .lineTwo{
+            line-height: st(68);
+            font-size: st(24);
+        }
+    }
+    .last-progress{
+        position: relative;
+        top: st(-10);
+        .lineOne{
+            color: #333;
+        }
+    }
+    .first-progress{
+        position: relative;
+        top: st(-14);
+        padding-bottom: 0;
+        height: 0;
+    }
+    .progress-dian{
+        position: absolute;
+        left: st(-10);
+        top: st(12);
+        display: inline-block;
+        width: st(20);
+        height: st(20);
+        background: #c1cbda;
+        border-radius: 50%;
+    }
+    .progress-dian-blue{
+        background: #805cff;
+    }
+}

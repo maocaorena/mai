@@ -1,0 +1,118 @@
+@import "../../assets/scss/rem";
+#home {
+    overflow: hidden;
+    .login-tip {
+        margin-bottom: st(28);
+        position: relative;
+        width: st(750);
+        height: st(94);
+        background: url(../../assets/img/home/home_bg_title.png) no-repeat center;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+        .inin {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            max-width: 50%;
+            height: st(48);
+            background: url(../../assets/img/home/home_bag_bg.png) no-repeat right center;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+            .glod {
+                position: absolute;
+                top: 0;
+                left: st(-10);
+                bottom: 0;
+                margin: auto;
+                width: st(70);
+                height: st(70);
+            }
+            .balance {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                line-height: st(48);
+                font-weight: 600;
+                color: #fff;
+            }
+        }
+        .left {
+            left: st(20);
+            .recharge {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                margin: auto;
+                width: st(56);
+                height: st(56);
+            }
+            .balance {
+                padding-left: st(80);
+                padding-right: st(76);
+                font-size: st(32);
+            }
+        }
+        .middle{
+            position: relative;
+            width: st(162);
+            height: st(60);
+            background: url(../../assets/img/sign/home_signin.png) no-repeat center;
+            background-size: 100% 100%;
+            color: #fff;
+            text-indent: st(80);
+            line-height: st(56);
+            font-weight: 600;
+            img{
+                position: absolute;
+                right: st(-4);
+                top: 0;
+                width: st(30);
+                height: st(30);
+            }
+        }
+        .right {
+            right: st(20);
+            .balance {
+                padding-left: st(60);
+                padding-right: st(12);
+                font-size: st(24);
+                i {
+                    font-size: st(24);
+                }
+            }
+        }
+        .noLogin {
+            width: st(474);
+            height: st(48);
+            text-align: center;
+            line-height: st(48);
+            color: #fff;
+            font-weight: 600;
+            font-size: st(24);
+            background: url(../../assets/img/home/home_sign_bg.png) no-repeat center;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+            i {
+                font-size: st(24);
+            }
+        }
+    }
+    .rooms {
+        width: 100%;
+        height: auto;
+    }
+    .room-list {
+        width: 100%;
+        height: auto;
+        .room-item {
+            margin-bottom: st(22);
+            width: 100%;
+        }
+    }
+    .bgs {
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+}

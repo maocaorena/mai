@@ -1,0 +1,119 @@
+@import "../../assets/scss/rem";
+#receiveAddress_add {
+    top: 0;
+    bottom: 0;
+    background: #fff;
+    padding-bottom: st(98);
+    .content {
+        top: 0;
+        bottom: st(98);
+        padding-top: st(36);
+    }
+    .add-item {
+        padding-left: st(44);
+        padding-bottom: st(20);
+        width: 100%;
+        height: auto;
+    }
+    .add-tip {
+        margin-bottom: st(20);
+        width: 100%;
+        height: st(26);
+        font-size: st(26);
+        color: #999999;
+    }
+    .add-bottom {
+        position: relative;
+        width: 100%;
+        height: st(90);
+        input,textarea {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            color: #333;
+        }
+        input::-webkit-input-placeholder {
+            color: #c1cbda;
+        }
+        input:-moz-placeholder {
+            /* Firefox 18- */
+            color: #c1cbda;
+        }
+        input::-moz-placeholder {
+            /* Firefox 19+ */
+            color: #c1cbda;
+        }
+        input:-ms-input-placeholder {
+            color: #c1cbda;
+        }
+        p {
+            padding-bottom: st(70);
+        }
+    }
+    #name {
+        margin-bottom: st(30);
+        height: st(90);
+        position: relative;
+        input {
+            height: st(90);
+        }
+        .topCeng{
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: st(90);
+        }
+    }
+    .addr-right {
+        position: absolute;
+        right: st(52);
+        top: st(30);
+        width: st(18);
+    }
+    .receiveAddress-bottom {
+        width: 100%;
+        height: st(100);
+//      border-top: 1px solid #d8d8d8;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-top: 1px solid #d8d8d8;
+            width: 200%;
+            height: 200%;
+            -webkit-transform: scale(0.5);
+            -ms-transform: scale(0.5);
+            -o-transform: scale(0.5);
+            transform: scale(0.5);
+            -webkit-transform-origin: left top;
+            -moz-transform-origin: left top;
+            -ms-transform-origin: left top;
+            transform-origin: left top;
+        }
+        button {
+            position: relative;
+            z-index: 10;
+            width: st(672);
+            height: st(84);
+            background: #ff5b88;
+            border-radius: st(20);
+            text-align: center;
+            font-size: st(28);
+            border: 0;
+            color: #FFF;
+        }
+    }
+    /*picker.js 字体大小*/
+    .picker .picker-panel .wheel-wrapper {
+        background: #ededed;
+    }
+    .picker .picker-panel .wheel-wrapper .wheel {
+        font-size: 0.7rem;
+    }
+    .picker .picker-panel .picker-choose .cancel,
+    .picker .picker-panel .picker-choose .confirm {
+        top: 0!important;
+        font-size: 0.8rem;
+    }
+}

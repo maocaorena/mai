@@ -1,0 +1,90 @@
+@import "../../assets/scss/rem";
+#otherRecharge{
+    padding-top: st(20);
+    .banner{
+        width: st(706);
+        height: st(364);
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .recharge-list{
+        width: st(680);
+        padding-top: st(22);
+        border-radius: st(20);
+        .recharge-item {
+            float: left;
+            margin-right: st(20);
+            margin-bottom: st(22);
+            position: relative;
+            width: st(328);
+            height: st(218);
+            border-radius: st(20);
+            .recharge-item-bottom {
+                width: 100%;
+                height: 100%;
+                border-radius: st(20);
+                background: #c031c4;
+            }
+            .recharge-item-top {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding-top: st(68);
+                padding-left: st(34);
+                width: 100%;
+                height: 100%;
+                box-shadow: 0 st(2) 0 #eca3d8 inset, 0 0 0 #fff inset, 0 st(4) 0 #a40ea6, 0 0 0 #fff inset;
+                border-radius: st(20);
+                p{
+                    color: #fff;
+                }
+                p:nth-child(1){
+                    height: st(60);
+                    font-size: st(38);
+                }
+                p:nth-child(2){
+                    font-size: st(28);
+                    font-weight: 600;
+                }
+                img{
+                    position: absolute;
+                    left: st(206);
+                    top: st(68);
+                    width: st(116);
+                }
+            }
+        }
+        .selected{
+            .recharge-item-bottom {
+                background: #ff5b88;
+            }
+            .recharge-item-top {
+                box-shadow: 0 st(2) 0 #ff95bd inset, 0 0 0 #fff inset, 0 st(4) 0 #f41962, 0 0 0 #fff inset;
+                background-size: contain;
+            }
+        }
+    }
+    .button{
+        width: st(390);
+        height: st(116);
+        font-size: st(36);
+        font-weight: 600;
+        color: #fff;
+        background: url(../../assets/img/recharge/recharge_btn_L.png) no-repeat center;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+    }
+    .tip{
+        padding-top: st(20);
+        width: 100%;
+        text-align: center;
+        color: #ff5b88;
+        font-size: st(26);
+        font-weight: 600;
+    }
+    .mr0{
+        margin-right: 0!important;
+    }
+}

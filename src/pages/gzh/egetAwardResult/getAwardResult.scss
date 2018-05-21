@@ -1,0 +1,51 @@
+@import "../../../assets/scss/rem";
+#getAwardResult{
+    img{
+        margin-top: st(56);
+        width: st(248);
+    }
+    .success-tip{
+        padding-top: st(26);
+        padding-bottom: st(48);
+        font-size: st(40);
+        color: #ff6994;
+        font-weight: 600;
+    }
+    .ticket-item{
+        margin-bottom: st(30);
+        padding-left: st(44);
+        padding-right: st(32);
+        width: st(660);
+        height: st(162);
+        background: url(../../../assets/img/gzh/receive_coupon.png) no-repeat center;
+        background-size: contain;
+        .ticket-name{
+            font-size: st(36);
+            color: #fff;
+            font-weight: 600;
+        }
+        .now-btn{
+            padding: st(14) st(28);
+            color: #fff;
+            font-size: st(28);
+        }
+    }
+    .bottom-tip{
+        margin-bottom: st(36);
+        color: #d2892d;
+        font-size: st(26);
+    }
+    .ticket-btn{
+        display: block;
+        border: none;
+        width: st(390);
+        height: st(116);
+        text-align: center;
+        line-height: st(116);
+        color: #fff;
+        font-size: st(36);
+        font-weight: 600;
+        background: url(../../../assets/img/recharge/recharge_btn_L.png) no-repeat center;
+        background-size: contain;
+    }
+}

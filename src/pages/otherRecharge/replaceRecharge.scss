@@ -1,0 +1,128 @@
+@import "../../assets/scss/rem";
+
+#replaceRecharge {
+    padding-top: st(20);
+    .share-tit {
+        width: 100%;
+        height: st(172);
+        text-align: center;
+        line-height: st(90);
+        color: #fff;
+        font-size: st(36);
+        font-weight: 600;
+    }
+    .banner {
+        position: relative;
+        width: st(706);
+        height: st(364);
+        .user-head {
+            width: st(148);
+            height: st(148);
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+            top: st(-84);
+            border: 3px solid #ed1c24;
+            background: #ff5b88;
+            border-radius: 50%;
+        }
+        .banner-img {
+            width: 100%;
+            height: 100%;
+        }
+        .banner-txt{
+            position: absolute;
+            width: st(244);
+            height: st(70);
+            left: 0;
+            right: st(6);
+            top: st(18);
+            margin: auto;
+        }
+    }
+    .recharge-item {
+       position: relative;
+        margin-top: st(30);
+        width: st(328);
+        height: st(218);
+        .recharge-item-bottom {
+            width: 100%;
+            height: 100%;
+            border-radius: st(20);
+            background: #ff5b88;
+        }
+        .recharge-item-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding-top: st(68);
+            padding-left: st(34);
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 st(2) 0 #ff95bd inset, 0 0 0 #fff inset, 0 st(4) 0 #f41962, 0 0 0 #fff inset;
+            border-radius: st(20);
+            p{
+                color: #fff;
+            }
+            p:nth-child(1){
+                height: st(60);
+                font-size: st(38);
+            }
+            p:nth-child(2){
+                font-size: st(28);
+                font-weight: 600;
+            }
+            img{
+                position: absolute;
+                left: st(206);
+                top: st(68);
+                width: st(116);
+            }
+        }
+    }
+    .img-finger {
+        margin-top: st(42);
+        width: st(102);
+        height: st(102);
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .bottom-btns{
+        margin-top: st(30);
+        width: st(750);
+        height: st(98);
+        padding: 0 st(44);
+        .btn{
+            width: st(322);
+            height: st(90);
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: st(26);
+            img{
+                width: st(48);
+                margin-right: st(16);
+            }
+        }
+        .wx-btn{
+            background: url(../../assets/img/recharge/recharge_btn_green.png) no-repeat center;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+        .ali-btn{
+            background: url(../../assets/img/recharge/recharge_btn_blue.png) no-repeat center;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+    }
+    .tip {
+        margin-top: st(24);
+        padding: 0 st(100);
+        width: 100%;
+        color: #d196d6;
+        font-size: st(24);
+    }
+}

@@ -1,0 +1,79 @@
+@import "../../assets/scss/rem";
+#springActive{
+    .img-wrapper{
+        width: st(750);
+        img{
+            width: 100%;
+            vertical-align: bottom;
+        }
+    }
+    .section{
+        margin-top: st(-164);
+        width: st(750);
+    }
+    .text{
+        width: 100%;
+        height: st(62);
+        text-align: center;
+        color: #ffd9d9;
+        font-size: st(26);
+    }
+    .step{
+        position: relative;
+        margin: 0 auto;
+        padding-bottom: st(72);
+        width: st(712);
+        img{
+            width: 100%;
+            vertical-align: bottom;
+        }
+    }
+    .go-button{
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        bottom: st(40);
+        width: st(326);
+        height: st(100);
+        background: url(../../assets/img/spring/springActive/activity_btn.png) no-repeat center;
+        -webkit-background-size: 100% 100%;
+        background-size: 100% 100%;
+        text-align: center;
+        line-height: st(100);
+        font-size: st(28);
+        color: #ff1f1f;
+        font-weight: 600;
+    }
+    .rule{
+        position: relative;
+        width: st(750);
+        .rule-in{
+            margin: st(42) auto;
+            padding-top: st(86);
+            width: st(712);
+            height: st(312);
+            border-radius: st(20);
+            background: rgba(255,255,255,0.3);
+        }
+        .rule-tit{
+            position: absolute;
+            left: st(52);
+            top: st(-32);
+            width: st(250);
+            height: st(82);
+            img{
+                width: 100%;
+            }
+        }
+        ol{
+            padding-left: st(58);
+            padding-right: st(20);
+            color: #fff;
+            font-size: st(24);
+            line-height: st(44);
+            list-style-type: decimal;
+            list-style-position: outside;
+        }
+    }
+}

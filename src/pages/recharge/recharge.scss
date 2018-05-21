@@ -1,0 +1,234 @@
+@import "../../assets/scss/rem";
+#recharge {
+    .banner {
+        width: st(706);
+        height: st(156);
+        img {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .top-tip {
+        width: st(706);
+        height: st(88);
+        .left {
+            margin-left: st(10);
+            padding-left: st(70);
+            padding-right: st(10);
+            width: st(200);
+            height: st(74);
+            text-align: center;
+            line-height: st(74);
+            background: url(../../assets/img/recharge/recharge_gold.png) no-repeat left center;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+            font-weight: 600;
+            font-size: st(34);
+            color: #fff;
+        }
+        .right {
+            width: st(156);
+            height: st(64);
+            background: url(../../assets/img/recharge/recharge_btn_S.png) no-repeat center;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+            line-height: st(64);
+            text-align: center;
+            font-weight: 600;
+            font-size: st(26);
+            color: #fff;
+        }
+    }
+    .recharge-wrapper {
+        width: st(696);
+        padding-top: st(32);
+        padding-left: st(26);
+        padding-bottom: st(10);
+        background: #dba171;
+        border: 4px solid #edaf80;
+        border-radius: st(22);
+    }
+    .recharge-list {
+        .recharge-item-bottom {
+            width: 100%;
+            height: 100%;
+            border: st(6) solid #fed593;
+            border-radius: st(20);
+            background: #fff;
+        }
+        .recharge-item-top {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 0 st(2) 0 #fff inset, 0 0 0 #fff inset, 0 st(4) 0 #cc8847, 0 0 0 #fff inset;
+            border-radius: st(20);
+            .select-tip {
+                display: none;
+            }
+        }
+        .selected {
+            animation: huxi 1s infinite alternate linear;
+            .recharge-item-bottom {
+                border-color: #ff6675;
+            }
+            .recharge-item-top {
+                box-shadow: 0 st(2) 0 #fefdfd inset, 0 0 0 #fff inset, 0 st(4) 0 #ff6675, 0 0 0 #fff inset;
+            }
+            .select-tip {
+                position: absolute;
+                z-index: 10;
+                right: st(4);
+                bottom: st(4);
+                display: block;
+                width: 0;
+                height: 0;
+                border-right: st(30) solid #ff6675;
+                border-bottom: st(30) solid #ff6675;
+                border-left: st(30) solid rgba(0,0,0,0);
+                border-top: st(30) solid rgba(0,0,0,0);
+                img {
+                    position: absolute;
+                    top: st(-2);
+                    left: st(-2);
+                    width: st(34);
+                    height: st(34);
+                }
+            }
+        }
+        .recharge-card-item {
+            float: left;
+            margin-right: st(44);
+            margin-bottom: st(22);
+            position: relative;
+            width: st(298);
+            height: st(248);
+            border-radius: st(20);
+            .top {
+                margin-bottom: st(16);
+                margin-top: st(26);
+                width: st(192);
+                height: st(124);
+                background: url(../../assets/img/recharge/recharge_card.png) no-repeat center;
+                -webkit-background-size: 100% 100%;
+                background-size: 100% 100%;
+                p:nth-child(1) {
+                    height: st(76);
+                    color: #ffaeb8;
+                    font-size: st(48);
+                    text-align: right;
+                    padding-right: st(4);
+                }
+                p:nth-child(2) {
+                    color: #fff;
+                    font-size: st(30);
+                    font-weight: 600;
+                    text-indent: st(14);
+                    text-align: left;
+                }
+            }
+            .bottom-one {
+                color: #7e8b9e;
+                font-size: st(24);
+            }
+        }
+        .recharge-other-item {
+            float: left;
+            margin-right: st(32);
+            margin-bottom: st(22);
+            position: relative;
+            width: st(192);
+            height: st(196);
+            border-radius: st(20);
+            p {
+                width: 100%;
+                text-align: center;
+            }
+            .top {
+                height: st(82);
+                color: #ff5b88;
+                font-size: st(36);
+                font-weight: 600;
+                line-height: st(100);
+            }
+            .other{
+                line-height: st(140);
+            }
+            .middle {
+                height: st(44);
+                color: #7e8b9e;
+                font-size: st(24);
+            }
+            .bottom {
+                position: relative;
+                z-index: 10;
+                margin-top: st(20);
+                width: 60%;
+                height: st(74);
+                color: #7e8b9e;
+                font-size: st(28);
+                line-height: st(54);
+                font-weight: 600;
+                border-top: 1px solid #ebebeb;
+                input {
+                    width: 70%;
+                    height: st(44);
+                    line-height: st(44);
+                    border: none;
+                    font-size: st(24);
+                }
+            }
+        }
+    }
+    @keyframes huxi {
+        0 {
+            box-shadow: 0 st(2) st(10) st(2) #fff;
+        }
+        50% {
+            box-shadow: 0 st(2) st(16) st(4) #fff;
+        }
+        100% {
+            box-shadow: 0 st(2) st(20) st(6) #fff;
+        }
+    }
+    .bottom-tip{
+        width: 100%;
+        padding: st(20) st(44);
+        color: #d68d2d;
+        font-size: st(24);
+    }
+    .bottom-btns{
+        width: 100%;
+        height: st(98);
+        padding: 0 st(44);
+        .btn{
+            width: st(322);
+            height: st(90);
+            border: none;
+            color: #fff;
+            font-weight: 600;
+            font-size: st(26);
+            img{
+                width: st(48);
+                margin-right: st(16);
+            }
+        }
+        .wx-btn{
+            background: url(../../assets/img/recharge/recharge_btn_green.png) no-repeat center;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+        .ali-btn{
+            background: url(../../assets/img/recharge/recharge_btn_blue.png) no-repeat center;
+            -webkit-background-size: 100% 100%;
+            background-size: 100% 100%;
+        }
+    }
+    .yellow1 {
+        color: #ffa31d;
+    }
+    .mr0 {
+        margin-right: 0!important;
+    }
+}
