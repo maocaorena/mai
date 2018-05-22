@@ -1,0 +1,34 @@
+@import "../../assets/scss/rem";
+#shopping {
+    .tab{
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+    }
+    .qipao{
+        position: fixed;
+        top: st(78);
+        left: 0;
+        z-index: 10;
+        padding-top: st(20);
+        width: 100%;
+        height: st(100);
+        background: #f2f2f2;
+    }
+    .list{
+        margin-top: st(180);
+        padding: 0 st(20) st(100);
+        width: 100%;
+        height: auto;
+        li{
+            float: left;
+            margin-right: st(40);
+            margin-bottom: st(20);
+            width: st(332);
+        }
+        .mr0{
+            margin-right: 0;
+        }
+    }
+}

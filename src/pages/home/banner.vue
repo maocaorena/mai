@@ -64,58 +64,15 @@
 	#homeSwipe {
         padding-bottom: st(40);
         width: 100%;
-        background: url(../../assets/img/home/home_list.png) no-repeat center st(214);
-        -webkit-background-size: st(726) st(92);
-        background-size: st(726) st(92);
         .swiper-wrapper {
             margin: 0 auto;
-            width: st(724);
+            width: 100%;
             height: st(270);
-            border: st(2) solid #ff7b8b;
-            border-radius: st(50);
         }
         .swiper-in {
             position: relative;
-            padding: st(2);
             width: 100%;
             height: 100%;
-            border: st(4) solid #ff7b8b;
-            border-radius: st(48);
-        }
-        .mint-swipe {
-            overflow: initial;
-            border-radius: st(44);
-        }
-        .mint-swipe-items-wrap {
-            border-radius: st(44);
-            overflow: hidden;
-            z-index: 10;
-        }
-        .mint-swipe-item {
-            overflow: hidden;
-            background: #ccc;
-            display: inline-block!important;
-            img {}
-        }
-        .mint-swipe-indicators {
-            z-index: 100;
-            bottom: st(-30);
-        }
-        .mint-swipe-indicators {
-            .mint-swipe-indicator {
-                width: st(18);
-                height: st(10);
-                background: url(../../assets/img/home/home_dot1.png);
-                opacity: 1;
-                border-radius: 0;
-                -webkit-background-size: 100% 100%;
-                background-size: 100% 100%;
-            }
-            .is-active {
-                background: url(../../assets/img/home/home_dot2.png);
-                -webkit-background-size: 100% 100%;
-                background-size: 100% 100%;
-            }
         }
     }
 </style>

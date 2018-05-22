@@ -2,7 +2,6 @@
     <div id="login" class="wrapper">
         <div class="content">
             <div class="top flex-zhong">
-                <img src="../../assets/img/my/mine_portrait.png" />
             </div>
             <p class="txt color1 flex-zhong">手机号快速登录</p>
             <div class="login-border flex flex-hc">
@@ -26,10 +25,8 @@
                 </div>
                 <div class="third-list flex-zhong">
                     <div class="third-item flex flex-s flex-sc flex-hc" @click="wxLogin" v-if="isWX">
-                        <img src="../../assets/img/common/weixin.png" alt="">
                     </div>
                     <div class="third-item flex flex-s flex-sc flex-hc" @click="ucLogin" v-if="isUC">
-                        <img src="../../assets/img/common/uc.png" alt="">
                     </div>
                 </div>
             </div>

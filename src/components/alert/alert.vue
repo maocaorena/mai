@@ -9,7 +9,6 @@
 	    	<div class="wj-alert" :style="styles">
 	    		<div class="wj-alert-close" @click="close">
 	    			<slot name="closeImg">
-			    		<img src="../../assets/img/alert/pop_close2.png" alt="" />
 	    			</slot>
 	    		</div>
 	    		<div class="wj-alert-title flex-zhong">

@@ -16,7 +16,7 @@ const login = () => import(/* webpackChunkName: "login" */ '@/pages/login/login'
 
 const my = () => import(/* webpackChunkName: "my" */ '@/pages/my/my');//我的
 
-const recharge = () => import(/* webpackChunkName: "recharge" */ '@/pages/recharge/recharge');//充值
+const shopping = () => import(/* webpackChunkName: "shopping" */ '@/pages/shopping/shopping');//商城
 
 const notfound = () => import(/* webpackChunkName: "notfound" */ '@/pages/404');//404
 
@@ -30,18 +30,18 @@ const router = new Router({
         component: layout,
         redirect: '/home',
         children: [{ //首页
+            name: 'home',
             path: '/home',
             component: home,
             meta: {
                 showBottomTab: true,
                 htmlBg: {
-                    'background': 'url(./static/img/home/home_bg.png) repeat-y left top',
-                    '-webkit-background-size': '100% ' + Util.st(20),
-                    'background-size': '100% ' + Util.st(20)
+                    'background': '#f2f2f2',
                 }
             }
         },
         { //登录
+            name: 'login',
             path: '/login',
             component: login,
             meta: {
@@ -51,14 +51,13 @@ const router = new Router({
             }
         },
         { //充值
-            path: '/recharge',
-            component: recharge,
+            name: 'shopping',
+            path: '/shopping',
+            component: shopping,
             meta: {
                 showBottomTab: true,
                 htmlBg: {
-                    'background': '#ffd9a4 url(./static/img/recharge/recharge_bg2.png) repeat-x left top',
-                    '-webkit-background-size': Util.st(44) + ' ' + Util.st(480),
-                    'background-size': Util.st(44) + ' ' + Util.st(480)
+                    'background': '#f2f2f2',
                 }
             }
         },
