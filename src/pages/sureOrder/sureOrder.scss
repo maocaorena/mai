@@ -1,0 +1,44 @@
+@import "../../assets/scss/rem";
+#sureOrder{
+    .product{
+        padding: st(20);
+        width: 100%;
+        background: #fff;
+        .left{
+            width: st(260);
+            height: st(260);
+            background: #f2f2f2;
+            img{
+                max-width: st(260);
+                max-height: st(260);
+            }
+        }
+        .right{
+            padding-left: st(30);
+            width: st(450);
+            .top{
+                height: 80%;
+            }
+        }
+    }
+    .buyNUm{
+        margin-top: st(20);
+        padding: 0 st(20);
+        width: 100%;
+        height: st(120);
+        background: #fff;
+        input{
+            border: none;
+            width: st(80);
+            height: st(60);
+            text-align: center;
+        }
+        .down{
+            width: st(60);
+            height: st(60);
+            background: #f0f0f1;
+            text-align: center;
+            line-height: st(60);
+        }
+    }
+}

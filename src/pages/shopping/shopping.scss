@@ -18,10 +18,10 @@
     }
     .list{
         margin-top: st(180);
-        padding: 0 st(20) st(100);
+        padding: 0 st(20) st(20);
         width: 100%;
         height: auto;
-        li{
+        .item{
             float: left;
             margin-right: st(40);
             margin-bottom: st(20);

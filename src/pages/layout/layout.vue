@@ -1,11 +1,11 @@
 <template>
     <div id="layout">
         <router-view></router-view>
-        <div class="footer-wrapper">
-	        <div id="bottomBar" class="flex flex-h" v-if="$route.meta.showBottomTab">
+        <div class="footer-wrapper" v-if="$route.meta.showBottomTab">
+	        <div id="bottomBar" class="flex flex-h">
 	            <router-link :to="{name:'home'}" tag="div" class="bottomBar-item col">
                     <p class="icon">
-                        <i class="iconfont icon-shouye1"></i>
+                        <i class="iconfont icon-shouye"></i>
                     </p>
 	            	<p class="txt">首页</p>
 	            </router-link>

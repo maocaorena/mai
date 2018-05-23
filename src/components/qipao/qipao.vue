@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import { Name } from '@/pages/rechargeNew/name.js'
+    import { Name } from '@/assets/js/name.js'
     let timer = null;
     export default {
         name: 'layout',

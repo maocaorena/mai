@@ -76,7 +76,8 @@ sub {
 }
 
 img {
-    border-style: none
+    border-style: none;
+    vertical-align: bottom;
 }
 
 svg:not(:root) {

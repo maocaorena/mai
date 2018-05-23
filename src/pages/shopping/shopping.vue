@@ -5,10 +5,10 @@
             <qipao></qipao>
         </div>
         <ul class="list">
-            <li v-for="(item, index) of 5" :class="{'mr0':index%2 === 1}">
+            <li v-for="(item, index) of 5" class="item" :class="{'mr0':index%2 === 1}">
                 <shoppingItem> </shoppingItem>
             </li>
-            <li style="clear: both;"></li>
+            <li class="clear"></li>
         </ul>
     </div>
 </template>

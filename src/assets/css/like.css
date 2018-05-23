@@ -28,10 +28,6 @@
 	width: 100%;
 }
 
-.content {
-	width: 100%;
-}
-
 .content::-webkit-scrollbar {
 	width: 0;
 	height: 0;
@@ -53,7 +49,7 @@
 	color: #333;
 }
 
-.colorred {
+.colorRed {
 	color: #ff5b88;
 }
 
@@ -61,18 +57,16 @@
 	color: #7E8B9E;
 }
 
-.defaultImg{
-	text-align: center;
+.bigFont{
+    font-size: 28px;
 }
 
-.defaultImg img{
-	padding-top: 100px;
-	width: 110px;
+.defaultFont{
+    font-size: 16px;
 }
 
-.defaultImg p{
-	color: #aaa;
-	padding-top: 20px;
+.smallFont{
+    font-size: 12px;
 }
 
 img[lazy=loading] {
@@ -80,25 +74,6 @@ img[lazy=loading] {
 	background-size: 100% 100%;
 }
 
-.bottom-bar{
-	position: fixed;
-	left: 0;
-	bottom: 0;
-}
-
-/*mint-ui 提示框字体颜色*/
-
-.toastStyle .mint-toast-text {
-	color: #fff;
-}
-
-.dibualert {
-	bottom: 100px!important;
-}
-
-.mint-indicator,.mint-indicator-wrapper,.mint-indicator-mask{
-	z-index: 9999;
-}
 /*弹出提示框*/
 
 #alertBg {

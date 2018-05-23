@@ -17,6 +17,8 @@ const login = () => import(/* webpackChunkName: "login" */ '@/pages/login/login'
 const my = () => import(/* webpackChunkName: "my" */ '@/pages/my/my');//我的
 
 const shopping = () => import(/* webpackChunkName: "shopping" */ '@/pages/shopping/shopping');//商城
+const productDetail = () => import(/* webpackChunkName: "productDetail" */ '@/pages/productDetail/productDetail');//商品详情
+const sureOrder = () => import(/* webpackChunkName: "sureOrder" */ '@/pages/sureOrder/sureOrder');//确认订单
 
 const notfound = () => import(/* webpackChunkName: "notfound" */ '@/pages/404');//404
 
@@ -50,12 +52,32 @@ const router = new Router({
                 }
             }
         },
-        { //充值
+        { //商城
             name: 'shopping',
             path: '/shopping',
             component: shopping,
             meta: {
                 showBottomTab: true,
+                htmlBg: {
+                    'background': '#f2f2f2',
+                }
+            }
+        },
+        { //商品详情
+            name: 'productDetail',
+            path: '/shopping/productDetail',
+            component: productDetail,
+            meta: {
+                htmlBg: {
+                    'background': '#f2f2f2',
+                }
+            }
+        },
+        { //确认订单
+            name: 'sureOrder',
+            path: '/shopping/sureOrder',
+            component: sureOrder,
+            meta: {
                 htmlBg: {
                     'background': '#f2f2f2',
                 }

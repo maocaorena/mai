@@ -6,12 +6,13 @@
 }
 .footer-wrapper{
     height: st(100);
-    height: 16vw;
 }
 #bottomBar {
     position: fixed;
     left: 0;
+    right: 0;
     bottom: 0;
+    margin: auto;
     width: st(750);
     height: st(100);
     background: #ffffff;

@@ -1,5 +1,5 @@
 <template>
-    <div class="roomItem-in" @click="goDetail(item)">
+    <div class="roomItem-in" @click="goDetail()">
         <div class="img">
             <img src="../../assets/img/home/true.jpg" alt="">
         </div>
@@ -29,12 +29,9 @@
 		],
 		methods:{
 			//进入房间
-			goDetail(item) {
+			goDetail() {
 				this.$router.push({
-					path: '/home/waji',
-					query: {
-						roomId: item.roomId,
-					}
+					name: 'productDetail'
 				})
 			},
 		},
