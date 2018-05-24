@@ -63,6 +63,10 @@
     font-size: 28px;
 }
 
+.largeFont{
+    font-size: 18px;
+}
+
 .defaultFont{
     font-size: 16px;
 }
@@ -71,16 +75,20 @@
     font-size: 12px;
 }
 
+.mb{
+    margin-bottom: 0.5rem;
+}
+
 img[lazy=loading] {
 	-webkit-background-size: 100% 100%;
 	background-size: 100% 100%;
 }
 
-.bottom{
+.bottomTab{
     height: 2.5rem;
 }
 
-.bottomIn{
+.bottomTabIn{
     position: fixed;
     left: 0;
     right: 0;

@@ -30,8 +30,8 @@
             <img src="../../assets/img/productDetail/2.jpg" alt="">
             <img src="../../assets/img/productDetail/3.jpg" alt="">
         </div>
-        <div class="bottom">
-            <div class="bottomIn flex flex-sc flex-hlr">
+        <div class="bottomTab">
+            <div class="bottomTabIn flex flex-sc flex-hlr">
                 <div class="left">
                     <p class="top">
                         <i class="iconfont icon-kefu bigFont color666"></i>

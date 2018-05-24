@@ -74,8 +74,8 @@
             </div>
         </div>
 
-        <div class="bottom">
-            <div class="bottomIn flex flex-sc flex-hlr">
+        <div class="bottomTab">
+            <div class="bottomTabIn flex flex-sc flex-hlr">
                 <p>
                     <span class="color666 defaultFont"> 合计： </span> 
                     <span class="colorRed defaultFont">￥3200.00</span>

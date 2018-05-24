@@ -1,9 +1,75 @@
 @import "../../assets/scss/rem";
 #buySuccess{
+    .defaultStyle{
+        width: 100%;
+        padding: st(20);
+        background: #fff;
+    }
     .titile{
         padding: st(40) st(20);
         width: 100%;
         text-align: center;
         font-size: st(40);
+        background: #fff;
+    }
+    .product {
+        .left {
+            width: st(140);
+            height: st(140);
+            background: #f2f2f2;
+            img {
+                max-width: st(140);
+                max-height: st(140);
+            }
+        }
+        .right {
+            padding-left: st(30);
+            width: st(540);
+            .top {
+                height: 70%;
+            }
+        }
+    }
+    .upLev{
+        .upLevItem{
+            width: st(300);
+            background: #f2f2f2;
+            img{
+                display: block;
+                width: st(260);
+                height: st(260);
+            }
+            p{
+                padding: st(20) 0;
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+    .bottons{
+        border-top: 1px solid #eee;
+        p{
+            width: 50%;
+            height: 100%;
+            text-align: center;
+        }
+    }
+    .tip1{
+        padding-bottom: st(100);
+    }
+    .list{
+        padding: 0 st(20) st(20);
+        width: 100%;
+        height: auto;
+        background: #fff;
+        .item{
+            float: left;
+            margin-right: st(40);
+            margin-bottom: st(20);
+            width: st(332);
+        }
+        .mr0{
+            margin-right: 0;
+        }
     }
 }
