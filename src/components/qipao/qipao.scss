@@ -1,36 +1,19 @@
 @import "../../assets/scss/rem";
-.qipao-in {
+.myswiper-wrapper{
+    margin: 0 auto;
+    padding: st(6);
+    width: st(688);
+    height: st(68);
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+#rechargeSwiper{
     width: 100%;
-    line-height: st(60);
+    height: st(56);
     text-align: center;
-    color: #fff;
-    font-size: st(24);
-}
-.qipao-message {
-    animation: qipao 10s 1 linear;
-    position: relative;
-    img{
-        position: absolute;
-        left: 0;
-        width: st(88);
-        height: st(88);
-    }
-    span{
-        display: inline-block;
-        padding-right: st(30);
-        padding-left: st(30);
-        height: st(56);
-        line-height: st(56);
-        background: #ff7b82;
-        border-radius: st(56);
-        border: 1px solid #f3d51c;
-    }
-}
-@keyframes qipao {
-    from {
-        transform: translateX(100%);
-    }
-    to {
-        transform: translateX(-100%);
+    line-height: st(56);
+    font-size: st(26);
+    .swiper-wrapper{
+        margin-top: st(4);
     }
 }

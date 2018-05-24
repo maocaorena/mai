@@ -1,47 +1,41 @@
 <template>
-    <div class="qipao-in">
-        <div v-if="isShow" class="qipao-message flex flex-sc">
-            <span>
-                恭喜 （手机号 {{nameItem}}） 升级成功，获得商品X20！
-            </span>
+    <div class="myswiper-wrapper">
+        <div class="swiper-container" id="rechargeSwiper">
+            <div class="swiper-wrapper">
+                <div v-for="item in 3" class="swiper-slide ellipsis">
+                    恭喜 222 用户成功获赠222！
+                </div>
+            </div>
         </div>
-    </div>
+    </div> 
 </template>
 
 <script>
+    import '@/lib/swiper/swiper.min.js';
+    import '@/lib/swiper/swiper.min.css';
     import { Name } from '@/assets/js/name.js'
     let timer = null;
     export default {
         name: 'layout',
         data() {
             return {
-                nameList: Name.getNameList(),
-                nameItem: '',
-                isShow: true
             }
         },
         methods: {
 
         },
         mounted() {
-            let i = 0;
-            this.nameItem = this.nameList[i];
-            let _this = this;
-            let xunhuan = function () {
-                timer = setTimeout(() => {
-                    let dd = Math.floor(Math.random() * 5 + 10) + 1;
-                    _this.isShow = false;
-                    setTimeout(() => {
-                        _this.isShow = true;
-                        xunhuan();
-                    }, dd*100)
-                }, 10000)
-            };
-            xunhuan()
+            this.$nextTick(() => {
+                let mySwiper = new Swiper('#rechargeSwiper', {
+                    direction: 'vertical',
+                    speed: 300,
+                    loop: true,
+                    autoplay: 1000,
+                    autoplayDisableOnInteraction: false,
+                });
+            });
         },
-        beforeDestroy() {
-            clearInterval(timer);
-        }
+        beforeDestroy() {}
     }
 </script>
 

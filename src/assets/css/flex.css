@@ -61,14 +61,12 @@
 }
 
 .flex-hsb {
-	/* 09版 */
-	-webkit-box-pack: space-between;
 	/* 12版 */
-	-webkit-justify-content: space-between;
-	-moz-justify-content: space-between;
-	-ms-justify-content: space-between;
-	-o-justify-content: space-between;
-	justify-content: space-between;
+	-webkit-justify-content: space-around;
+	-moz-justify-content: space-around;
+	-ms-justify-content: space-around;
+	-o-justify-content: space-around;
+	justify-content: space-around;
 	/* 其它取值如下：
         align-items     主轴原点方向对齐
         flex-end        主轴延伸方向对齐

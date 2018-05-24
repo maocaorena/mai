@@ -19,6 +19,7 @@ const my = () => import(/* webpackChunkName: "my" */ '@/pages/my/my');//我的
 const shopping = () => import(/* webpackChunkName: "shopping" */ '@/pages/shopping/shopping');//商城
 const productDetail = () => import(/* webpackChunkName: "productDetail" */ '@/pages/productDetail/productDetail');//商品详情
 const sureOrder = () => import(/* webpackChunkName: "sureOrder" */ '@/pages/sureOrder/sureOrder');//确认订单
+const buySuccess = () => import(/* webpackChunkName: "buySuccess" */ '@/pages/buySuccess/buySuccess');//购买成功
 
 const notfound = () => import(/* webpackChunkName: "notfound" */ '@/pages/404');//404
 
@@ -77,6 +78,16 @@ const router = new Router({
             name: 'sureOrder',
             path: '/shopping/sureOrder',
             component: sureOrder,
+            meta: {
+                htmlBg: {
+                    'background': '#f2f2f2',
+                }
+            }
+        },
+        { //购买成功
+            name: 'buySuccess',
+            path: '/shopping/buySuccess',
+            component: buySuccess,
             meta: {
                 htmlBg: {
                     'background': '#f2f2f2',

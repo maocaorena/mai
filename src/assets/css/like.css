@@ -56,7 +56,9 @@
 .color1 {
 	color: #7E8B9E;
 }
-
+.color2{
+    color: #409eff;
+}
 .bigFont{
     font-size: 28px;
 }
@@ -72,6 +74,21 @@
 img[lazy=loading] {
 	-webkit-background-size: 100% 100%;
 	background-size: 100% 100%;
+}
+
+.bottom{
+    height: 2.5rem;
+}
+
+.bottomIn{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 18.75rem;
+    height: 2.5rem;
+    background: #ffffff;
 }
 
 /*弹出提示框*/
