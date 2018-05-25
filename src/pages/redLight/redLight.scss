@@ -1,0 +1,97 @@
+@import "../../assets/scss/rem";
+#redLight {
+    .alertIn {
+        .row {
+            text-align: center;
+        }
+        .startGame {
+            margin: 0 auto;
+            width: st(200);
+            height: st(200);
+            background: #409eff;
+            color: #fff;
+            border-radius: 50%;
+        }
+    }
+    .alertInTwo {
+        .item {
+            .top {
+                width: st(200);
+                height: st(200);
+                border-radius: 50%;
+            }
+            .bottom {
+                text-align: center;
+            }
+        }
+        .red {
+            .top {
+                background: red;
+            }
+        }
+        .green {
+            .top {
+                background: green;
+            }
+        }
+        .select {
+            background: #ffb3b3;
+        }
+        .start {
+            margin: 0 auto st(20);
+            width: 100%;
+            height: st(100);
+            background: #409eff;
+            color: #fff;
+        }
+    }
+    .gameRule {
+        padding-top: st(20);
+        width: 100%;
+        text-align: center;
+        border-top: 1px solid #ccc;
+    }
+    .nowTime,
+    .endTime {
+        text-align: center;
+    }
+    .nowTime{
+        margin-top: st(100);
+    }
+    .endTime{
+        margin-bottom: st(50);
+    }
+    .lightList{
+        .item {
+            width: st(200);
+            .itemIn{
+                padding: st(20);
+                width: 100%;
+                background: #666666;
+            }
+            .top {
+                margin: 0 auto st(20);
+                width: st(120);
+                height: st(120);
+                border-radius: 50%;
+            }
+            .bottom {
+                text-align: center;
+            }
+            .red {
+                background: red;
+            }
+            .green {
+                background: green;
+            }
+            .yellow{
+                background: yellow;
+            }
+            p{
+                text-align: center;
+                margin-bottom: st(20);
+                margin-top: st(20);
+            }
+        }
+    }
+}

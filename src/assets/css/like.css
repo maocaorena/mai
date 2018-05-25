@@ -99,6 +99,18 @@ img[lazy=loading] {
     background: #ffffff;
 }
 
+.width100{
+    width: 100%;
+}
+
+.bg1{
+    background: #fff;
+}
+
+.pd20{
+    padding: 0.5rem;
+}
+
 /*弹出提示框*/
 
 #alertBg {

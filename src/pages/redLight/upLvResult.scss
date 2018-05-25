@@ -1,0 +1,36 @@
+@import "../../assets/scss/rem";
+#upLvResult{
+    padding: st(30) st(20);
+    .pb0{
+        padding-bottom: 0;
+    }
+    .middTip{
+        padding: st(20);
+        margin-top: st(40);
+        .top{
+            padding-top: st(20);
+            padding-bottom: st(20);
+            border-top: 1px solid #ccc;
+        }
+        .bottom{
+            border: 1px solid #ccc;
+        }
+    }
+    .buttons{
+        button{
+            width: st(300);
+            font-size: st(28);
+        }
+    }
+    .bottons1{
+        padding-top: st(20);
+        padding-bottom: st(20);
+        border-top: 1px solid #eee;
+        border-bottom: 10px solid #eee;
+        p{
+            width: 50%;
+            height: 100%;
+            text-align: center;
+        }
+    }
+}

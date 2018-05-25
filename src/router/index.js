@@ -20,6 +20,9 @@ const shopping = () => import(/* webpackChunkName: "shopping" */ '@/pages/shoppi
 const productDetail = () => import(/* webpackChunkName: "productDetail" */ '@/pages/productDetail/productDetail');//商品详情
 const sureOrder = () => import(/* webpackChunkName: "sureOrder" */ '@/pages/sureOrder/sureOrder');//确认订单
 const buySuccess = () => import(/* webpackChunkName: "buySuccess" */ '@/pages/buySuccess/buySuccess');//购买成功
+const sendResult = () => import(/* webpackChunkName: "buySuccess" */ '@/pages/buySuccess/sendResult');//提货结果
+const redLight = () => import(/* webpackChunkName: "redLight" */ '@/pages/redLight/redLight');//升级红绿灯
+const upLvResult = () => import(/* webpackChunkName: "redLight" */ '@/pages/redLight/upLvResult');//升级结果
 
 const notfound = () => import(/* webpackChunkName: "notfound" */ '@/pages/404');//404
 
@@ -91,6 +94,36 @@ const router = new Router({
             meta: {
                 htmlBg: {
                     'background': '#f2f2f2',
+                }
+            }
+        },
+        { //提货结果
+            name: 'sendResult',
+            path: '/shopping/sendResult',
+            component: sendResult,
+            meta: {
+                htmlBg: {
+                    'background': '#f2f2f2',
+                }
+            }
+        },
+        { //升级红绿灯
+            name: 'redLight',
+            path: '/shopping/redLight',
+            component: redLight,
+            meta: {
+                htmlBg: {
+                    'background': '#f2f2f2',
+                }
+            }
+        },
+        { //升级红绿灯结果
+            name: 'upLvResult',
+            path: '/shopping/upLvResult',
+            component: upLvResult,
+            meta: {
+                htmlBg: {
+                    'background': '#fff',
                 }
             }
         },
