@@ -1,7 +1,5 @@
 @import "../../assets/scss/rem";
 #receiveAddress_add {
-    top: 0;
-    bottom: 0;
     background: #fff;
     padding-bottom: st(98);
     .content {
@@ -71,29 +69,15 @@
         width: st(18);
     }
     .receiveAddress-bottom {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
         width: 100%;
         height: st(100);
-//      border-top: 1px solid #d8d8d8;
-        &:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            border-top: 1px solid #d8d8d8;
-            width: 200%;
-            height: 200%;
-            -webkit-transform: scale(0.5);
-            -ms-transform: scale(0.5);
-            -o-transform: scale(0.5);
-            transform: scale(0.5);
-            -webkit-transform-origin: left top;
-            -moz-transform-origin: left top;
-            -ms-transform-origin: left top;
-            transform-origin: left top;
-        }
+        border-top: 1px solid #d8d8d8;
         button {
-            position: relative;
-            z-index: 10;
             width: st(672);
             height: st(84);
             background: #ff5b88;

@@ -1,7 +1,5 @@
 @import "../../assets/scss/rem";
 #receiveAddress{
-    top: 0;
-    bottom: 0;
     background: #fff;
     padding-bottom: st(98);
     .content{
@@ -14,32 +12,10 @@
         padding-left: st(40);
         padding-right: st(34);
         li{
-            position: relative;
             padding-top: st(46);
             padding-bottom: st(48);
             width: 100%;
-//          border-bottom: 1px solid #d8d8d8;
-            &:after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                border-bottom: 1px solid #d8d8d8;
-                width: 200%;
-                height: 200%;
-                -webkit-transform: scale(0.5);
-                -ms-transform: scale(0.5);
-                -o-transform: scale(0.5);
-                transform: scale(0.5);
-                -webkit-transform-origin: left top;
-                -moz-transform-origin: left top;
-                -ms-transform-origin: left top;
-                transform-origin: left top;
-            }
-            p{
-                position: relative;
-                z-index: 10;
-            }
+            border-bottom: 1px solid #d8d8d8;
             .name-num{
                 width: 90%;
                 height: auto;
@@ -81,28 +57,9 @@
                     height: 100%;
                     color: #7e8b9e;
                     border: 0;
-//                  border: 1px solid #d8d8d8;
+                    border: 1px solid #d8d8d8;
                     border-radius: st(18);
                     font-size: st(24);
-                    position: relative;
-                    &:after {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        border: 1px solid #d8d8d8;
-                        border-radius: st(18);
-                        width: 200%;
-                        height: 200%;
-                        -webkit-transform: scale(0.5);
-                        -ms-transform: scale(0.5);
-                        -o-transform: scale(0.5);
-                        transform: scale(0.5);
-                        -webkit-transform-origin: left top;
-                        -moz-transform-origin: left top;
-                        -ms-transform-origin: left top;
-                        transform-origin: left top;
-                    }
                 }
             }
             .right{
@@ -150,29 +107,15 @@
         }
     }
     .receiveAddress-bottom{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
         width: 100%;
         height: st(100);
-//      border-top: 1px solid #d8d8d8;
-        &:after {
-            content: '';
-            position: absolute;
-            top: -1px;
-            left: 0;
-            border-top: 1px solid #d8d8d8;
-            width: 200%;
-            height: 200%;
-            -webkit-transform: scale(0.5);
-            -ms-transform: scale(0.5);
-            -o-transform: scale(0.5);
-            transform: scale(0.5);
-            -webkit-transform-origin: left top;
-            -moz-transform-origin: left top;
-            -ms-transform-origin: left top;
-            transform-origin: left top;
-        }
+        border-top: 1px solid #d8d8d8;
         button{
-            position: relative;
-            z-index: 10;
             width: st(672);
             height: st(84);
             background: #ff5b88;

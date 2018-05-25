@@ -11,7 +11,7 @@
             </div>
             <div class="add-item">
                 <p class="add-tip">
-                    联系电话
+                    手机号
                 </p>
                 <p class="add-bottom">
                     <input type="tel" v-model="addrDetail.mobile" placeholder="填写联系电话" />

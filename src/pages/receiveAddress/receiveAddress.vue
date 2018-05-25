@@ -11,8 +11,8 @@
                         {{item.province}}{{item.city}}{{item.region}} &nbsp; {{item.address}}
                     </p>
                     <p class="default-addr flex flex-sc" @click="setDefault(item,$event)">
-                        <img class="haha" v-if="item.isDefault == 1" src="../../assets/img/myprize/choice_2.png" />
-                        <img class="haha" v-else src="../../assets/img/myprize/choice_1.png" />
+                        <img class="haha" v-if="item.isDefault == 1" src="../../assets/img/addr/choice_2.png" />
+                        <img class="haha" v-else src="../../assets/img/addr/choice_1.png" />
                         <span class="haha">默认地址</span>
                     </p>
                     <div class="my-addr-buttons flex-hse">
@@ -34,7 +34,6 @@
                 </li>
             </ul>
             <div v-if="defaultShow" class="defaultImg">
-                <img src="../../assets/img/default/default10.png" alt="" />
                 <p>
                     你还没有添加收货地址，前去添加吧~
                 </p>
@@ -75,9 +74,6 @@
         },
         computed: {
             loginstate() {
-                if (this.$store.getters.loginstate > 0) {
-                    this.getAddrList();
-                };
                 return this.$store.getters.loginstate;
             }
         },
@@ -202,7 +198,7 @@
             }
         },
         created() {
-
+            this.getAddrList();
         },
         mounted() {
 

@@ -1,173 +1,85 @@
-@import "../../assets/scss/rem";
-#my{
-    .goHome{
-        position: absolute;
-        left: st(10);
-        top: st(12);
-        width: st(150);
-        height: st(62);
-        background-size: contain;
-    }
-    .my-top{
-        margin-bottom: st(22);
-        padding-top: st(94);
-        width: 100%;
-        height: st(278);
-        background-size: st(750) st(278);
-        .top-left{
-            width: st(304);
-            height: st(130);
-            text-align: right;
-            img{
-                width: st(130);
-                height: st(130);
-                border-radius: 50%;
-                border: 2px solid #e15066;
-            }
-        }
-        .top-right{
-            padding-left: st(12);
-            width: st(446);
-            height: st(130);
-            .first{
+#account{
+    .content{
+        top: 0;
+        bottom: 47px;
+        .account-top{
+            height: 100px;
+            width: 100%;
+            .account-userhead{
                 width: 100%;
-                height: st(54);
-                color: #fff;
-                font-size: st(32);
-                line-height: st(54);
-                margin-bottom: st(10);
-            }
-            .second{
-                height: st(76);
-                .balance{
-                    position: relative;
-                    display: inline-block;
-                    width: auto;
-                    height: st(44);
-                    padding-left: st(16);
-                    padding-right: st(32);
-                    border-radius: st(20);
-                    background: #e15066;
-                    color: #ffe400;
-                    font-size: st(28);
-                    line-height: st(44);
+                padding-top: 20px;
+                padding-bottom: 20px;
+                border-bottom: 10px solid #f2f2f2;
+                img{
+                    width: 61px;
+                    height: 61px;
+                    border: 4px solid #f28eb0;
+                    border-radius: 50%;
                 }
-                .goRecharge{
-                    position: absolute;
-                    right: st(-88);
-                    top: 0;
-                    bottom: 0;
-                    margin: auto;
-                    display: inline-block;
-                    width: st(108);
-                    height: st(58);
-                    background-size: contain;
-                    text-align: center;
-                    line-height: st(56);
+                .userName{
+                    width: 60%;
+                    height: 40px;
+                    padding: 5px 0 15px;
+                    font-size: 16px;
+                }
+            }
+            .account-ammount{
+                height: 25px;
+                width: 170px;
+                margin: 0 auto;
+                line-height: 25px;
+                border-radius: 12px;
+                background: #d81665;
+                p{
+                    width: 115px;
                     color: #fff;
+                    font-size: 12px;
+                    text-align: center;
+                }
+                button{
+                    display: block;
+                    height: 19px;
+                    margin-top: 3px;
+                    font-size: 12px;
+                    width: 50px;
+                    border-radius: 10px;
+                    background: #ffce00;
+                    border: none;
+                    color: #aa6017;
                 }
             }
         }
-    }
-    .main{
-        padding-top: st(40);
-        padding-bottom: st(34);
-        background: #ffeaec;
-    }
-    .border-wrapper{
-        border: st(6) solid #ffc0d2;
-        border-radius: st(32);
-    }
-    .main1{
-        margin: 0 auto;
-        margin-bottom: st(22);
-        width: st(700);
-        position: relative;
-        .left{
-            position: relative;
-            width: st(170);
-            height: st(118);
-            text-align: right;
-            img{
-                width: st(118);
-                height: st(118);
+        .account-topthree{
+            width: 100%;
+            height: 92px;
+            border-bottom: 10px solid #f2f2f2;
+            .account-topthree-item{
+                width: 33%;
+                height: 100%;
+                .iconfont{
+                    padding: 10px 0 5px;
+                    font-size: 35px;
+                    color: #f93069;
+                    font-weight: 600px;
+                }
+                p{
+                    width: 100%;
+                    height: 34%;
+                    text-align: center;
+                    font-size: 12px;
+                    color: #666666;
+                }
             }
-            .dian{
-                position: absolute;
-                top: 0;
-                right: 0;
-                display: inline-block;
-                width: st(22);
-                height: st(22);
-                border: 2px solid #fff;
-                background: #ff5b80;
-                border-radius: 50%;
+            a:nth-child(2){
+                border-left: 1px solid #f2f2f2;
+                border-right: 1px solid #f2f2f2;
             }
         }
-        .right{
-            padding-top: st(24);
-            padding-left: st(30);
-            width: st(460);
-            .line1{
-                width: 100%;
-                height: st(54);
-                font-size: st(32);
-                font-weight: 600;
-                color: #444;
-            }
-            .line2{
-                width: 100%;
-                height: st(40);
-                color: #ff5b80;
-                font-size: st(24);
-            }
-        }
-        .togo{
-            position: absolute;
-            right: st(40);
-            top: 0;
-            bottom: 0;
-            margin: auto;
-            width: st(18);
-            height: st(18);
-            i{
-                color: #ff5b80;
-            }
+        .account-menubar{
+            border-bottom: 10px solid #f2f2f2;
         }
     }
-    .main2{
-        width: st(220);
-        img{
-            width: st(118);
-            height: st(118);
-        }
-        p{
-            font-size: st(24);
-            font-weight: 600;
-            color: #444;
-        }
-    }
-    .line-border{
-        margin: 0 auto st(22);
-        width: st(700);
-    }
-    .server-alert-in{
-        padding-top: st(10);
-        width: 100%;
-        height: st(266);
-        div:nth-child(1){
-            margin-bottom: st(38);
-        }
-    }
-    .server-alert-in-item{
-        width: st(484);
-        height: st(90);
-        span{
-            color: #7e8b9e;
-            font-size: st(28);
-        }
-        .rexian{
-            color: #39c8fa;
-        }
+    .in{
+        font-size: 12px;
     }
 }

@@ -13,8 +13,12 @@ const layout = () => import(/* webpackChunkName: "layout" */ '@/pages/layout/lay
 const home = () => import(/* webpackChunkName: "home" */ '@/pages/home/home');//首页
 
 const login = () => import(/* webpackChunkName: "login" */ '@/pages/login/login');//登录
+const register = () => import(/* webpackChunkName: "register" */ '@/pages/login/register');//注册
 
 const my = () => import(/* webpackChunkName: "my" */ '@/pages/my/my');//我的
+const rechargeRecords = () => import(/* webpackChunkName: "rechargeRechords" */ '@/pages/rechargeRecords/rechargeRecords');//资金记录
+const receiveAddress = () => import(/* webpackChunkName: "receiveAddress" */ '@/pages/receiveAddress/receiveAddress');//我的收货地址
+const receiveAddress_add = () => import(/* webpackChunkName: "receiveAddress" */ '@/pages/receiveAddress_add/receiveAddress_add');//编辑收货地址
 
 const shopping = () => import(/* webpackChunkName: "shopping" */ '@/pages/shopping/shopping');//商城
 const productDetail = () => import(/* webpackChunkName: "productDetail" */ '@/pages/productDetail/productDetail');//商品详情
@@ -50,6 +54,16 @@ const router = new Router({
             name: 'login',
             path: '/login',
             component: login,
+            meta: {
+                htmlBg: {
+                    'background': '#f2f2f2',
+                }
+            }
+        },
+        { //注册
+            name: 'register',
+            path: '/register',
+            component: register,
             meta: {
                 htmlBg: {
                     'background': '#f2f2f2',
@@ -134,28 +148,43 @@ const router = new Router({
             meta: {
                 showBottomTab: true,
                 htmlBg: {
-                    'background': '#ffdfc0'
+                    'background': '#fff'
                 }
             },
         },
-        // { //我的收货地址
-        //     path: '/my/receiveAddress',
-        //     component: receiveAddress,
-        //     meta: {
-        //         htmlBg: {
-        //             'background': '#fff'
-        //         }
-        //     }
-        // },
-        // { //编辑收货地址
-        //     path: '/my/receiveAddress/receiveAddress_add',
-        //     component: receiveAddress_add,
-        //     meta: {
-        //         htmlBg: {
-        //             'background': '#fff'
-        //         }
-        //     }
-        // },
+        { //资金记录
+            name: 'rechargeRecords',
+            path: '/my/rechargeRecords',
+            component: rechargeRecords,
+            meta: {
+                htmlBg: {
+                    'background': '#fff'
+                }
+            },
+        },
+        { //我的收货地址
+            path: '/my/receiveAddress',
+            component: receiveAddress,
+            meta: {
+                htmlBg: {
+                    'background': '#fff'
+                }
+            }
+        },
+        { //编辑收货地址
+            path: '/my/receiveAddress/receiveAddress_add',
+            component: receiveAddress_add,
+            meta: {
+                htmlBg: {
+                    'background': '#fff'
+                }
+            }
+        },
+        { //404
+            path: '*',
+            component: notfound,
+        }
+
         ]
     }]
 });
