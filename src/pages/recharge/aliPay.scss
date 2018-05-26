@@ -1,0 +1,21 @@
+@import "../../assets/scss/rem";
+#aliPay{
+    .banner{
+        padding-top: st(30);
+        background: #fff;
+        text-align: center;
+        img{
+            width: st(348);
+        }
+    }
+    .goCharge{
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .tip{
+        width: 100%;
+        text-align: center;
+        font-size: 12px;
+    }
+}

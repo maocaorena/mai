@@ -1,0 +1,46 @@
+@import "../../assets/scss/rem";
+#myOrder{
+    .orders{
+        padding: st(20);
+    }
+    .orderItem{
+        padding: st(20);
+        width: 100%;
+        background: #fff;
+        border-radius: st(10);
+        .top{
+            width: 100%;
+            .img{
+                width: st(100);
+                height: st(100);
+                img{
+                    max-width: st(100);
+                    max-height: st(100);
+                }
+            }
+            .name{
+                padding-left: st(20);
+                padding-right: st(20);
+            }
+            .state{
+                width: st(400);
+                text-align: right;
+            }
+        }
+        .orderNum{
+            text-align: right;
+        }
+        .buttons{
+            width: 100%;
+            button{
+                padding-top: st(10);
+                padding-bottom: st(10);
+                width: st(160);
+                border: 1px solid #ccc;
+                border-radius: st(8);
+                background: #409eff;
+                color: #fff;
+            }
+        }
+    }
+}

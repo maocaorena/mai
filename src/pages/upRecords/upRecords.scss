@@ -1,0 +1,27 @@
+@import "../../assets/scss/rem";
+#upRecords{
+    .row{
+        padding: st(20);
+        width: 100%;
+        background: #fff;
+        margin-bottom: 1px;
+        div{
+            text-align: center;
+        }
+        .one{
+            width: 30%;
+        }
+        .two{
+            width: 20%;
+        }
+        .three{
+            width: 30%;
+        }
+        .four{
+            width: 20%;
+        }
+    }
+    .tit{
+        background: #aeaeae;
+    }
+}

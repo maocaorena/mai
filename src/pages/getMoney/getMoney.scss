@@ -1,0 +1,60 @@
+@import "../../assets/scss/rem";
+#getMoney{
+    .item{
+        background: #fff;
+        width: 100%;
+        padding: st(20);
+        .top{
+            margin-bottom: st(20);
+            color: #333;
+        }
+        .green{
+            color: #aeaeae;
+        }
+        .bottom{
+            input{
+                padding: st(10);
+                width: 100%;
+                border: 1px solid #ccc;
+            }
+            button{
+                margin-left: st(10);
+                width: st(200);
+                border: none;
+                background: #409eff;
+                color: #fff;
+                border-radius: st(8);
+            }
+        }
+    }
+    .goCharge{
+        display: block;
+        width: 90%;
+        margin: 0 auto;
+    }
+    .alertOne{
+        width: 100%;
+        padding-top: st(30);
+        input{
+            padding: 0 st(20);
+            width: 100%;
+            height: st(80);
+            border:1px solid #ccc;
+            border-radius: st(10);
+        }
+    }
+    .alertIn{
+        width: 100%;
+        height: st(700);
+        overflow: auto;
+        position: relative;
+        .title{
+            position: absolute;
+            left: 0;
+            top: 0;
+            background: #fff;
+            width: 100%;
+            text-align: center;
+        }
+    }
+}

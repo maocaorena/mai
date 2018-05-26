@@ -25,7 +25,8 @@
 
 .wrapper {
 	position: relative;
-	width: 100%;
+    width: 100%;
+    padding-top: 40px;
 }
 
 .content::-webkit-scrollbar {
@@ -109,6 +110,14 @@ img[lazy=loading] {
 
 .pd20{
     padding: 0.5rem;
+}
+
+.tc{
+    text-align: center;
+}
+.line{
+    width: 100%;
+    height: 1px;
 }
 
 /*弹出提示框*/

@@ -1,0 +1,13 @@
+@import "../../assets/scss/rem";
+#myCards{
+    .item{
+        .img{
+            width: st(160);
+            height: st(160);
+            img{
+                max-width: st(160);
+                max-height: st(160);
+            }
+        }
+    }
+}

@@ -2,7 +2,7 @@
     <div class="wj-messageBox">
     	<Shade>
 	    	<div class="wj-messageBox-border" :style="{width: inWidth}">
-	    		<h3 class="wj-messageBox-tit" v-if="tit">
+	    		<h3 class="wj-messageBox-tit" v-if="tit" @click="close">
     				<span class="wj-messageBox-tit-left">{{tit}}</span>
     				<span class="wj-messageBox-tit-right">{{remark}}</span>
 	    		</h3>
@@ -67,25 +67,7 @@ export default {
     		width: 100%;
     		height: st(100);
     		line-height: st(100);
-    		/*border-bottom: 1px solid #d8d8d8;*/
-    		position: relative;
-            &:after {
-                content: '';
-                position: absolute;
-                top: -1px;
-                left: 0;
-                border-bottom: 1px solid #d8d8d8;
-                width: 200%;
-                height: 200%;
-                -webkit-transform: scale(0.5);
-                -ms-transform: scale(0.5);
-                -o-transform: scale(0.5);
-                transform: scale(0.5);
-                -webkit-transform-origin: left top;
-                -moz-transform-origin: left top;
-                -ms-transform-origin: left top;
-                transform-origin: left top;
-            }
+    		border-bottom: 1px solid #d8d8d8;
     	}
     	.wj-messageBox-tit-left{
     		color: #333;

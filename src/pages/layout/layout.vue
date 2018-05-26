@@ -1,5 +1,13 @@
 <template>
     <div id="layout">
+        <mt-header fixed style="z-index:10" :title="$route.meta.name">
+            <div slot="left" v-show="$route.meta.showBack">
+                <mt-button icon="back" @click="goBack">返回</mt-button>
+            </div>
+            <mt-button slot="right" v-if="$route.meta.tabRight" @click="clickRightBar">
+                {{$route.meta.tabRight}}
+            </mt-button>
+        </mt-header>
         <router-view></router-view>
         <div class="footer-wrapper" v-if="$route.meta.showBottomTab">
 	        <div id="bottomBar" class="flex flex-h">
@@ -21,10 +29,8 @@
                     </p>
 	                <p class="txt">我的</p>
 	            </router-link>
-                
 	        </div>
         </div>
-
     </div>
 </template>
 
@@ -37,14 +43,22 @@
             }
         },
         computed: {
+            rightBarFun(){
+                return this.$store.getters.rightBarFun
+            }
         },
         methods: {
+            goBack(){
+                this.$router.go(-1)
+            },
+            clickRightBar(){
+                this.rightBarFun()
+            }
         },
         created() {
-            
+
         },
-        mounted() {
-        }
+        mounted() {}
     }
 </script>
 

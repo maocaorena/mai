@@ -1,0 +1,26 @@
+@import "../../assets/scss/rem";
+#orderDetail{
+    .payState{
+        text-align: center;
+        background: #bababa;
+    }
+    .top{
+        width: 100%;
+        .img{
+            width: st(100);
+            height: st(100);
+            img{
+                max-width: st(100);
+                max-height: st(100);
+            }
+        }
+        .name{
+            padding-left: st(20);
+            padding-right: st(20);
+        }
+        .state{
+            width: st(400);
+            text-align: right;
+        }
+    }
+}
