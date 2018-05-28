@@ -56,7 +56,8 @@
             }
         },
         created() {
-
+            let search = this.$route.query;
+            this.Storage.setItem("urlMessage", search);
         },
         mounted() {}
     }

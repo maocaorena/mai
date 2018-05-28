@@ -9,12 +9,6 @@ import { Util } from './assets/js/util.js';
 import { User } from './assets/js/user.js';
 import { Storage } from './assets/js/storage.js';
 
-import platform from '@/waji/utils/platform.js'
-import toast from '@/waji/utils/toast.js'
-
-import '@/waji/utils/directives'
-import '@/waji/styles/index.scss'
-
 import 'mint-ui/lib/style.css';
 //import '@/assets/js/rem.js';
 import '@/assets/css/init.css';
@@ -39,8 +33,6 @@ Vue.prototype.api = api;
 Vue.prototype.Util = Util;
 Vue.prototype.User = User;
 Vue.prototype.Storage = Storage;
-Vue.prototype.$platform = platform
-Vue.prototype.$toast = toast
 
 /* eslint-disable no-new */
 new Vue({

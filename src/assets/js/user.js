@@ -11,7 +11,11 @@ const User = {
 	    };
 	    return token;
 	},
-	getMemberId : function(){
+    getUserInfo : function(){
+        let memberInfo = Storage.getItemJson(Storage.memberInfo);
+        return memberInfo;
+    },
+	getUserId : function(){
 		let memberInfo = Storage.getItemJson(Storage.memberInfo);
 		let id = '';
 		if(memberInfo.id){
@@ -26,44 +30,21 @@ const User = {
 		};
 		return appInfo;
 	},
-	getAppKey : function(){
+	getAgentId : function(){
 		let appInfo = Storage.getItemJson(Storage.appInfo);
-		let appKey = '';
-		if(appInfo.appKey){
-			appKey = appInfo.appKey;
+		let agentId = '';
+		if(appInfo.agentId){
+			agentId = appInfo.agentId;
 		};
-		if(appKey.length < 1){
-			appKey = '64745fa3bd8c428ba7896efdc7286334';
-		};
-		return appKey;
+		return agentId;
     },
-    getDeviceId: function () {
+    getSaleId: function () {
         let appInfo = Storage.getItemJson(Storage.appInfo);
-        let deviceId = '';
-        if (appInfo.deviceId) {
-            deviceId = appInfo.deviceId;
+        let saleId = '';
+        if (appInfo.saleId) {
+            saleId = appInfo.saleId;
         };
-        return deviceId;
+        return saleId;
     },
-	getAppEntrance : function(){
-		let appInfo = Storage.getItemJson(Storage.appInfo);
-		let appEntrance = '';
-		if(appInfo.appEntrance){
-			appEntrance = appInfo.appEntrance;
-		};
-		return appEntrance;
-	},
-	getAppType : function(){
-		let appInfo = Storage.getItemJson(Storage.appInfo);
-		let appType = 'app';
-		if(appInfo.appType){
-			appType = appInfo.appType;
-		};
-		return appType;
-	},
-	getMemberInfo : function(){
-		let memberInfo = Storage.getItemJson(Storage.memberInfo);
-	    return memberInfo;
-	},
 }
 export { User };

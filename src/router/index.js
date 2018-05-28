@@ -99,7 +99,6 @@ const router = new Router({
                 component: login,
                 meta: {
                     name: '登录',
-                    showBack: true,
                     htmlBg: {
                         'background': '#f2f2f2',
                     }
@@ -404,28 +403,15 @@ const router = new Router({
                     }
                 }
             },
-            { //404
-                path: '*',
-                component: notfound,
-            }
+            // { //404
+            //     path: '*',
+            //     component: notfound,
+            // }
         ]
     }]
 });
 
 router.beforeEach((to, from, next) => {
-    let _url = to.path;
-    if (_url.indexOf('access_token') > -1) {
-        let start = _url.indexOf('access_token');
-        let str = _url.slice(start)
-        console.log(str)
-        let _str = str.slice(str.indexOf('=') + 1, str.indexOf('&'))
-        console.log(start, _str, typeof(_str))
-        let allUrl = JSON.stringify(window.location.href);
-        let _redicUrl = allUrl.slice(1, allUrl.indexOf(':')) + '://' + window.location.host;
-        let endUrl = _redicUrl + '?state=bd&code=' + _str;
-        location.replace(endUrl);
-    };
-
     let allUrl = JSON.stringify(window.location.href);
     let wenhaoIdx = allUrl.indexOf("?");
     let jingIdx = allUrl.indexOf('#');
@@ -434,6 +420,10 @@ router.beforeEach((to, from, next) => {
         window.location.href = _url;
         return;
     };
+    console.log(to,from)
+    if( to.name === 'login' &&  from.name){
+        Storage.setItem('loginFrom', from.name)
+    }
     next();
 });
 router.afterEach((to, from) => {
