@@ -4,23 +4,23 @@
 import { Storage } from './storage.js'; //引入Storage
 const User = {
 	getToken : function(){
-		let memberInfo = Storage.getItemJson(Storage.memberInfo);
-		let token = '';
-		if(memberInfo.userToken||memberInfo.token){
-	    	token = memberInfo.userToken || memberInfo.token;
-	    };
-	    return token;
+        let id = null;
+        if(Storage.getItemJson(Storage.memberInfo)){
+            let memberInfo = Storage.getItemJson(Storage.memberInfo);
+            id = memberInfo.token;
+        }
+        return id;
 	},
     getUserInfo : function(){
         let memberInfo = Storage.getItemJson(Storage.memberInfo);
         return memberInfo;
     },
 	getUserId : function(){
-		let memberInfo = Storage.getItemJson(Storage.memberInfo);
-		let id = '';
-		if(memberInfo.id){
-	    	id = memberInfo.id;
-	    };
+        let id = null;
+        if(Storage.getItemJson(Storage.memberInfo)){
+            let memberInfo = Storage.getItemJson(Storage.memberInfo);
+            id = memberInfo.id;
+        }
 	    return id;
 	},
 	getAppInfo: function(){
@@ -31,20 +31,20 @@ const User = {
 		return appInfo;
 	},
 	getAgentId : function(){
-		let appInfo = Storage.getItemJson(Storage.appInfo);
-		let agentId = '';
-		if(appInfo.agentId){
-			agentId = appInfo.agentId;
-		};
-		return agentId;
+        let id = null;
+        if(Storage.getItemJson(Storage.memberInfo)){
+            let memberInfo = Storage.getItemJson(Storage.appInfo);
+            id = memberInfo.agentId;
+        }
+	    return id;
     },
     getSaleId: function () {
-        let appInfo = Storage.getItemJson(Storage.appInfo);
-        let saleId = '';
-        if (appInfo.saleId) {
-            saleId = appInfo.saleId;
-        };
-        return saleId;
+        let id = null;
+        if(Storage.getItemJson(Storage.memberInfo)){
+            let memberInfo = Storage.getItemJson(Storage.appInfo);
+            id = memberInfo.saleId;
+        }
+        return id;
     },
 }
 export { User };

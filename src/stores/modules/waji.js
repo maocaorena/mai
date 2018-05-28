@@ -2,7 +2,7 @@ import API from '@/api/API.js';
 const api = new API();
 
 const waji = {
-    state: {
+    state: {    
         rightBarFun: null
     },
     mutations: {

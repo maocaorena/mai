@@ -4,7 +4,7 @@
 			<div class="account-top">
 				<div class="account-userhead flex flex-sc flex-hsb">
 					<img class="user-pic" src="../../assets/img/productDetail/1.png">
-					<p class="userName ellipsis">您好，aaaasd多个</p>
+					<p class="userName ellipsis">您好，{{userInfo.name}}</p>
 				</div>
 			</div>
             <div style="height: 10px"></div>
@@ -46,28 +46,23 @@
 
         },
         created() {
-            // this.getMyInfo();
+            this.getMyInfo();
         },
         mounted() {
         },
         methods: {
             getMyInfo() {
-                console.log(User.getToken());
-                let that = this;
-                this.api.getUserInfo(User.getToken(), function(data) {
-                    let res = data.data;
-                    console.log(res);
-                    if (res.successed) {
-                        that.userInfo = res.returnValue;
-                        that.api.getAmount(User.getToken(), User.getAppKey(), function(data) {
-                            let _res = data.data;
-                            if (_res.successed) {
-                                that.amount = _res.returnValue;
-                            }
-                        })
-                    } else {
-                        Util.myAlert("请登录");
-                        // that.$router.push("/tab/account/login_account")
+                this.api.getB({
+                    url: 'customer/getByToken',
+                    headers: {
+                        token: this.User.getToken()
+                    },
+                    params:{
+                        customerId: this.User.getUserId()
+                    }
+                }).then(res=>{
+                    if(res.successed){
+                        this.userInfo = res.returnValue;
                     }
                 })
             }

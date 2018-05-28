@@ -130,7 +130,10 @@ class API {
         })
     };
     noLogin() {
-
+        Storage.removeItem('uf');
+        router.replace({
+            name: 'login'
+        })
     };
     goLogin() {
 

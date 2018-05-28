@@ -22,11 +22,10 @@
 		methods:{
 			// 获取banner
 			getBanner() {
-				this.api.getB({
+				this.api.getBn({
 					url: 'banner/getList',
 					params: {
 						position: 0,
-						appKey: this.User.getAppKey(),
 					}
 				}).then((res) => {
 					this.bannerList = res.data.returnValue;

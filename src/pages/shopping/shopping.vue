@@ -4,12 +4,26 @@
         <div class="qipao">
             <qipao></qipao>
         </div>
-        <ul class="list">
+        <div class="rooms page-infinite-wrapper" ref="wrapper">
+            <ul ref="roolist" class="list page-infinite-list" v-infinite-scroll="getList" infinite-scroll-disabled="loading"
+                infinite-scroll-distance="60">
+                <li class="item page-infinite-listitem" v-for="(item,index) of list" :class="{'mr0':index%2 === 1}">
+                    <shoppingItem :message="item"> </shoppingItem>
+                </li>
+                <li style="clear: both;"></li>
+            </ul>
+        </div>
+        <p class="noMore flex-zhong" v-show="!noMore">
+                <mt-spinner type="snake"></mt-spinner>
+            </p>
+        <p class="noMore" v-show="noMore">没有更多数据了</p>
+
+        <!-- <ul class="list">
             <li v-for="(item, index) of 5" class="item" :class="{'mr0':index%2 === 1}">
                 <shoppingItem> </shoppingItem>
             </li>
             <li class="clear"></li>
-        </ul>
+        </ul> -->
     </div>
 </template>
 
@@ -20,7 +34,13 @@
     import { Indicator } from "mint-ui"; //引入mintUI  indicator组件
     export default {
         data() {
-            return {};
+            return {
+                list: [],
+                loading: false, //控制加载，true会停止加载
+                noMore: false, //没有更多
+                pageNum: 1,
+
+            };
         },
         components: {
             "tabbars-v" : tabbars,
@@ -31,7 +51,37 @@
         methods: {
             isThis(index){
 				console.log("fu",index);
-			}
+            },
+            // 获取列表
+            getList() {
+                this.loading = true;
+                let _params = {};
+                _params = {
+                    pageNum: this.pageNum,
+                    pageSize: 6,
+                };
+
+                this.api.getB({
+                    url: 'product/getPageList',
+                    params: _params,
+                }).then((res) => {
+                    Indicator.close()
+                    if (res.successed) {
+                        this.list.push(...res.returnValue.list);
+                        if (res.returnValue.list.length < 6) {
+                            this.noMore = true;
+                        } else {
+                            this.pageNum++;
+                            this.loading = false;
+                        };
+                    } else {
+                        this.Util.myAlert('获取列表失败，请稍后重试');
+                    };
+                }).catch(() => {
+                    Indicator.close()
+                })
+            },
+
         },
         mounted() {}
     };

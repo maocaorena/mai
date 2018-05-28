@@ -1,14 +1,14 @@
 <template>
     <div class="roomItem-in" @click="goDetail()">
         <div class="img">
-            <img src="../../assets/img/home/true.jpg" alt="">
+            <img v-lazy.container="message.image" alt="">
         </div>
         <div class="name">
-            sss水电费水电费水电费水电费水电费水
+            {{message.productName}}
         </div>
         <div class="price">
             <div class="left">
-                ￥200
+                ￥{{message.price}}
             </div>
             <div class="right">
                 购买
@@ -25,13 +25,16 @@
 			}
 		},
 		props: [
-
+            'message'
 		],
 		methods:{
 			//进入房间
 			goDetail() {
 				this.$router.push({
-					name: 'productDetail'
+                    name: 'productDetail',
+                    query: {
+                        productId: this.message.id
+                    }
 				})
 			},
 		},
