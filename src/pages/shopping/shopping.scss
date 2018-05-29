@@ -2,13 +2,13 @@
 #shopping {
     .tab{
         position: fixed;
-        top: 40px;
+        top: 0;
         left: 0;
         z-index: 10;
     }
     .qipao{
         position: fixed;
-        top: 78px;
+        top: 38px;
         left: 0;
         z-index: 10;
         padding-top: st(20);
@@ -25,7 +25,7 @@
             float: left;
             margin-right: st(40);
             margin-bottom: st(20);
-            width: st(332);
+            width: 100%;
         }
         .mr0{
             margin-right: 0;

@@ -26,7 +26,6 @@
 .wrapper {
 	position: relative;
     width: 100%;
-    padding-top: 40px;
 }
 
 .content::-webkit-scrollbar {

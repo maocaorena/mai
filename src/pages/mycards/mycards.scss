@@ -1,13 +1,96 @@
 @import "../../assets/scss/rem";
 #myCards{
-    .item{
-        .img{
-            width: st(160);
-            height: st(160);
-            img{
-                max-width: st(160);
-                max-height: st(160);
+    .myAddress{
+        width: 100%;
+        height: auto;
+        li{
+            padding-top: st(46);
+            padding-bottom: st(48);
+            padding-left: st(40);
+            padding-right: st(34);
+            width: 100%;
+            border-bottom: 1px solid #d8d8d8;
+            background: #fff;
+            .name-num{
+                width: 90%;
+                height: auto;
+                font-size: st(28);
+                .name{
+                    font-weight: 600;
+                }
             }
+            .name{
+                padding-right: st(74);
+            }
+            .all-addr{
+                padding-bottom: st(26);
+                width: 90%;
+                height: auto;
+                font-size: st(26);
+                font-weight: 600;
+            }
+            .default-addr{
+                width: 100%;
+                height: st(52);
+                line-height: st(52);
+                img{
+                    margin-right: st(14);
+                    width: st(48);
+                }
+                span{
+                    color: #7e8b9e;
+                    font-size: st(24);
+                }
+            }
+            .my-addr-buttons{
+                position: absolute;
+                z-index: 10;
+                right: 0;
+                bottom: st(42);
+                width: st(248);
+                height: st(66);
+                button{
+                    width: st(116);
+                    height: 100%;
+                    color: #7e8b9e;
+                    border: 0;
+                    border: 1px solid #d8d8d8;
+                    border-radius: st(18);
+                    font-size: st(24);
+                }
+            }
+            .right{
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: st(48);
+                height: st(150);
+                img{
+                    width: st(28);
+                }
+            }
+        }
+    }
+    .receiveAddress-bottom{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        margin: auto;
+        width: 100%;
+        height: st(100);
+        background: #fff;
+        border-top: 1px solid #d8d8d8;
+        button{
+            width: st(672);
+            height: st(84);
+            background: #ff5b88;
+            border-radius: st(20);
+            text-align: center;
+            font-size: st(28);
+            border: 0;
+            color: #FFF;
         }
     }
 }

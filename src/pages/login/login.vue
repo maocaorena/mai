@@ -96,7 +96,7 @@
                             let loginFrom = this.Storage.getItem('loginFrom');
                             if(loginFrom){
                                 this.Storage.removeItem('loginFrom')
-                                this.$router.push({
+                                this.$router.replace({
                                     name: loginFrom
                                 })
                             }else{

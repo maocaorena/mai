@@ -18,12 +18,13 @@
             <div class="defaultFont color333 mb">
                 {{detail.productName}}
             </div>
-            <div class="colorRed smallFont mb">
+            <div class="colorRed smallFont mb" v-if="detail.upProductId">
                 活动提示：该商品购买后可参加升级活动，如升级成功，升级后商品价值999.00元
             </div>
             <div class="bottomTxt flex flex-hlr mb">
                 <!-- <p class="color999">快递：6元</p> -->
-                <p class="colorRed">库存剩余：{{detail.stock}}</p>
+                <p class="colorRed" v-if="detail.stock<=99" >库存剩余：{{detail.stock}}</p>
+                <p class="colorRed" v-else >月销：{{detail.sales}}</p>
             </div>
         </div>
         <div class="detail" v-html="detail.productDetail">

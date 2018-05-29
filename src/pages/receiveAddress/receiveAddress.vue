@@ -2,7 +2,8 @@
     <div id="receiveAddress" class="wrapper" :data="loginstate">
         <div class="content">
             <ul v-if="list.length>0" class="myAddress">
-                <li v-if="!$route.query.isSelect" v-for="item of list">
+
+                <li v-if="!$route.query.isSelect" v-for="item of list" style="position: relative;">
                     <p class="name-num color333">
                         <span class="name">{{item.consignee}}</span>
                         <span class="tel">{{item.mobile}}</span>
@@ -20,6 +21,7 @@
                         <button @click="showAlert(item.id)">删除</button>
                     </div>
                 </li>
+
                 <li v-if="$route.query.isSelect" v-for="item of list" style="padding-bottom: 0;" @click="selectAddr(item.id)">
                     <p class="name-num color333">
                         <span class="name">{{item.consignee}}</span>
@@ -32,6 +34,7 @@
                         <img src="../../assets/img/addr/triangle.png" alt="">
                     </div>
                 </li>
+
             </ul>
             <div v-if="defaultShow" class="defaultImg">
                 <p>
@@ -60,10 +63,11 @@
 <script>
     import { Indicator } from 'mint-ui';//引入mintUI  indicator组件
     import bxmloading from '@/components/loading.vue';
+    import { MessageBox } from 'mint-ui';
     export default {
         data() {
             return {
-                userId: this.User.getMemberId(),
+                userId: this.User.getUserId(),
                 token: this.User.getToken(),
                 list: [],
                 defaultShow: false,
@@ -104,46 +108,33 @@
                 this.$router.push({ path: '/my/receiveAddress/receiveAddress_add' })
             },
             //编辑地址
-            handleAddr(item) {
-                this.$router.push({ path: '/my/receiveAddress/receiveAddress_add', query: { addrid: item } })
+            handleAddr(id) {
+                this.$router.push({ path: '/my/receiveAddress/receiveAddress_add', query: { addrid: id } })
             },
-            showAlert(item) {
-                this.delAlert = 1;
-                this.delId = item;
-            },
-            isOk(type) {
-                switch (type) {//1 取消  2确认
-                    case 1:
-                        this.delAlert = -1;
-                        break;
-                    case 2:
-                        this.deleteAddr(this.delId)
-                        break;
-                    default:
-                        break;
-                }
+            showAlert(id) {
+                MessageBox.confirm('确定删除?').then(action => {
+                    this.deleteAddr(id)
+                });
             },
             //删除地址
-            deleteAddr(item) {
+            deleteAddr(id) {
                 this.api.ajaxB({
                     url: 'deliveryAddress/delete',
                     type: 'DELETE',
                     params: {
-                        id: item,
-                        userId: this.userId
+                        id: id,
+                        customerId: this.userId
                     },
                     headers: {
                         token: this.token
                     }
                 }).then(res => {
-                    this.delAlert = -1;
                     Indicator.close();
-                    if (res.data.successed) {
+                    if (res.successed) {
                         this.Util.myAlert('删除地址成功！');
                         this.getAddrList();
                     }
                 }).catch(() => {
-                    this.delAlert = -1;
                     Indicator.close();
                 })
             },
@@ -156,14 +147,14 @@
                         type: 'put',
                         params: {
                             id: item.id,
-                            userId: this.userId
+                            customerId: this.userId
                         },
                         headers: {
                             token: this.token
                         }
                     }).then(res => {
                         Indicator.close();
-                        if (res.data.successed) {
+                        if (res.successed) {
                             this.Util.myAlert('设置默认地址成功！');
                             this.getAddrList();
                         }
@@ -178,7 +169,7 @@
                 this.api.getB({
                     url: 'deliveryAddress/getList',
                     params: {
-                        userId: this.userId,
+                        customerId: this.userId,
                     },
                     headers: {
                         token: this.token
@@ -186,8 +177,8 @@
                 }).then(res => {
                     this.allLoading = false;
 
-                    if (res.data.successed) {
-                        this.list = res.data.returnValue;
+                    if (res.successed) {
+                        this.list = res.returnValue;
                         if (this.list.length == 0) {
                             this.defaultShow = true;
                         }

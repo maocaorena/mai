@@ -111,9 +111,11 @@
         bottom: 0;
         left: 0;
         right: 0;
+        z-index: 10;
         margin: auto;
         width: 100%;
         height: st(100);
+        background: #fff;
         border-top: 1px solid #d8d8d8;
         button{
             width: st(672);

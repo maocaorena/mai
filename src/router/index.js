@@ -41,6 +41,8 @@ const receiveAddress_add = () =>
     import ( /* webpackChunkName: "receiveAddress" */ '@/pages/receiveAddress_add/receiveAddress_add'); //编辑收货地址
 const myCards = () =>
     import ( /* webpackChunkName: "myCards" */ '@/pages/myCards/myCards'); //我的银行卡
+const addCard = () =>
+    import ( /* webpackChunkName: "myCards" */ '@/pages/myCards/addCard'); //添加银行卡
 const safeCenter = () =>
     import ( /* webpackChunkName: "safeCenter" */ '@/pages/safeCenter/safeCenter'); //安全中心
 const updatePhone = () =>
@@ -88,6 +90,7 @@ const router = new Router({
                 meta: {
                     name: '首页',
                     showBottomTab: true,
+                    hideHeader: true,
                     htmlBg: {
                         'background': '#f2f2f2',
                     }
@@ -99,6 +102,7 @@ const router = new Router({
                 component: login,
                 meta: {
                     name: '登录',
+                    hideHeader: true,
                     htmlBg: {
                         'background': '#f2f2f2',
                     }
@@ -111,6 +115,7 @@ const router = new Router({
                 meta: {
                     name: '注册',
                     showBack: true,
+                    hideHeader: true,
                     htmlBg: {
                         'background': '#f2f2f2',
                     }
@@ -123,6 +128,7 @@ const router = new Router({
                 meta: {
                     name: '商城',
                     showBottomTab: true,
+                    hideHeader: true,
                     htmlBg: {
                         'background': '#f2f2f2',
                     }
@@ -207,6 +213,7 @@ const router = new Router({
                 meta: {
                     name: '我的',
                     showBottomTab: true,
+                    hideHeader: true,
                     htmlBg: {
                         'background': '#fff'
                     }
@@ -325,6 +332,18 @@ const router = new Router({
                 component: myCards,
                 meta: {
                     name: '我的银行卡',
+                    showBack: true,
+                    htmlBg: {
+                        'background': '#f2f2f2'
+                    }
+                }
+            },
+            { //添加银行卡
+                name: 'addCard',
+                path: '/my/myCards/addCard',
+                component: addCard,
+                meta: {
+                    name: '添加银行卡',
                     showBack: true,
                     htmlBg: {
                         'background': '#f2f2f2'
