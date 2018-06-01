@@ -103,7 +103,7 @@ class API {
         })
         return
     };
-    //变现猫postn
+    //postn
     postBn(msg) {
         msg.type = 'POST';
         return this.ajaxB(msg).then(res => {

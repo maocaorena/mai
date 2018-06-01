@@ -7,17 +7,13 @@
         z-index: 10;
     }
     .qipao{
-        position: fixed;
-        top: 38px;
-        left: 0;
-        z-index: 10;
+        margin-top: st(70);
         padding-top: st(20);
         width: 100%;
         height: st(100);
         background: #f2f2f2;
     }
     .list{
-        margin-top: st(200);
         padding: 0 st(20) st(20);
         width: 100%;
         height: auto;

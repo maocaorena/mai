@@ -1,18 +1,16 @@
 <template>
-	<div class="swiper-container" id="homeSwipe">
-		<div class="swiper-wrapper">
-			<div class="swiper-in">
-				<mt-swipe :auto="4000">
-					<mt-swipe-item v-for="(item,index) of bannerList" :key="index">
-						<img @click="goUrl(item)" style="width: 100%; height: 100%;" :src="item.img" alt="">
-					</mt-swipe-item>
-				</mt-swipe>
-			</div>
-		</div>
-	</div>
+    <div class="swiper-container" id="homeSwipe">
+        <div class="swiper-wrapper">
+            <div v-for="(item,index) of bannerList" :key="index" class="swiper-slide ellipsis">
+                <img @click="goUrl(item)" style="width: 100%; height: 100%;" :src="item.img" alt="">
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
+    import '@/lib/swiper/swiper.min.js';
+    import '@/lib/swiper/swiper.min.css';
 	export default{
 		data(){
 			return{
@@ -25,11 +23,20 @@
 				this.api.getBn({
 					url: 'banner/getList',
 					params: {
-						position: 0,
+						position: 1,
 					}
 				}).then((res) => {
-					this.bannerList = res.data.returnValue;
-				});
+					this.bannerList = res.returnValue;
+				}).then(()=>{
+                    this.$nextTick(()=>{
+                        let mySwiper = new Swiper('#homeSwipe', {
+                            speed: 300,
+                            loop: true,
+                            autoplay: 1000,
+                            autoplayDisableOnInteraction: false,
+                        });
+                    })
+                });
 			},
 			//banner跳转
 			goUrl(item) {
@@ -61,17 +68,13 @@
 <style lang="scss">
 	@import "../../assets/scss/rem";
 	#homeSwipe {
-        padding-bottom: st(40);
         width: 100%;
         .swiper-wrapper {
             margin: 0 auto;
             width: 100%;
-            height: st(270);
-        }
-        .swiper-in {
-            position: relative;
-            width: 100%;
-            height: 100%;
+            .img{
+                width: 100%;
+            }
         }
     }
 </style>

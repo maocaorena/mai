@@ -446,21 +446,22 @@ router.beforeEach((to, from, next) => {
     next();
 });
 router.afterEach((to, from) => {
-    let doc = document.getElementsByTagName('html')[0];
+    let _styles = document.createElement('style');
+
     let _style = '';
     try {
-        doc.setAttribute('style', 'background: #000;')
-        _style = 'font-size:' + Util.rem() + ';';
         if (to.meta.htmlBg) {
             for (let dd in to.meta.htmlBg) {
                 _style += ([dd] + ':' + to.meta.htmlBg[dd] + ';');
             };
         } else {
-            doc.style.backgroundColor = '#f4f6f8';
+            _style = 'background:#f4f6f8;';
         };
-        doc.setAttribute('style', _style)
+        let node = document.createTextNode('html{' + _style + '}');
+        _styles.appendChild(node);
+        document.getElementsByTagName('body')[0].appendChild(_styles)
     } catch (e) {
-        alert(e)
+        console.log(e)
     };
 });
 export default router

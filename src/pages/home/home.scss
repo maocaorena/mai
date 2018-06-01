@@ -17,13 +17,8 @@
         }
     }
     .qipao {
-        position: absolute;
-        top: st(300);
-        left: 0;
-        z-index: 10;
-        padding-top: st(20);
         width: 100%;
-        height: st(100);
-        overflow-x: hidden;
+        border-top: 1px solid #f2f2f2;
+        background: #fff;
     }
 }

@@ -3,7 +3,7 @@
         <div class="swiper-container" id="rechargeSwiper">
             <div class="swiper-wrapper">
                 <div v-for="item in 3" class="swiper-slide ellipsis">
-                    恭喜 222 用户成功获赠222！
+                    <span class="color999">恭喜</span><span class="color333"> 222 </span> 用户 <span class="color999">成功获赠</span> <span class="colorRed">222</span> !
                 </div>
             </div>
         </div>

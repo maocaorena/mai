@@ -18,12 +18,6 @@
             </p>
         <p class="noMore" v-show="noMore">没有更多数据了</p>
 
-        <!-- <ul class="list">
-            <li v-for="(item, index) of 5" class="item" :class="{'mr0':index%2 === 1}">
-                <shoppingItem> </shoppingItem>
-            </li>
-            <li class="clear"></li>
-        </ul> -->
     </div>
 </template>
 

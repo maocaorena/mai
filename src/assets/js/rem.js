@@ -9,7 +9,7 @@
 			window.remscale = clientWidth / 375;
 		};
 	if(!document.addEventListener) return;
-	window.addEventListener(resizeEvt, recalc, false);
+	window.addEventListener('resize', recalc, false);
 	document.addEventListener('DOMContentLoaded', recalc, false);
 	setTimeout(function() {
 		document.body.style.display = 'block';

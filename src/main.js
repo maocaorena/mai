@@ -10,7 +10,7 @@ import { User } from './assets/js/user.js';
 import { Storage } from './assets/js/storage.js';
 
 import 'mint-ui/lib/style.css';
-//import '@/assets/js/rem.js';
+import '@/assets/js/rem.js';
 import '@/assets/css/init.css';
 import '@/assets/css/like.css';
 import '@/assets/css/flex.css';
