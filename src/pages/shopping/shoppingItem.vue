@@ -1,5 +1,5 @@
 <template>
-    <div class="width100 flex flex-hlr">
+    <li class="width100 flex flex-hlr items">
         <div class="roomItem-in" @click="goDetail(message.id)">
             <div class="img">
                 <img v-lazy.container="message.image" alt="">
@@ -15,10 +15,6 @@
                     购买
                 </div>
             </div>
-        </div>
-        <div class=" flex-s flex-zhong">
-            <p class="smallFont">可升级</p>
-            <p>》》</p>
         </div>
         <div class="roomItem-in" @click="goDetail(message.upProductId)">
             <div class="img">
@@ -36,7 +32,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </li>
     
     
     

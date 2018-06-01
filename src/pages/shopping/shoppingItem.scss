@@ -1,18 +1,21 @@
 @import "../../assets/scss/rem";
+.items{
+    border-top: 1px solid #f2f2f2;
+}
 .roomItem-in{
     position: relative;
     padding: st(20);
-    width: 43%;
+    width: 50%;
     // height: st(550);
     background: #fff;
     border-radius: st(8);
 }
 .img{
-    width: 100%;
+    margin: 0 auto;
+    width: 80%;
     padding: st(6);
     img{
         width: 100%;
-        height: st(318);
         border-radius: st(20);
     }
 }

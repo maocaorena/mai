@@ -7,9 +7,9 @@
         <div class="rooms page-infinite-wrapper" ref="wrapper">
             <ul ref="roolist" class="list page-infinite-list" v-infinite-scroll="getList" infinite-scroll-disabled="loading"
                 infinite-scroll-distance="60">
-                <li class="item page-infinite-listitem" v-for="(item,index) of list" :class="{'mr0':index%2 === 1}">
+                <template v-for="(item,index) of list">
                     <shoppingItem :message="item"> </shoppingItem>
-                </li>
+                </template>
                 <li style="clear: both;"></li>
             </ul>
         </div>
