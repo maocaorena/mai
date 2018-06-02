@@ -1,13 +1,13 @@
 <template>
     <div id="home" class="wrapper">
         <div class="content" ref="content">
-            <banner></banner>
+            <banner v-on:goUrl="goUrl"></banner>
             <notice></notice>
             <div class="qipao">
                 <qipao></qipao>
             </div>
             <ul class="home-list">
-                <li class="home-item" v-for="item of list">
+                <li class="home-item" v-for="item of list" @click="goUrl(item)">
                     <img :src="item.img" alt="">
                 </li>
             </ul>
@@ -49,7 +49,29 @@
 				}).then((res) => {
 					this.list = res.returnValue;
 				});
-			},
+            },
+            goUrl(item){
+                switch(item.linkMethod) {
+                    case 0:
+                        this.$router.push({
+                            name: 'productDetail',
+                            query: {
+                                productId: item.linkUrl
+                            }
+                        })
+						break;
+					case 1:
+						this.$router.push({
+							name: item.linkUrl,
+						});
+                        break;
+                    case 1:
+                        window.location.href = item.linkUrl
+						break;
+					default:
+						break;
+				}
+            }
         },
     }
 </script>

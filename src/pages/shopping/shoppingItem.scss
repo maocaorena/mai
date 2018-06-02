@@ -1,13 +1,14 @@
 @import "../../assets/scss/rem";
 .items{
+    position: relative;
     border-top: 1px solid #f2f2f2;
+    background: #fff;
 }
 .roomItem-in{
     position: relative;
     padding: st(20);
     width: 50%;
     // height: st(550);
-    background: #fff;
     border-radius: st(8);
 }
 .img{
@@ -23,7 +24,6 @@
     width: 100%;
     color: #333;
     font-size: st(28);
-    font-weight: 600;
     line-height: st(50);
 }
 .price{
@@ -39,18 +39,32 @@
         font-size: st(36);
         line-height: st(100);
         text-indent: st(10);
-        color: #ff7b8b;
+        color: #ff0036;
     }
     .right{
         margin-top: st(10);
-        margin-right: st(10);
+        margin-right: st(20);
         float: right;
         width: st(80);
         height: st(80);
-        color: #333;
-        border: 1px solid #bababa;
+        color: #f93069;
+        border: 1px solid #f93069;
         line-height: st(80);
         text-align: center;
         border-radius: 50%;
+    }
+}
+.upLv{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: st(240);
+    left: 0;
+    margin: auto;
+    width: st(60);
+    height: st(60);
+    img{
+        width: 100%;
+        height: 100%;
     }
 }

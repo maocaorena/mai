@@ -16,6 +16,11 @@
                 </div>
             </div>
         </div>
+        <div class="upLv">
+            <img src="../../assets/img/shopping/levUp.png" alt="">
+            <br>
+            <span class="colorRed">升级</span>
+        </div>
         <div class="roomItem-in" @click="goDetail(message.upProductId)">
             <div class="img">
                 <img v-lazy.container="message.upProductImage" alt="">

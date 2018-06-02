@@ -1,6 +1,6 @@
 <template>
     <div id="shopping" class="wrapper">
-        <tabbars-v class="tab" v-on:clickThis="isThis" :names = '["选项1","选项2"]'></tabbars-v>
+        <tabbars-v class="tab" v-on:clickThis="isThis" :names = 'tabList' v-if="tabList.length > 0"></tabbars-v>
         <div class="qipao">
             <qipao></qipao>
         </div>
@@ -29,10 +29,13 @@
     export default {
         data() {
             return {
+                tabList: [],
+                classList: [],
                 list: [],
-                loading: false, //控制加载，true会停止加载
+                loading: true, //控制加载，true会停止加载
                 noMore: false, //没有更多
                 pageNum: 1,
+                productClassId: ''
 
             };
         },
@@ -41,18 +44,50 @@
             'qipao': qipao,
             'shoppingItem': shoppingItem
         },
-        created() {},
+        created() {
+            this.getTabList();
+        },
         methods: {
             isThis(index){
-				console.log("fu",index);
+                if(this.productClassId != this.classList[index].id){
+                    this.productClassId = this.classList[index].id;
+                    this.pageNum = 1;
+                    this.list = [];
+                    this.loading = false;
+                    this.getList();
+                }
+            },
+            // 获取商品分类
+            getTabList(){
+                this.api.getB({
+                    url: 'productClass/getList '
+                }).then((res) => {
+                    if (res.successed) {
+                        let _tabList = [];
+                        res.returnValue.forEach(element => {
+                            _tabList.push(element.productClassName)
+                        });
+                        this.classList = res.returnValue;
+                        this.tabList = _tabList;
+                        this.productClassId = res.returnValue[0].id;
+                        this.loading = false;
+                    } else {
+                        this.Util.myAlert('获取分类列表失败，请稍后重试');
+                    };
+                }).catch(() => {
+                    Indicator.close()
+                })
             },
             // 获取列表
             getList() {
+                let _productClassId = this.productClassId;
+                let pageNum = this.pageNum;
                 this.loading = true;
                 let _params = {};
                 _params = {
                     pageNum: this.pageNum,
                     pageSize: 6,
+                    productClassId: this.productClassId
                 };
 
                 this.api.getB({
@@ -61,13 +96,18 @@
                 }).then((res) => {
                     Indicator.close()
                     if (res.successed) {
-                        this.list.push(...res.returnValue.list);
-                        if (res.returnValue.list.length < 6) {
-                            this.noMore = true;
-                        } else {
-                            this.pageNum++;
-                            this.loading = false;
-                        };
+                        let len = this.list.filter(v=>{
+                            return res.returnValue.list[0].id == v.id
+                        }).length;
+                        if(_productClassId == this.productClassId && len == 0){
+                            this.list.push(...res.returnValue.list);
+                            if (res.returnValue.list.length < 6) {
+                                this.noMore = true;
+                            } else {
+                                this.pageNum++;
+                                this.loading = false;
+                            };
+                        }
                     } else {
                         this.Util.myAlert('获取列表失败，请稍后重试');
                     };

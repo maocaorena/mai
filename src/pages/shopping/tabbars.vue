@@ -17,8 +17,6 @@
 	export default {
 		props: [
             "names",
-            "tostatus",
-            "showTop",
             "initTab"
         ],
         data(){

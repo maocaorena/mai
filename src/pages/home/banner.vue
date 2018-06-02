@@ -40,23 +40,7 @@
 			},
 			//banner跳转
 			goUrl(item) {
-				switch(item.linkMethod) {
-					case 0:
-						this.$router.push({
-							path: '/outLink',
-							query: {
-								linkUrl: item.linkUrl
-							}
-						});
-						break;
-					case 1:
-						this.$router.push({
-							path: item.linkUrl,
-						});
-						break;
-					default:
-						break;
-				}
+				this.$emit('goUrl', item)
 			},
 		},
 		created(){

@@ -130,10 +130,14 @@ class API {
         })
     };
     noLogin() {
-        Storage.removeItem('uf');
-        router.replace({
-            name: 'login'
-        })
+        // Storage.removeItem('uf');
+        // router.replace({
+        //     name: 'login'
+        // })
+        /* {
+            "token":"f17638f5dadd4e9dbeb0c1b24b8eee9e",
+            "customerId":"43"
+        } */
     };
     goLogin() {
 

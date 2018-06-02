@@ -82,8 +82,7 @@
                         url: 'customer/login',
                         params: {
                             mobile: this.mobile,
-                            agentId: this.User.getAgentId(),
-                            saleId: this.User.getSaleId(),
+                            shareCode: this.User.getShareCode(),
                         },
                         headers:{
                             msgValidateCode: this.code,
@@ -112,7 +111,7 @@
 			}
         },
         created(){
-
+            console.log(this.User.getShareCode())
         },
         mounted(){
             

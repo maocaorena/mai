@@ -29,10 +29,19 @@ const User = {
 			appInfo = Storage.getItemJson(Storage.appInfo);
 		};
 		return appInfo;
-	},
+    },
+    getShareCode : function(){
+        let id = null;
+        if(Storage.getItemJson(Storage.appInfo)){
+            let memberInfo = Storage.getItemJson(Storage.appInfo);
+            console.log(memberInfo)
+            id = memberInfo.shareCode;
+        }
+	    return id;
+    },
 	getAgentId : function(){
         let id = null;
-        if(Storage.getItemJson(Storage.memberInfo)){
+        if(Storage.getItemJson(Storage.appInfo)){
             let memberInfo = Storage.getItemJson(Storage.appInfo);
             id = memberInfo.agentId;
         }
@@ -40,7 +49,7 @@ const User = {
     },
     getSaleId: function () {
         let id = null;
-        if(Storage.getItemJson(Storage.memberInfo)){
+        if(Storage.getItemJson(Storage.appInfo)){
             let memberInfo = Storage.getItemJson(Storage.appInfo);
             id = memberInfo.saleId;
         }
