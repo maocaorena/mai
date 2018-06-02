@@ -13,10 +13,12 @@
 }
 .img{
     margin: 0 auto;
-    width: 80%;
+    width: st(256);
+    height: st(256);
     padding: st(6);
     img{
         width: 100%;
+        height: 100%;
         border-radius: st(20);
     }
 }

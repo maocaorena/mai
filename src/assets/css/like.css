@@ -83,6 +83,8 @@ img[lazy=loading] {
 	width: 40px;
     height: 300px;
     margin: auto;
+    background: url(../img/loading.jpg) center;
+    background-size: 100% 100%;
 }
 
 .bottomTab{
