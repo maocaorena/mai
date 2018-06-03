@@ -2,7 +2,7 @@
     <div id="myCards" class="wrapper">
         <ul v-if="list.length>0" class="myAddress">
 
-            <li v-if="!$route.query.isSelect" v-for="item of list" style="position: relative;">
+            <li v-if="!$route.query.isSelect" v-for="item of list">
                 <p class="name-num color333 mb">
                     <span class="name">{{item.openBank}}</span>
                     <span class="tel">（尾号{{item.cardNumber.substr(-4,4)}}）</span>
@@ -18,12 +18,11 @@
                     <button @click="isOk(item.id)">删除</button>
                 </div>
             </li>
-            <li v-if="$route.query.isSelect" v-for="item of list" style="padding-bottom: 0;" @click="selectAddr(item.id)">
+            <li v-if="$route.query.isSelect" v-for="item of list" @click="selectAddr(item.id)">
                 <p class="name-num color333 mb">
                     <span class="name">{{item.openBank}}</span>
                     <span class="tel">（尾号{{item.cardNumber.substr(-4,4)}}）</span>
                 </p>
-                <br>
                 <div class="right flex-zhong">
                     <img src="../../assets/img/addr/triangle.png" alt="">
                 </div>
@@ -63,11 +62,20 @@
             this.getList();
         },
         methods: {
+            // 选择银行卡
+            selectAddr(id) {
+                this.$router.replace({
+                    name: 'getMoney',
+                    query: {
+                        id: id
+                    }
+                })
+            },
             //编辑银行卡
             handleAddr(id) {
                 this.$router.push({ name: 'addCard', query: { cardId: id } })
             },
-             //设置默认银行卡
+            //设置默认银行卡
             setDefault(item, e) {
                 if (e.target.className == 'haha' && item.isDefault == 0) {
                     this.allLoading = true;
@@ -76,11 +84,8 @@
                         type: 'put',
                         params: {
                             id: item.id,
-                            customerId: this.userId
                         },
-                        headers: {
-                            token: this.token
-                        }
+                        user: true
                     }).then(res => {
                         this.allLoading = false;
                         if (res.successed) {
@@ -105,11 +110,8 @@
                     type: 'DELETE',
                     params: {
                         id: id,
-                        customerId: this.userId
                     },
-                    headers: {
-                        token: this.token
-                    }
+                    user: true
                 }).then(res => {
                     this.allLoading = false;
                     if (res.successed) {
@@ -129,12 +131,7 @@
                 this.allLoading = true;
                 this.api.getB({
                     url: 'customerBankCard/getList',
-                    params: {
-                        customerId: this.userId,
-                    },
-                    headers: {
-                        token: this.token
-                    }
+                    user: true
                 }).then(res => {
                     this.allLoading = false;
 

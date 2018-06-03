@@ -33,7 +33,7 @@
             <div class="bottomTabIn flex flex-sc flex-hlr">
                 <div class="left">
                     <p class="top">
-                        <i class="iconfont icon-kefu bigFont color666"></i>
+                        <i class="iconfont icon-kefu defaultFont color666"></i>
                     </p>
                     <p class="bottom defaultFont color666">
                         客服
@@ -41,7 +41,7 @@
                 </div>
                 <div class="left">
                     <p class="top">
-                        <i class="iconfont icon-shouye bigFont color666"></i>
+                        <i class="iconfont icon-shouye defaultFont color666"></i>
                     </p>
                     <p class="bottom defaultFont color666">
                         首页
@@ -89,23 +89,23 @@
             this.getByDetail()
         },
         mounted() {
-            
+
         },
         methods: {
-            getByDetail(){
+            getByDetail() {
                 Indicator.open();
                 this.api.getB({
                     url: 'product/getDetail',
                     params: {
                         id: this.$route.query.productId
                     },
-                }).then(res=>{
+                }).then(res => {
                     Indicator.close();
-                    if(res.successed){
+                    if (res.successed) {
                         this.detail = res.returnValue;
                         this.bannerList.push(res.returnValue.image)
                     }
-                }).then(()=>{
+                }).then(() => {
                     let mySwiper = new Swiper('#detailSwiper', {
                         loop: true,
                         autoplay: 2000,
@@ -116,7 +116,13 @@
                 })
             },
             buy() {
-                this.$router.push({ name: 'sureOrder' })
+                this.$router.push({
+                    name: 'sureOrder',
+                    query: {
+                        num: this.num,
+                        productId: this.$route.query.productId
+                    }
+                })
             },
             up() {
                 this.num++;
@@ -126,11 +132,11 @@
                 this.num--;
                 this.handle();
             },
-            handle(){
-                if(this.num > 99){
+            handle() {
+                if (this.num > 99) {
                     this.num = 99;
                 };
-                if(this.num < 1){
+                if (this.num < 1) {
                     this.num = 1;
                 };
             }

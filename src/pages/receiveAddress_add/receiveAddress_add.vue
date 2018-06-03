@@ -89,7 +89,6 @@
                 } else {
                     let _params = {};
                     if (this.$route.query.addrid) {
-                        this.addrDetail.customerId = this.userId;
                         this.addrDetail.id = this.$route.query.addrid;
                         _params = this.Util.jm(this.addrDetail);
                         this.updateAddr(_params);
@@ -106,9 +105,7 @@
                 this.api.postB({
                     url: 'deliveryAddress/add',
                     params: params,
-                    headers: {
-                        token: this.token
-                    }
+                    user: true
                 }).then((res) => {
                     Indicator.close();
                     if (res.returnValue) {
@@ -128,9 +125,7 @@
                     url: 'deliveryAddress/update',
                     type: 'put',
                     params: params,
-                    headers: {
-                        token: this.token
-                    }
+                    user: true
                 }).then(res => {
                     Indicator.close();
                     if (res.successed) {

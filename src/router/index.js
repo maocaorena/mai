@@ -23,6 +23,10 @@ const my = () =>
     import ( /* webpackChunkName: "my" */ '@/pages/my/my'); //我的
 const recharge = () =>
     import ( /* webpackChunkName: "recharge" */ '@/pages/recharge/recharge'); //充值
+
+const rechargeResult = () =>
+    import ( /* webpackChunkName: "recharge" */ '@/pages/recharge/rechargeResult'); //充值结果
+
 const aliPay = () =>
     import ( /* webpackChunkName: "recharge" */ '@/pages/recharge/aliPay'); //支付宝转账
 const getMoney = () =>
@@ -241,7 +245,19 @@ const router = new Router({
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
-                },
+                }
+            },
+            { //充值结果
+                name: 'rechargeResult',
+                path: '/recharge/rechargeResult',
+                component: rechargeResult,
+                meta: {
+                    name: '充值结果',
+                    showBack: true,
+                    htmlBg: {
+                        'background': '#f2f2f2'
+                    }
+                }
             },
             { //支付宝转账
                 name: 'aliPay',
@@ -305,6 +321,7 @@ const router = new Router({
                 },
             },
             { //我的收货地址
+                name: 'receiveAddress',
                 path: '/my/receiveAddress',
                 component: receiveAddress,
                 meta: {

@@ -24,7 +24,7 @@
 <script>
     import qipao from '@/components/qipao/qipao.vue';
     import shoppingItem from './shoppingItem.vue'
-    import tabbars from './tabbars.vue';//引入选项卡组件
+    import tabbars from './tabbars.vue'; //引入选项卡组件
     import { Indicator } from "mint-ui"; //引入mintUI  indicator组件
     export default {
         data() {
@@ -40,7 +40,7 @@
             };
         },
         components: {
-            "tabbars-v" : tabbars,
+            "tabbars-v": tabbars,
             'qipao': qipao,
             'shoppingItem': shoppingItem
         },
@@ -48,8 +48,8 @@
             this.getTabList();
         },
         methods: {
-            isThis(index){
-                if(this.productClassId != this.classList[index].id){
+            isThis(index) {
+                if (this.productClassId != this.classList[index].id) {
                     this.productClassId = this.classList[index].id;
                     this.pageNum = 1;
                     this.list = [];
@@ -58,7 +58,7 @@
                 }
             },
             // 获取商品分类
-            getTabList(){
+            getTabList() {
                 this.api.getB({
                     url: 'productClass/getList '
                 }).then((res) => {
@@ -96,10 +96,10 @@
                 }).then((res) => {
                     Indicator.close()
                     if (res.successed) {
-                        let len = this.list.filter(v=>{
+                        let len = this.list.filter(v => {
                             return res.returnValue.list[0].id == v.id
                         }).length;
-                        if(_productClassId == this.productClassId && len == 0){
+                        if (_productClassId == this.productClassId && len == 0) {
                             this.list.push(...res.returnValue.list);
                             if (res.returnValue.list.length < 6) {
                                 this.noMore = true;

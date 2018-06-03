@@ -76,7 +76,6 @@
                 } else {
                     let _params = {};
                     if (this.$route.query.cardId) {
-                        this.carddetail.customerId = this.userId;
                         this.carddetail.id = this.$route.query.cardId;
                         _params = this.Util.jm(this.carddetail);
                         this.updateAddr(_params);
@@ -92,9 +91,7 @@
                 this.api.postB({
                     url: 'customerBankCard/add',
                     params: params,
-                    headers: {
-                        token: this.token
-                    }
+                    user: true
                 }).then((res) => {
                     Indicator.close();
                     if (res.returnValue) {
@@ -114,9 +111,7 @@
                     url: 'customerBankCard/update',
                     type: 'put',
                     params: params,
-                    headers: {
-                        token: this.token
-                    }
+                    user: true
                 }).then(res => {
                     Indicator.close();
                     if (res.successed) {
@@ -150,12 +145,9 @@
                 this.api.getB({
                     url: 'customerBankCard/getById',
                     params: {
-                        customerId: this.userId,
                         id: this.$route.query.cardId
                     },
-                    headers: {
-                        token: this.token
-                    }
+                    user: true
                 }).then(res => {
                     this.allLoading = false;
                     if (res.successed) {

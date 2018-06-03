@@ -19,11 +19,45 @@
             }
             button{
                 margin-left: st(10);
-                width: st(200);
+                width: st(300);
                 border: none;
                 background: #409eff;
                 color: #fff;
                 border-radius: st(8);
+            }
+        }
+    }
+    .card{
+        position: relative;
+        padding-right: st(34);
+        width: 100%;
+        background: #fff;
+        .name-num{
+            width: 90%;
+            height: auto;
+            font-size: st(28);
+            .name{
+                font-weight: 600;
+            }
+        }
+        .name{
+            padding-right: st(74);
+        }
+        .all-addr{
+            padding-bottom: st(26);
+            width: 90%;
+            height: auto;
+            font-size: st(26);
+            font-weight: 600;
+        }
+        .right{
+            position: absolute;
+            right: st(34);
+            top: 0;
+            width: st(48);
+            height: 100%;
+            img{
+                width: st(28);
             }
         }
     }

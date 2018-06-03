@@ -74,6 +74,36 @@ class API {
             });
         })
     }
+
+    //put
+    putB(msg) {
+        msg.type = 'PUT';
+        return new Promise((resolve, reject) => {
+            this.ajaxB(msg).then(res => {
+                if (!res.successed) {
+                    Indicator.close();
+                    switch (res.errorCode) {
+                        case '1001':
+                            Util.myAlert(res.errorDesc);
+                            this.noLogin();
+                            break;
+                        case '500':
+                            Util.myAlert('系统异常，请稍后重试');
+                            break;
+                        default:
+                            Util.myAlert(res.errorDesc);
+                            break;
+                    }
+                };
+                resolve(res)
+            }).catch(error => {
+                Indicator.close();
+                this.errorHandle(error);
+                reject(error)
+            });
+        })
+        return
+    };
     //post
     postB(msg) {
         msg.type = 'POST';
@@ -119,21 +149,30 @@ class API {
             "Accept": "application/json; charset=utf-8",
         };
         Object.assign(_headers, msg.headers);
+        let _params = {};
+        if((msg.params+'') != 'undefined'){
+            _params = msg.params;
+        };
+        if(msg.user){
+            _headers.token = User.getToken();
+            _params.customerId = User.getUserId();
+        }
+
         return axios({
             method: msg.type,
             baseURL: msg.baseUrl || bxmApiUrl,
             url: msg.url,
-            params: msg.type === 'GET' || msg.type === 'DELETE' ? msg.params : null,
-            data: msg.type !== 'GET' && msg.type !== 'DELETE' ? qs.stringify(msg.params) : null,
+            params: msg.type === 'GET' || msg.type === 'DELETE' ? _params : null,
+            data: msg.type !== 'GET' && msg.type !== 'DELETE' ? qs.stringify(_params) : null,
             timeout: 600000,
             headers: _headers,
         })
     };
     noLogin() {
-        // Storage.removeItem('uf');
-        // router.replace({
-        //     name: 'login'
-        // })
+        Storage.removeItem('uf');
+        router.replace({
+            name: 'login'
+        })
         /* {
             "token":"f17638f5dadd4e9dbeb0c1b24b8eee9e",
             "customerId":"43"
@@ -148,13 +187,29 @@ class API {
 
     // -------------------------------------------------------------------------
     //上传图片
-    postUp(url, param, callback, progress) {
-        config.baseURL = bxmApiUrl;
-        let allUrl = config.baseURL + url;
-        let upconfig = {
-            onUploadProgress: progress
+    postUp(url, param, callback, progress, err) {
+        // let allUrl = config.baseURL + url;
+        // let upconfig = {
+        //     onUploadProgress: progress,
+        //     // headers: {
+        //     //     token : User.getToken()
+        //     // }
+        // };
+        // return axios.POST(allUrl, param, upconfig).then(callback); //使用post方式
+        let allUrl = bxmApiUrl + url;
+		let upconfig = {
+			onUploadProgress: progress,
+			headers:{
+				"token": User.getToken()
+			}
         };
-        return axios.POST(allUrl, param, upconfig).then(callback); //使用post方式
+        console.log('ddd',param)
+		return axios.post(allUrl, param, upconfig).then(callback).catch(error=>{
+			if(err){
+				err()
+			}
+		}); //使用post方式
+
     };
 
     //请求错误处理

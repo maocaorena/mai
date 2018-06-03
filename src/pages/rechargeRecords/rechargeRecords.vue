@@ -75,11 +75,8 @@
                     params: {
                         pageNum: this.pageNum,
                         pageSize: 10,
-                        customerId: this.userId,
                     },
-                    headers: {
-                        token: this.token
-                    }
+                    user: true
                 }).then((res) => {
                     let _res = res;
                     if (_res.successed) {

@@ -87,21 +87,14 @@
         methods: {
             //选择收货地址
             selectAddr(id) {
-                //1 跳往申请娃娃发货，2跳往娃娃机大赛发货
-                if (this.$route.query.isSelect == 1) {
-                    this.$router.replace({ path: '/my/myPrize/wantSend', query: { addrid: id } })
-                } else if (this.$route.query.isSelect == 2) {
-                    this.$router.replace({
-                        path: '/active/subAdd',
-                        query: {
-                            addrid: id,
-                            id: this.$route.query.id,
-                            wwjid: this.$route.query.wwjid
-                        }
-                    })
-                } else {
-
-                }
+                this.$router.replace({
+                    name: 'sureOrder',
+                    query: {
+                        num: this.$route.query.num,
+                        productId: this.$route.query.productId,
+                        addrId: id
+                    }
+                })
             },
             //新增地址
             addAddr() {
@@ -121,13 +114,10 @@
                 this.api.ajaxB({
                     url: 'deliveryAddress/delete',
                     type: 'DELETE',
+                    user: true,
                     params: {
                         id: id,
-                        customerId: this.userId
                     },
-                    headers: {
-                        token: this.token
-                    }
                 }).then(res => {
                     Indicator.close();
                     if (res.successed) {
@@ -147,11 +137,8 @@
                         type: 'put',
                         params: {
                             id: item.id,
-                            customerId: this.userId
                         },
-                        headers: {
-                            token: this.token
-                        }
+                        user: true
                     }).then(res => {
                         Indicator.close();
                         if (res.successed) {
@@ -168,12 +155,7 @@
                 this.allLoading = true;
                 this.api.getB({
                     url: 'deliveryAddress/getList',
-                    params: {
-                        customerId: this.userId,
-                    },
-                    headers: {
-                        token: this.token
-                    }
+                    user: true
                 }).then(res => {
                     this.allLoading = false;
 

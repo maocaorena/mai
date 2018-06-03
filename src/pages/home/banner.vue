@@ -2,7 +2,7 @@
     <div class="swiper-container" id="homeSwipe">
         <div class="swiper-wrapper">
             <div v-for="(item,index) of bannerList" :key="index" class="swiper-slide ellipsis">
-                <img @click="goUrl(item)" style="width: 100%; height: 100%;" :src="item.img" alt="">
+                <img @click="goUrl(item)" :src="item.img" alt="">
             </div>
         </div>
     </div>
@@ -56,8 +56,9 @@
         .swiper-wrapper {
             margin: 0 auto;
             width: 100%;
-            .img{
-                width: 100%;
+            img{
+                width: st(750);
+                height: st(374);
             }
         }
     }

@@ -4,6 +4,7 @@
         width: 100%;
         height: auto;
         li{
+            position: relative;
             padding-top: st(46);
             padding-bottom: st(48);
             padding-left: st(40);
@@ -45,7 +46,7 @@
             .my-addr-buttons{
                 position: absolute;
                 z-index: 10;
-                right: 0;
+                right: st(34);
                 bottom: st(42);
                 width: st(248);
                 height: st(66);

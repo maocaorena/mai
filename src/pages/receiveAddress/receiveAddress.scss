@@ -12,11 +12,13 @@
         padding-left: st(40);
         padding-right: st(34);
         li{
+            position: relative;
             padding-top: st(46);
             padding-bottom: st(48);
             width: 100%;
             border-bottom: 1px solid #d8d8d8;
             .name-num{
+                margin-bottom: st(20);
                 width: 90%;
                 height: auto;
                 font-size: st(28);

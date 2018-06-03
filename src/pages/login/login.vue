@@ -27,7 +27,8 @@
     </div>
 </template>
 <script>
-	import { Indicator } from 'mint-ui';//引入mintUI  indicator组件
+    import { Indicator } from 'mint-ui';//引入mintUI  indicator组件
+    import { md } from '@/assets/js/md5.js'
     export default{
         data(){
             return{
@@ -85,7 +86,7 @@
                             shareCode: this.User.getShareCode(),
                         },
                         headers:{
-                            msgValidateCode: this.code,
+                            msgValidateCode: md.md5(this.code),
                         }
                     }).then(res=>{
                         Indicator.close();
@@ -99,7 +100,7 @@
                                     name: loginFrom
                                 })
                             }else{
-                                this.$router.push({
+                                this.$router.replace({
                                     name: 'home'
                                 })
                             }

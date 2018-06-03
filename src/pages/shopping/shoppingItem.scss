@@ -63,10 +63,11 @@
     bottom: st(240);
     left: 0;
     margin: auto;
-    width: st(60);
-    height: st(60);
+    width: st(80);
+    height: st(80);
+    text-align: center;
     img{
-        width: 100%;
-        height: 100%;
+        width: st(60);
+        height: st(60);
     }
 }

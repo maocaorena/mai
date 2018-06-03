@@ -3,8 +3,11 @@
 		<div class="content">
 			<div class="account-top">
 				<div class="account-userhead flex flex-sc flex-hsb">
-					<img class="user-pic" src="../../assets/img/productDetail/1.png">
-					<p class="userName ellipsis">您好，{{userInfo.name}}</p>
+                    <label class="smallHandle" for="upbanner">
+					    <img class="user-pic" :src="userInfo.face">
+                    </label>
+                    <input type="file" id="upbanner" name="fileToUpload" class="fileToUpload" @change="upImg" accept="image/jpg,image/jpeg,image/png" />
+					<p class="userName ellipsis">您好，{{userInfo.nickname || userInfo.mobile}}</p>
 				</div>
 			</div>
             <div style="height: 10px"></div>
@@ -51,15 +54,46 @@
         mounted() {
         },
         methods: {
+            
+            upImg() { //上传banner
+				let that = this;
+				let reader = new FileReader();
+				let input = document.getElementById("upbanner");
+				let files = input.files;
+				if(/image\/\w+/.test(files[0].type)) {
+					reader.readAsDataURL(files[0]);
+					reader.onload = function() {
+						if(files[0].size > 512000) {
+                            that.Util.myAlert('请选择小于500k的图片')
+							input.value = '';
+						} else {
+
+							let param = new FormData();
+							param.append('file', files[0], files[0].name);
+							param.append('customerId', that.User.getUserId());
+							param.append('userId', that.User.getUserId());
+							//						param.get('file')
+							that.api.postUp('customer/updateFace', param, function(res) {
+								if(res.data.successed) {
+									let _res = res.data.returnValue[0];
+									// that.form.img = _res;
+								} else {
+                                    // that.form.img = '';
+                                    that.Util.myAlert('上传失败，请重试')
+								}
+							}, function(res) {
+								console.log('上传中...');
+							}), function(err){
+                                console.log(err)
+                            };
+						}
+					};
+				};
+			},
             getMyInfo() {
                 this.api.getB({
                     url: 'customer/getByToken',
-                    headers: {
-                        token: this.User.getToken()
-                    },
-                    params:{
-                        customerId: this.User.getUserId()
-                    }
+                    user: true
                 }).then(res=>{
                     if(res.successed){
                         this.userInfo = res.returnValue;
