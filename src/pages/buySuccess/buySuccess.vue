@@ -1,8 +1,8 @@
 <template>
     <div id="buySuccess" class="wrapper">
 
-        <h1 class="titile colorRed" v-if="productDetail.upProductId">恭喜您获得商品免费升级福利！</h1>
-        <h1 class="titile colorRed" v-if="!productDetail.upProductId">购买成功！</h1>
+        <h1 class="titile colorRed mb" v-if="productDetail.upProductId">恭喜您获得商品免费升级福利！</h1>
+        <h1 class="titile colorRed mb" v-if="!productDetail.upProductId">购买成功！</h1>
     
         <p class="productTit color333 defaultStyle">当前商品</p>
         <div class="product defaultStyle flex mb">
@@ -23,14 +23,14 @@
             <p class="productTit defaultStyle colorRed defaultFont">升级后</p>
             <div class="product defaultStyle flex mb">
                 <div class="left">
-                    <img :src="productDetail.productImage" />
+                    <img :src="productDetail.upProductImage" />
                 </div>
                 <div class="right">
                     <div class="top color333">
-                        商品名称商品名称商品名称商品名称商品名称商品名称
+                        {{productDetail.upProductName}}
                     </div>
                     <div class="bottom flex flex-hlr flex-sc">
-                        <p class="colorRed defaultFont">￥333</p>
+                        <p class="colorRed defaultFont">￥{{productDetail.upProductPrice}}</p>
                         <p class="color333">× {{num}}</p>
                     </div>
                 </div>
@@ -45,7 +45,7 @@
                 </p>
             </div>
             <div class="upLevItem flex flex-s flex-sc"  @click="sendProd()">
-                <img :src="productDetail.productImage" />
+                <img :src="productDetail.upProductImage" />
                 <p class="color2 largeFont">
                     直接提货
                 </p>

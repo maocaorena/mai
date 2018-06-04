@@ -15,10 +15,19 @@
             }
         },
         created() {
-
+            this.getInfo()
         },
         methods: {
-
+            getInfo(){
+                this.api.getB({
+                    url: 'customer/getByToken',
+                    user: true
+                }).then(res=>{
+                    if(res.successed){
+                    }else{
+                    }
+                })
+            }
         }
     }
 </script>

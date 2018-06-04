@@ -2,8 +2,14 @@
     <div class="myswiper-wrapper">
         <div class="swiper-container" id="rechargeSwiper">
             <div class="swiper-wrapper">
-                <div v-for="item in 3" class="swiper-slide ellipsis">
-                    <span class="color999">恭喜</span><span class="color333"> 222 </span> 用户 <span class="color999">成功获赠</span> <span class="colorRed">222</span> !
+                <div v-for="item in list" class="swiper-slide ellipsis">
+                    <span class="color999">恭喜</span>
+                    用户 
+                    <span class="color333"> {{item.nickname}} </span> 
+                    <span class="color999">升级成功</span> 
+                    获得
+                    <span class="colorRed">{{item.productName}} * {{item.orderCount}}</span> 
+
                 </div>
             </div>
         </div>
@@ -19,21 +25,33 @@
         name: 'layout',
         data() {
             return {
+                list:[]
             }
         },
         methods: {
-
+            // 获取
+			getList() {
+				this.api.getBn({
+					url: 'notice/getList',
+				}).then((res) => {
+					this.list = res.returnValue;
+				}).then(()=>{
+                    this.$nextTick(() => {
+                        let mySwiper = new Swiper('#rechargeSwiper', {
+                            direction: 'vertical',
+                            speed: 300,
+                            loop: true,
+                            autoplay: 1000,
+                            autoplayDisableOnInteraction: false,
+                        });
+                    });
+                });
+			},
+        },
+        created(){
+            this.getList()
         },
         mounted() {
-            this.$nextTick(() => {
-                let mySwiper = new Swiper('#rechargeSwiper', {
-                    direction: 'vertical',
-                    speed: 300,
-                    loop: true,
-                    autoplay: 1000,
-                    autoplayDisableOnInteraction: false,
-                });
-            });
         },
         beforeDestroy() {}
     }

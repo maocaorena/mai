@@ -7,7 +7,7 @@
 					    <img class="user-pic" :src="userInfo.face">
                     </label>
                     <input type="file" id="upbanner" name="fileToUpload" class="fileToUpload" @change="upImg" accept="image/jpg,image/jpeg,image/png" />
-					<p class="userName ellipsis">您好，{{userInfo.nickname || userInfo.mobile}}</p>
+					<p class="userName ellipsis">您好！{{userInfo.nickname || '请登录'}}</p>
 				</div>
 			</div>
             <div style="height: 10px"></div>
@@ -38,8 +38,9 @@
         name: "me",
         data() {
             return {
-                userInfo: {},
-                amount: 0
+                userInfo: {
+                    balance: '请登录'
+                },
             }
         },
         components: {
@@ -91,7 +92,7 @@
 				};
 			},
             getMyInfo() {
-                this.api.getB({
+                this.api.getBn({
                     url: 'customer/getByToken',
                     user: true
                 }).then(res=>{

@@ -94,7 +94,7 @@
                             this.Util.myAlert("登录成功！");
                             this.Storage.setItem('uf', res.returnValue);
                             let loginFrom = this.Storage.getItem('loginFrom');
-                            if(loginFrom){
+                            if(loginFrom && loginFrom != 'login'){
                                 this.Storage.removeItem('loginFrom')
                                 this.$router.replace({
                                     name: loginFrom

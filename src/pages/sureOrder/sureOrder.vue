@@ -93,11 +93,11 @@
         <MessageBox v-if="alertState === 1003">
             <slot>
                 <p class="alertOne defaultFont color333"> 您的储值账户余额不足，请充值！</p>
-                <p class="alertOne defaultFont color333 mb"> 当前余额： <span class="colorRed">222222</span></p>
+                <p class="alertOne defaultFont color333 mb"> 当前余额： <span class="colorRed">{{userInfo.balance}}</span></p>
                 <br>
                 <div class="buttons flex flex-hsb">
                     <mt-button type="default" size="small" @click="close">再想想</mt-button>
-                    <mt-button type="primary" size="small">去充值</mt-button>
+                    <mt-button type="primary" size="small" @click="goRecharge">去充值</mt-button>
                 </div>
             </slot>
         </MessageBox>
@@ -124,11 +124,13 @@
                 detail: {},
                 productMoney: 0,
                 carMoney: 0,
-                defaultMessage: {}
+                defaultMessage: {},
+                userInfo: {}
             }
         },
         created() {
             this.getProductDetail();
+            this.getMyInfo();
             if (this.$route.query.addrId) {
                 this.getById()
             } else {
@@ -136,6 +138,11 @@
             };
         },
         methods: {
+            goRecharge(){
+                this.$router.push({
+                    name: 'recharge'
+                })
+            },
             goTrueName(){
                 this.$router.push({
                     name: 'trueName',
@@ -266,6 +273,16 @@
                     }
                 })
             },
+            getMyInfo() {
+                this.api.getB({
+                    url: 'customer/getByToken',
+                    user: true
+                }).then(res=>{
+                    if(res.successed){
+                        this.userInfo = res.returnValue;
+                    }
+                })
+            }
         }
     }
 </script>

@@ -124,14 +124,14 @@
     export default {
         data() {
             return {
-                alertState: 0,
+                alertState: 1,
                 select: 'red',
                 nowTime: this.Util.dateTime(Date.parse(new Date()), 'time'),
             }
         },
         created() {
             this.getNowTime();
-            this.showBack();
+            // this.showBack();
         },
         methods: {
             selectThis(type) {

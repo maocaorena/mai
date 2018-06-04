@@ -59,6 +59,8 @@ const share = () =>
     import ( /* webpackChunkName: "share" */ '@/pages/share/share'); //分享
 const setting = () =>
     import ( /* webpackChunkName: "setting" */ '@/pages/setting/setting'); //设置
+const question = () =>
+    import ( /* webpackChunkName: "question" */ '@/pages/question/question'); //常见问题
     
 const shopping = () =>
     import ( /* webpackChunkName: "shopping" */ '@/pages/shopping/shopping'); //商城
@@ -436,6 +438,18 @@ const router = new Router({
                     showBack: true,
                     htmlBg: {
                         'background': '#f2f2f2'
+                    }
+                }
+            },
+            { //设置
+                name: 'question',
+                path: 'question',
+                component: question,
+                meta: {
+                    name: '常见问题',
+                    showBack: true,
+                    htmlBg: {
+                        'background': '#fff'
                     }
                 }
             },
