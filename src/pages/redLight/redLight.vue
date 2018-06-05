@@ -26,7 +26,7 @@
                     <h6 class="row width100 mb">请选择预测结果</h6>
                     <br>
                     <div class="flex flex-hlr width100 mb">
-                        <div class="item pd20 red" :class="{'select': select == 'red'}" @click="selectThis('red')">
+                        <div class="item pd20 red" :class="{'select': select == 0}" @click="selectThis(0)">
                             <div class="top mb">
 
                             </div>
@@ -34,7 +34,7 @@
                                 红灯多
                             </div>
                         </div>
-                        <div class="item pd20 green" :class="{'select': select == 'green'}" @click="selectThis('green')">
+                        <div class="item pd20 green" :class="{'select': select == 1}" @click="selectThis(1)">
                             <div class="top mb">
 
                             </div>
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <br>
-                    <div class="start largeFont flex-zhong mb" @click="startgame(0)">
+                    <div class="start largeFont flex-zhong mb" @click="startgame(3)">
                         开始
                     </div>
 
@@ -125,20 +125,35 @@
         data() {
             return {
                 alertState: 1,
-                select: 'red',
+                select: 0,
                 nowTime: this.Util.dateTime(Date.parse(new Date()), 'time'),
             }
         },
         created() {
             this.getNowTime();
-            // this.showBack();
         },
         methods: {
             selectThis(type) {
                 this.select = type;
             },
             startgame(type) {
-                this.alertState = type;
+                
+                if(type == 3){
+                    this.api.putB({
+                        url: 'customerOrder/upgradeGoods',
+                        user: true,
+                        params: {
+                            id: this.$route.query.oid,
+                            upgradeTrafficLights: this.select//0 红灯多  1绿灯多
+                        }
+                    }).then(res=>{
+                        if(res.successed){
+                            this.alertState = 0;
+                        }
+                    })
+                }else{
+                    this.alertState = type;
+                }
             },
             showRule() {
                 this.alertState = 1;

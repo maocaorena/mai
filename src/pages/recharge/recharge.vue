@@ -47,7 +47,7 @@ export default {
     data () {
         return {
             number: '',
-            payType: 1
+            payType: 0
         }
     },
     created () {
@@ -101,7 +101,7 @@ export default {
                 params: {
                     oid: oid,
                     payTitle: '充值',
-                    clientType: 'h5',
+                    clientType: 0,
                 },
                 user: true
             }).then(res=>{

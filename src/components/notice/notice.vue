@@ -1,6 +1,6 @@
 <template>
     <div class="notice">
-        <marquee class="scroll" direction="" height="25&quot;">
+        <marquee v-if="txt.length>0" class="scroll" scrollAmount="3" direction="">
                 {{txt}}
         </marquee>
     </div> 
@@ -30,7 +30,9 @@
 						position: 2,
 					}
 				}).then((res) => {
-                    this.txt = res.returnValue[0].linkUrl
+                    res.returnValue.forEach(element => {
+                        this.txt += element.linkUrl
+                    });
 				});
 			},
         },

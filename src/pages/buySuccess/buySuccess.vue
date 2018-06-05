@@ -92,7 +92,10 @@
         methods: {
             upLev() {
                 this.$router.push({
-                    name: 'redLight'
+                    name: 'redLight',
+                    query: {
+                        oid: this.$route.query.oid
+                    }
                 })
             },
             sendProd() {

@@ -477,8 +477,14 @@ router.beforeEach((to, from, next) => {
     next();
 });
 router.afterEach((to, from) => {
-    let _styles = document.createElement('style');
-
+    let docs = '';
+    if(document.getElementById('style')){
+        docs = document.getElementById('style');
+    }else{
+        docs = document.createElement('style');
+        docs.setAttribute('id', 'style')
+        document.getElementsByTagName('body')[0].appendChild(docs)
+    }
     let _style = '';
     try {
         if (to.meta.htmlBg) {
@@ -489,8 +495,7 @@ router.afterEach((to, from) => {
             _style = 'background:#f4f6f8;';
         };
         let node = document.createTextNode('html{' + _style + '}');
-        _styles.appendChild(node);
-        document.getElementsByTagName('body')[0].appendChild(_styles)
+        docs.innerHTML = 'html{' + _style + '}';
     } catch (e) {
         console.log(e)
     };
