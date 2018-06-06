@@ -1,11 +1,11 @@
 <template>
     <div id="upLvResult" class="wrapper">
-        <template v-if="result===1">
+        <template v-if="result===2">
             <p class=" color333 pd20 pb0 width100">
-                预测选择： <span class="colorRed">红灯多</span>
+                预测选择： <span class="colorRed">{{message.upgradeTrafficLights == 0?'红灯多':'绿灯多'}}</span>
             </p>
             <p class=" color333 pd20 pb0 width100">
-                游戏结果：红灯2 绿灯1 <span class="colorRed">红灯多</span>
+                游戏结果：<span class="colorRed">{{message.upgradeResult == 0?'红灯多':'绿灯多'}}</span>
             </p>
             <p class="colorRed pd20 largeFont">
                 恭喜您，升级成功！
@@ -16,11 +16,11 @@
                 </p>
                 <div class="bottom smallFont">
                     <p class="pd20 width100 colorRed">
-                        购买商品：商品名称商品名称商
+                        购买商品：{{message.upProductName}}
                     </p>
                     <p class="pd20 width100 colorRed">
-                        单价：100.00元 &nbsp;
-                    <span class="color333"> 数量：10 </span>
+                        单价：{{message.upProductPrice}}元 &nbsp;
+                    <span class="color333"> 数量：{{message.orderCount}} </span>
                     </p>
                 </div>
             </div>
@@ -34,15 +34,15 @@
             </div>
         </template>
 
-        <template v-if="result === 2">
+        <template v-if="result === 3">
             <p class=" color333 pd20 pb0 width100">
                 参与游戏： <span class="color333">超级红绿灯</span>
             </p>
             <p class=" color333 pd20 pb0 width100">
-                预测选择： <span class="colorRed">红灯多</span>
+                预测选择： <span class="colorRed">{{message.upgradeTrafficLights == 0?'红灯多':'绿灯多'}}</span>
             </p>
             <p class=" color333 pd20 pb0 width100">
-                游戏结果：红灯2 绿灯1 <span class="colorRed">红灯多</span>
+                游戏结果：<span class="colorRed">{{message.upgradeResult == 0?'红灯多':'绿灯多'}}</span>
             </p>
             <p class="colorRed pd20 largeFont">
                 升级失败！
@@ -67,7 +67,7 @@
             <p @click="goHome">
                 返回首页>
             </p>
-            <p>
+            <p @click='goOrder'>
                 查看订单>
             </p>
         </div>
@@ -75,27 +75,41 @@
             本次游戏结果数据
         </p>
         <div class="flex flex-hlr pd20 pb0">
-            <p>上证指数：3111.11</p>
-            <p class="colorRed">奇数亮红灯</p>
+            <p>{{message.stockIndexVo.stockIndexOneName}}：{{message.stockIndexVo.stockIndexOneValue}}</p>
+            <p class="colorRed" >{{message.stockIndexVo.stockIndexThreeValue.slice(-1)%2==1?'奇数亮红灯':'偶数绿灯亮'}}</p>
         </div>
         <div class="flex flex-hlr pd20 pb0">
-            <p>上证指数：3111.11</p>
-            <p class="colorRed">奇数亮红灯</p>
+            <p>{{message.stockIndexVo.stockIndexTowName}}：{{message.stockIndexVo.stockIndexTowValue}}</p>
+            <p class="colorRed">{{message.stockIndexVo.stockIndexThreeValue.slice(-1)%2==1?'奇数亮红灯':'偶数绿灯亮'}}</p>
         </div>
         <div class="flex flex-hlr pd20">
-            <p>上证指数：3111.11</p>
-            <p class="colorRed">奇数亮红灯</p>
+            <p>{{message.stockIndexVo.stockIndexThreeName}}：{{message.stockIndexVo.stockIndexThreeValue}}</p>
+            <p class="colorRed">{{message.stockIndexVo.stockIndexThreeValue.slice(-1)%2==1?'奇数亮红灯':'偶数绿灯亮'}}</p>
         </div>
     </div>
 </template>
 <script>
+    import { Indicator } from "mint-ui"; //引入mintUI  indicator组件
     export default {
         data() {
             return {
-                result: 2
+                result: 1,
+                message: {
+                    stockIndexVo: {
+                        stockIndexOneValue: '',
+                        stockIndexTowValue: '',
+                        stockIndexThreeValue: ''
+                    }
+                }
             }
         },
+        created() {
+            this.getResult();
+        },
         methods: {
+            goOrder(){
+                this.$router.push({ name: 'myOrder' })
+            },
             goHome() {
                 this.$router.push({ name: 'home' })
             },
@@ -103,11 +117,24 @@
                 this.$router.push({
                     name: 'sendResult'
                 })
+            },
+            getResult(){
+                Indicator.open();
+                this.api.getB({
+                    url: 'customerOrder/getOrderUpResult',
+                    params: {
+                        id: this.$route.query.oid
+                    },
+                    user: true
+                }).then(res=>{
+                    Indicator.close();
+                    if(res.successed){
+                        this.message = res.returnValue;
+                        this.result = res.returnValue.upgradeState;
+                    }
+                })
             }
         },
-        created() {
-
-        }
     }
 </script>
 <style lang="scss" scoped>

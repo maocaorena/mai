@@ -37,11 +37,11 @@
                             支付时间：{{item.payTime}}
                         </template>
 
-                        <template v-if="item.orderState == 3">
-                            发货时间：{{item.deliveryTime}}
+                        <template v-if="item.orderState == 4">
+                            收货时间：{{item.deliveryTime}}
                         </template>
 
-                        <template v-if="item.orderState == 5">
+                        <template v-if="item.orderState == 6">
                             退款时间：{{item.refundTime}}
                         </template>
                     </p>
@@ -52,7 +52,7 @@
                             </button>
                         </template>
 
-                        <template v-if="item.orderState == 1 || item.orderState == 2 || item.orderState == 3">
+                        <template v-if="item.orderState == 1 || item.orderState == 2 || item.orderState == 3 || item.orderState == 4">
                             <button v-if="item.orderState == 1" @click="sendProd(item.id)">
                                 提货
                             </button>
@@ -127,7 +127,7 @@
             }
         },
         created() {
-
+            
         },
         methods: {
             sendProd(id){

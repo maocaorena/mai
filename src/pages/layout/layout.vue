@@ -1,6 +1,6 @@
 <template>
     <div id="layout" :class="{'pd40': !$route.meta.hideHeader}">
-        <mt-header fixed style="z-index:10" :title="$route.meta.name" v-if="!$route.meta.hideHeader">
+        <mt-header fixed style="z-index:999999999" :title="$route.meta.name" v-if="!$route.meta.hideHeader">
             <div slot="left" v-show="$route.meta.showBack">
                 <mt-button icon="back" @click="goBack">返回</mt-button>
             </div>

@@ -40,13 +40,14 @@
         </div>
         <br>
         <mt-button class="goCharge" @click.native="goCharge" type="primary">去充值</mt-button>
+        <div id="aliSub"></div>
     </div>
 </template>
 <script>
 export default {
     data () {
         return {
-            number: '',
+            number: 2,
             payType: 0
         }
     },
@@ -71,14 +72,14 @@ export default {
             if(this.number < 2){
                 this.Util.myAlert('充值金额最低为2元')
             }else{
-                if(this.payType == 1){
-                    this.$router.push({
-                        name: 'aliPay',
-                        query: {
-                            num: this.number
-                        }
-                    })
-                }else if(this.payType == 0){
+                // if(this.payType == 1){
+                //     this.$router.push({
+                //         name: 'aliPay',
+                //         query: {
+                //             num: this.number
+                //         }
+                //     })
+                // }else if(this.payType == 0){
                     this.api.postB({
                         url: 'recharge/createOrder',
                         params: {
@@ -92,7 +93,7 @@ export default {
                             this.pay(res.returnValue)
                         }
                     })
-                }
+                // }
             }
         },
         pay(oid){
@@ -106,7 +107,20 @@ export default {
                 user: true
             }).then(res=>{
                 if(res.successed){
-                   
+                   var html = res.returnValue.submitFormStr;
+                    var cont = document.getElementById("aliSub");
+                    cont.innerHTML = html;
+                    var oldScript = cont.getElementsByTagName(
+                        "script"
+                    )[0];
+                    cont.removeChild(oldScript);
+                    var newScript = document.createElement(
+                        "script"
+                    );
+                    newScript.type = "text/javascript";
+                    newScript.innerHTML = oldScript.innerHTML;
+                    cont.appendChild(newScript);
+
                 }
             })
         }

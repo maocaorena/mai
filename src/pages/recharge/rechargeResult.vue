@@ -5,11 +5,11 @@
                 <h1 class="largeFont colorRed"> 充值成功 </h1>
             </div>
             <div class="button-item">
-                <router-link class="noborder" tag="button" to="/recharge">
+                <router-link class="noborder" tag="button" to="/my/recharge">
                     继续充值
                 </router-link>
                 <button class="nobg" @click="goBack()">
-                    {{backUrl}}
+                    返回首页
                 </button>
             </div>
         </div>
@@ -18,11 +18,11 @@
                 <h1 class="largeFont colorRed"> 充值失败 </h1>
             </div>
             <div class="button-item">
-                <router-link class="noborder" tag="button" to="/recharge">
+                <router-link class="noborder" tag="button" to="/my/recharge">
                     重新充值
                 </router-link>
                 <button class="nobg" @click="goBack()">
-                    {{backUrl}}
+                    返回首页
                 </button>
             </div>
         </div>
@@ -41,31 +41,20 @@
                     state: -1
                 },
                 nn: 0,
-                backUrl: this.Storage.getItem('tr'),
-            }
-        },
-        watch: {
-            'payResult.state': function (oldVal, newVal) {
-                if (newVal == 1) {
-                    this.getWabiBalance()
-                }
             }
         },
         methods: {
             getPayResult() {
                 this.api.getBn({
-                    url: 'recharge/getByOid',
+                    url: 'recharge/getStateByOid',
                     params: {
-                        userId: this.User.getMemberId(),
                         oid: this.orderNum
                     },
-                    headers: {
-                        token: this.User.getToken(),
-                    }
+                    user: true
                 }).then((res) => {
-                    if (res.data.successed) {
+                    if (res.successed) {
                         Indicator.close();
-                        this.payResult = res.data.returnValue;
+                        this.payResult = res.returnValue;
                         this.getWabiBalance()
                         clearInterval(timer);
                     } else {
@@ -73,7 +62,7 @@
                             Indicator.close();
                             clearInterval(timer);
                             this.payResult.state = 0;
-                            this.Util.myAlert(res.data.errorDesc)
+                            this.Util.myAlert(res.errorDesc)
                         }
                     }
                 }).catch((error) => {
@@ -82,15 +71,9 @@
                 })
             },
             goBack() {
-                if (this.backUrl.length > 0) {
-                    this.$router.push({
-                        path: this.backUrl
-                    })
-                } else {
-                    this.$router.push({
-                        path: '/home'
-                    })
-                }
+                this.$router.push({
+                    name: 'home'
+                })
             }
         },
         created() {

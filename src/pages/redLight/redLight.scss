@@ -67,7 +67,7 @@
             .itemIn{
                 padding: st(20);
                 width: 100%;
-                background: #666666;
+                background: #999;
             }
             .top {
                 margin: 0 auto st(20);
@@ -91,6 +91,7 @@
                 text-align: center;
                 margin-bottom: st(20);
                 margin-top: st(20);
+                word-break:break-all;
             }
         }
     }

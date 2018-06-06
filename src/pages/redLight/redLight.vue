@@ -59,61 +59,58 @@
             当前时间：{{nowTime}}
         </div>
         <div class="endTime width100 colorRed largeFont">
-            距离结束：00:00:23
+            距离结束：{{time | times}}
         </div>
         <p class="width100 pd20 mb">
-            预测选择：<span class="colorRed">红灯多</span>
+            预测选择：<span class="colorRed">{{select==0?'红灯多':'绿灯多'}}</span>
         </p>
         <div class="lightList flex flex-hsb width100 mb">
             <div class="item red">
                 <div class="itemIn">
-                    <div class="top red">
-
+                    <div class="top" :class="message.stockIndexOneValue.slice(-1)%2==1?'red':'yellow'">
                     </div>
-                    <div class="top yellow">
+                    <div class="top" :class="message.stockIndexOneValue.slice(-1)%2==0?'green':'yellow'">
 
                     </div>
 
                 </div>
                 <p class="width100 colorRed">
-                    上证指数
+                    {{message.stockIndexOneName}}
                 </p>
                 <p class="width100 colorRed">
-                    333333
+                    {{message.stockIndexOneValue}}
                 </p>
             </div>
             <div class="item green">
                 <div class="itemIn">
-                    <div class="top red">
-
+                    <div class="top" :class="message.stockIndexTowValue.slice(-1)%2==1?'red':'yellow'">
                     </div>
-                    <div class="top yellow">
+                    <div class="top" :class="message.stockIndexTowValue.slice(-1)%2==0?'green':'yellow'">
 
                     </div>
 
                 </div>
                 <p class="width100 colorRed">
-                    上证指数
+                    {{message.stockIndexTowName}}
                 </p>
                 <p class="width100 colorRed">
-                    333333
+                    {{message.stockIndexTowValue}}
                 </p>
             </div>
             <div class="item green">
                 <div class="itemIn">
-                    <div class="top red">
-
+                   <div class="top" :class="message.stockIndexThreeValue.slice(-1)%2==1?'red':'yellow'">
                     </div>
-                    <div class="top yellow">
+                    <div class="top" :class="message.stockIndexThreeValue.slice(-1)%2==0?'green':'yellow'">
 
                     </div>
 
                 </div>
                 <p class="width100 colorRed">
-                    上证指数
+                    {{message.stockIndexThreeName}}
                 </p>
                 <p class="width100 colorRed">
-                    333333
+                    {{message.stockIndexThreeValue}}
                 </p>
             </div>
         </div>
@@ -121,18 +118,59 @@
 </template>
 <script>
     import { MessageBox } from 'mint-ui';
+    import { Util } from '@/assets/js/util.js'
+    var timer = null;
     export default {
         data() {
             return {
                 alertState: 1,
                 select: 0,
+                message: {
+                    stockIndexOneValue: '',
+                    stockIndexTowValue: '',
+                    stockIndexThreeValue: ''
+                },
+                time: 0,
                 nowTime: this.Util.dateTime(Date.parse(new Date()), 'time'),
+            }
+        },
+        filters: {
+            times: function(val){
+                if (val> 60){
+                    return '00:' + Util.addZero(parseInt(val/60)) + ':' + Util.addZero((val-60))
+                }else{
+                    return '00:00:' + Util.addZero(val)
+                }
             }
         },
         created() {
             this.getNowTime();
         },
         methods: {
+            startThisGame(){
+                this.getMessage();
+                let date=new Date();
+                if( date.getSeconds() > 30){
+                    this.time = 60 + ( 60 - (date.getSeconds()));
+                }else{
+                    this.time = 60 - (date.getSeconds());
+                };
+                timer = setInterval(()=>{
+                    this.time--;
+                    if(this.time%5 == 0){
+                        this.getMessage();
+                    }
+                    if(this.time == 0){
+                        this.$router.push({
+                            name: 'upLvResult',
+                            query: {
+                                oid: this.$route.query.oid
+                            }
+                        });
+                        clearInterval(timer)
+                    }
+                }, 1000)
+            },
             selectThis(type) {
                 this.select = type;
             },
@@ -149,11 +187,21 @@
                     }).then(res=>{
                         if(res.successed){
                             this.alertState = 0;
+                            this.startThisGame();
                         }
                     })
                 }else{
                     this.alertState = type;
                 }
+            },
+            getMessage(){
+                this.api.getBn({
+                    url: 'stockIndex/getInfo',
+                }).then(res=>{
+                    if(res.successed){
+                        this.message = res.returnValue;
+                    }
+                })
             },
             showRule() {
                 this.alertState = 1;
@@ -185,6 +233,11 @@
                     }
                 }).catch(err=>{
                 });
+            }
+        },
+        beforeDestroy () {
+            if(timer){
+                clearInterval(timer)
             }
         }
     }
