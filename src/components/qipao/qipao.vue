@@ -1,6 +1,6 @@
 <template>
     <div class="myswiper-wrapper">
-        <div class="swiper-container" id="rechargeSwiper">
+        <div class="swiper-container" v-if="list.length > 0" id="rechargeSwiper">
             <div class="swiper-wrapper">
                 <div v-for="item in list" class="swiper-slide ellipsis">
                     <span class="color999">恭喜</span>

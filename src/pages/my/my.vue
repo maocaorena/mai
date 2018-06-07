@@ -2,6 +2,8 @@
 	<div id="account" class="wrapper">
 		<div class="content">
 			<div class="account-top">
+                <div class="top-model" v-if="!this.userInfo.face" @click="goLogin">
+                </div>
 				<div class="account-userhead flex flex-sc flex-hsb">
                     <label class="smallHandle" for="upbanner">
 					    <img class="user-pic" :src="userInfo.face">
@@ -51,11 +53,18 @@
         },
         created() {
             this.getMyInfo();
+            if(this.userInfo.face){
+                
+            }
         },
         mounted() {
         },
         methods: {
-            
+            goLogin(){
+                this.$router.push({
+                    name: 'login'
+                })
+            },
             upImg() { //上传banner
 				let that = this;
 				let reader = new FileReader();

@@ -232,6 +232,7 @@ const router = new Router({
                 meta: {
                     name: '资金记录',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#fff'
                     }
@@ -244,6 +245,7 @@ const router = new Router({
                 meta: {
                     name: '充值',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -256,6 +258,7 @@ const router = new Router({
                 meta: {
                     name: '充值结果',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -268,6 +271,7 @@ const router = new Router({
                 meta: {
                     name: '支付宝充值',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -280,6 +284,7 @@ const router = new Router({
                 meta: {
                     name: '提现',
                     showBack: true,
+                    login: true,
                     tabRight: '提现说明',
                     htmlBg: {
                         'background': '#f2f2f2'
@@ -293,6 +298,7 @@ const router = new Router({
                 meta: {
                     name: '我的订单',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -305,6 +311,7 @@ const router = new Router({
                 meta: {
                     name: '订单详情',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -317,6 +324,7 @@ const router = new Router({
                 meta: {
                     name: '当天升级记录',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -329,6 +337,7 @@ const router = new Router({
                 meta: {
                     name: '收货地址',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#fff'
                     }
@@ -340,6 +349,7 @@ const router = new Router({
                 meta: {
                     name: '编辑收货地址',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#fff'
                     }
@@ -352,6 +362,7 @@ const router = new Router({
                 meta: {
                     name: '我的银行卡',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -364,6 +375,7 @@ const router = new Router({
                 meta: {
                     name: '添加银行卡',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -376,6 +388,7 @@ const router = new Router({
                 meta: {
                     name: '安全中心',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -388,6 +401,7 @@ const router = new Router({
                 meta: {
                     name: '修改手机号',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -400,6 +414,7 @@ const router = new Router({
                 meta: {
                     name: '修改密码',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -412,6 +427,7 @@ const router = new Router({
                 meta: {
                     name: '实名认证',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -424,6 +440,7 @@ const router = new Router({
                 meta: {
                     name: '分享',
                     showBack: true,
+                    login: true,
                     htmlBg: {
                         'background': '#f2f2f2'
                     }
@@ -441,7 +458,7 @@ const router = new Router({
                     }
                 }
             },
-            { //设置
+            { //常见问题
                 name: 'question',
                 path: 'question',
                 component: question,
@@ -470,11 +487,14 @@ router.beforeEach((to, from, next) => {
         window.location.href = _url;
         return;
     };
-    console.log(to,from)
     if( to.name === 'login' &&  from.name){
         Storage.setItem('loginFrom', from.name)
+    };
+    if( to.meta.login && !User.getToken()){
+        next({name:'login'})
+    }else{
+        next();
     }
-    next();
 });
 router.afterEach((to, from) => {
     let docs = '';

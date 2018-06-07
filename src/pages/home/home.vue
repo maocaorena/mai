@@ -44,7 +44,8 @@
 				this.api.getBn({
 					url: 'banner/getList',
 					params: {
-						position: 3,
+                        position: 2,
+                        pageIndex: 0
 					}
 				}).then((res) => {
 					this.list = res.returnValue;

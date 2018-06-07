@@ -84,7 +84,7 @@
             <div class="item green">
                 <div class="itemIn">
                     <div class="top" :class="message.stockIndexTowValue.slice(-1)%2==1?'red':'yellow'">
-                    </div>
+                    </div> 
                     <div class="top" :class="message.stockIndexTowValue.slice(-1)%2==0?'green':'yellow'">
 
                     </div>

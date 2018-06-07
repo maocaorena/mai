@@ -1,12 +1,11 @@
 @import "../../assets/scss/rem";
 .notice{
     margin: 0 auto;
-    padding: st(6);
     width: 100%;
-    height: 34px;
     background: #fff;
     overflow: hidden;
 }
 .scroll{
-    line-height: 30px;
+    height: 34px;
+    line-height: 36px;
 }

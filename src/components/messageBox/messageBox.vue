@@ -2,6 +2,7 @@
     <div class="wj-messageBox">
     	<Shade>
 	    	<div class="wj-messageBox-border" :style="{width: inWidth}">
+                <img @click="close" class="wj-messageBox-close" src="../../assets/img/common/pop_close.png" alt="" />
 	    		<h3 class="wj-messageBox-tit" v-if="tit" @click="close">
     				<span class="wj-messageBox-tit-left">{{tit}}</span>
     				<span class="wj-messageBox-tit-right">{{remark}}</span>

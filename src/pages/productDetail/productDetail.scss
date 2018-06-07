@@ -1,10 +1,25 @@
 @import "../../assets/scss/rem";
 #productDetail{
     .topImg{
+        position: relative;
         padding: st(20);
         width: 100%;
         height: st(750);
-        background: #fff0d7;
+        background: #fff;
+        .go-home{
+            position: absolute;
+            top: st(40);
+            right: st(40);
+            z-index: 20;
+            width: st(144);
+            height: st(42);
+            text-indent: st(30);
+            line-height: st(42);
+            font-size: 12px;
+            background: url(../../assets//img/productDetail/more@2x.png) no-repeat center;
+            background-size: 100% 100%;
+            color: #f93069;
+        }
         img{
             width: 100%;
             vertical-align: bottom;
@@ -24,55 +39,70 @@
             width: 100%;
         }
     }
+    // .bottomTabIn{
+    //     .left{
+    //         width: st(100);
+    //         height: 100%;
+    //         p{
+    //             width: 100%;
+    //             height: 50%;
+    //             text-align: center;
+    //         }
+    //         .top{
+    //             line-height: st(60);
+    //         }
+    //         .bottom{
+    //             line-height: st(50);
+    //         }
+    //     }
+    //     .middle{
+    //         width: st(300);
+    //         height: 90%;
+    //         border-radius: st(80);
+    //         background: #ff9900;
+    //         border: 1px solid #797979;
+    //         text-align: center;
+    //         .left1{
+    //             width: st(60);
+    //         }
+    //         .right{
+    //             width: st(60);
+    //         }
+    //         .midd{
+    //             width: st(180);
+    //             height: 100%;
+    //             background: #fff;
+    //             .top{
+    //                 height: st(60);
+    //             }
+    //             input{
+    //                 width: 100%;
+    //                 border: none;
+    //                 text-align: center;
+    //             }
+    //         }
+    //     }
+    //     .buy{
+    //         width: st(200);
+    //         height: st(80);
+    //         background: #ff0000;
+    //         color: #fff;
+    //         border-radius: st(80);
+    //     }
+    // }
     .bottomTabIn{
-        .left{
-            width: st(100);
-            height: 100%;
-            p{
-                width: 100%;
-                height: 50%;
-                text-align: center;
-            }
-            .top{
-                line-height: st(60);
-            }
-            .bottom{
-                line-height: st(50);
-            }
-        }
-        .middle{
-            width: st(300);
-            height: 90%;
-            border-radius: st(80);
-            background: #ff9900;
-            border: 1px solid #797979;
-            text-align: center;
-            .left1{
-                width: st(60);
-            }
-            .right{
-                width: st(60);
-            }
-            .midd{
-                width: st(180);
-                height: 100%;
-                background: #fff;
-                .top{
-                    height: st(60);
-                }
-                input{
-                    width: 100%;
-                    border: none;
-                    text-align: center;
-                }
-            }
-        }
-        .buy{
-            width: st(200);
-            height: st(80);
-            background: #ff0000;
+        width: 100%;
+        height: st(80);
+        border-top: 1px solid #ddd;
+        background: #f8f8f8;
+        button{
+            width: 90%;
+            height: st(70);
+            border: none;
+            background: #f93069;
             color: #fff;
-            border-radius: st(80);
+            border-radius: st(8);
+            font-size: st(32);
         }
     }
 }

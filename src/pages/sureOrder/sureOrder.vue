@@ -55,7 +55,7 @@
             </div>
         </div>
 
-        <div class="getServer color2 mb">
+        <div class="getServer color2 mb" @click="openServer">
             联系客服
         </div>
 
@@ -112,13 +112,16 @@
                 </div>
             </slot>
         </MessageBox>
+        <server-v v-if="serverState" v-on:close="closeServer"></server-v>
     </div>
 </template>
 <script>
+    import server from '@/components/server/server.vue'
     import { Indicator } from "mint-ui"; //引入mintUI  indicator组件
     export default {
         data() {
             return {
+                serverState: false,
                 num: 1,
                 alertState: 0,
                 detail: {},
@@ -127,6 +130,9 @@
                 defaultMessage: {},
                 userInfo: {}
             }
+        },
+        components: {
+            'server-v': server  
         },
         created() {
             this.getProductDetail();
@@ -138,6 +144,13 @@
             };
         },
         methods: {
+            openServer(){
+                this.serverState = true;
+            },
+            closeServer(){
+                console.log('ddd')
+                this.serverState = false;
+            },
             goRecharge(){
                 this.$router.push({
                     name: 'recharge'

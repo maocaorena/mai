@@ -115,7 +115,10 @@
             },
             send(){
                 this.$router.push({
-                    name: 'sendResult'
+                    name: 'sendResult',
+                    query: {
+                        oid: this.$route.query.oid
+                    }
                 })
             },
             getResult(){

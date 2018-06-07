@@ -5,15 +5,16 @@
             <br>
             也可以保存后发送给其他人
         </p>
-        <p class="width100 tc">
-            <img style="width: 60%" src="../../assets/img/productDetail/1.png" alt="">
-        </p>
+        <div class="img-wrapper flex-zhong" id="qrcode">
+
+        </div>
         <p class="pd20 width100 tc">
             推荐码：66668888
         </p>
     </div>
 </template>
 <script>
+import code from 'qrcodejs2'
 export default {
     data () {
         return {
@@ -29,6 +30,21 @@ export default {
             }else{
             }
         })
+    },
+    mounted() {
+        // Toast({
+        //     message: '请截屏后分享给朋友哦！',
+        //     duration: 3000,
+        //     className: 'shareToast'
+        // });
+        let allUrl = JSON.stringify(window.location.href);
+        let _redicUrl = allUrl.slice(1, allUrl.indexOf("#")-1);
+        let shareUrl = this.Util.goSearch(_redicUrl, {
+            shareCode: this.User.getShareCode()
+        }, 'n')
+        console.log(shareUrl)
+        let code1 = new code('qrcode');
+        code1.makeCode(shareUrl);
     }
 }
 </script>

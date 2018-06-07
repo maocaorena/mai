@@ -10,11 +10,15 @@
     </div>
 </template>
 <script>
+
 export default {
     data(){
         return{
             isLogin: false
         }
+    },
+    created () {
+        this.getInfo()
     },
     methods: {
         outLogin(){
@@ -42,9 +46,13 @@ export default {
 <style lang="scss" scoped>
     #setting{
         .goCharge{
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 40px;
+            margin: auto;
             display: block;
             width: 90%;
-            margin: 0 auto;
         }
     }
 </style>

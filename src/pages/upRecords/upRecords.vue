@@ -1,11 +1,12 @@
 <template>
     <div id="upRecords" class="wrapper">
-        <div class="lists width100">
-            <ul class="list width100">
+        <div class="lists width100 page-infinite-wrapper" ref="wrapper">
+            <ul ref="roolist" class="list width100 page-infinite-list" v-infinite-scroll="getList" infinite-scroll-disabled="loading"
+                infinite-scroll-distance="60">
                 <li class="row flex tit">
                     <div class="one">
                         升级时间
-                    </div>
+                    </div>  
                     <div class="two">
                         订单数量
                     </div>
@@ -16,41 +17,74 @@
                         状态
                     </div>
                 </li>
-                <li class="row flex" v-for="item of 6">
+                <li class="row flex" v-for="item of list">
                     <div class="one">
-                        2018-01-01 11:22:33
+                        {{item.upgradeTime}}
                     </div>
                     <div class="two">
-                        1
+                        {{item.orderCount}}
                     </div>
                     <div class="three">
-                        商品名称
+                        {{item.productName}}
                     </div>
                     <div class="four">
-                        成功
+                        {{item.upgradeState == 2?'成功':'失败'}}
                     </div>
                 </li>
             </ul>
         </div>
+        <p class="noMore flex-zhong" v-show="!noMore">
+                <mt-spinner type="snake"></mt-spinner>
+            </p>
+        <p class="noMore" v-show="noMore">没有更多数据了</p>
     </div>
 </template>
 <script>
-export default {
-    data () {
-        return {
-            
+    import { Indicator } from "mint-ui"; //引入mintUI  indicator组件
+    export default {
+        data() {
+            return {
+                list: [],
+                loading: false, //控制加载，true会停止加载
+                noMore: false, //没有更多
+                pageNum: 1,
+            }
+        },
+        created() {
+
+        },
+        methods: {
+            // 获取列表
+            getList() {
+                this.loading = true;
+                this.api.getBn({
+                    url: 'customerOrder/getUpOrderList',
+                    params: {
+                        pageNum: this.pageNum,
+                        pageSize: 6,
+                    },
+                    user: true
+                }).then((res) => {
+                    if (res.successed) {
+                        this.list.push(...res.returnValue.list);
+                        if (res.returnValue.list.length < 6) {
+                            this.noMore = true;
+                        } else {
+                            this.pageNum++;
+                            this.loading = false;
+                        };
+                    } else {
+                        this.Util.myAlert('获取列表失败，请稍后重试');
+                    };
+                }).catch(() => {
+                    Indicator.close()
+                })
+            }
+
         }
-    },
-    created () {
-        
-    },
-    methods: {
-        
     }
-}
 </script>
 
 <style lang="scss" scoped>
     @import './upRecords'
 </style>
-

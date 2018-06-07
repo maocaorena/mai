@@ -1,6 +1,9 @@
 <template>
     <div id="productDetail" class="wrapper">
         <div class="topImg">
+            <div class="go-home" @click="goHome">
+                返回首页 
+            </div>
             <div class="swiper-container" id="detailSwiper">
 				<div class="swiper-wrapper">
 					<div v-for="item of bannerList" class="swiper-slide">
@@ -11,7 +14,7 @@
 				<div class="swiper-pagination"></div>
 			</div>
         </div>
-        <div class="middleTxt">
+        <div class="middleTxt mb">
             <div class="colorRed bigFont mb">
                 ￥{{detail.price}}
             </div>
@@ -27,11 +30,17 @@
                 <p class="colorRed" v-else >月销：{{detail.sales}}</p>
             </div>
         </div>
+        <div class="color2 pd20 tc bg1 mb" @click="openServer">
+            联系客服
+        </div>
         <div class="detail" v-html="detail.productDetail">
         </div>
         <div class="bottomTab">
-            <div class="bottomTabIn flex flex-sc flex-hlr">
-                <div class="left">
+            <div class="bottomTabIn flex-zhong">
+                <button @click="buy">
+                    立即购买
+                </button>
+                <!-- <div class="left">
                     <p class="top">
                         <i class="iconfont icon-kefu defaultFont color666"></i>
                     </p>
@@ -65,9 +74,10 @@
                 </div>
                 <div class="buy flex-zhong" @click="buy">
                     立即购买
-                </div>
+                </div> -->
             </div>
         </div>
+        <server-v v-if="serverState" v-on:close="close"></server-v>
     </div>
 </template>
 
@@ -75,15 +85,20 @@
     import '@/lib/swiper/swiper.min.js';
     import '@/lib/swiper/swiper.min.css';
     import { Indicator } from "mint-ui"; //引入mintUI  indicator组件
+    import server from '@/components/server/server.vue'
     export default {
         data() {
             return {
+                serverState: false,
                 num: 1,
                 detail: {
 
                 },
                 bannerList: []
             };
+        },
+        components: {
+            'server-v': server  
         },
         created() {
             this.getByDetail()
@@ -92,6 +107,17 @@
 
         },
         methods: {
+            openServer(){
+                this.serverState = true;
+            },
+            close(){
+                this.serverState = false;
+            },
+            goHome(){
+                this.$router.push({
+                    name: 'home'
+                })
+            },
             getByDetail() {
                 Indicator.open();
                 this.api.getB({
