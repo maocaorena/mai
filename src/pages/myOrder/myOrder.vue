@@ -93,7 +93,6 @@
             },
             stateHandle(val) {
                 let _val = '';
-                console.log(_val)
                 switch (val) {
                     case 0:
                         _val = '待付款';

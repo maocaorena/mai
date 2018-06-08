@@ -44,6 +44,27 @@
                     font-size: 15px;
                 }
             }
+            label:nth-child(2){
+                position: relative;
+                .get-code{
+                    position: absolute;
+                    top: 15px;
+                    width: 100px;
+                    height: 25px;
+                    right: 5px;
+                    z-index: 2;
+                    line-height: 25px;
+                    text-align: center;
+                    border-left: 1px solid #dddddd;
+                    color: #ff740d;
+                    font-size: 13px;
+                    background: #ffffff;
+                }
+                .get-code-gray{
+                    border-left: 1px solid #ddd;
+                    color: #cecece;
+                }
+            }
         }
         .button{
             width: 100%;
@@ -63,51 +84,48 @@
             padding: 0 15px;
             width: 100%;
             height: 20px;
-            a{
+            .item{
                 display: block;
                 width: 50%;
                 height: 100%;
                 color: #666666;
                 font-size: 12px;
+                .my-choekbox{
+                    position: relative;
+                    width: 20px;
+                    height: 20px;
+                    -webkit-appearance: none;
+                    outline: none;
+                }
+                .my-choekbox::before{
+                    content: '';
+                    display: block;
+                    width: 20px;
+                    height: 20px;
+                    border: 1px solid #ccc;
+                    border-radius: 50%;
+                    background: #fff;
+                }
+                .my-choekbox::after{
+                    content: '';
+                    position: absolute;
+                    top: 26%;
+                    left: 26%;
+                    display: block;
+                    width: 14px;
+                    height: 6px;
+                    border-left: 1px solid #ff740d;
+                    border-bottom: 1px solid #ff740d;
+                    -webkit-transform: rotate(-45deg);
+                    transform: rotate(-45deg);
+                    opacity: 0;
+                }
+                .my-choekbox:checked:after{
+                    opacity: 1;
+                }
             }
-            a:nth-child(2){
+            a{
                 text-align: right;
-            }
-        }
-        .thirdBottom{
-            margin-top: 50px;
-            width: 100%;
-            height: 115px;
-            .third-top{
-                position: relative;
-                margin: 0 50px 10px;
-                border-top: 1px solid #999999;
-                p{
-                    width: 95px;
-                    margin: -10px auto 0;
-                    background-color: #efefef;
-                    color: #999999;
-                    font-size: 13px;
-                    text-align: center;
-                }
-            }
-            .third-list{
-                width: 100%;
-                height: 113px;
-                .third-item{
-                    width: 33%;
-                    height: 100%;
-                    img{
-                        width: 48px;
-                    }
-                    p{
-                        margin-top: 5px;
-                        width: 48px;
-                        text-align: center;
-                        font-size: 12px;
-                        color: #999999;
-                    }
-                }
             }
         }
     }
@@ -121,5 +139,46 @@
         text-align: center;
         font-size: 16px;
         color: #666666;
+    }
+    .mint-popup {
+        width: 100%;
+        height: 100%;
+        background-color: #fff;
+    }
+    .sever-alert{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: st(80);
+        background: #00a8ff;
+        text-align: center;
+        line-height: st(80);
+        color: #fff;
+        font-size: st(32);
+    }
+    .server-main{
+        position: absolute;
+        top: st(80);
+        bottom: st(80);
+        left: 0;
+        right: 0;
+        width: auto;
+        height: auto;
+        margin: auto;
+        overflow-y: auto;
+        text-align: center;
+    }
+    .server-bottom{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: st(80);
+        background: #00a8ff;
+        text-align: center;
+        line-height: st(80);
+        color: #fff;
+        font-size: st(32);
     }
 }
