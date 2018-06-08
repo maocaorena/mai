@@ -1,6 +1,6 @@
 <template>
     <div id="redLight" class="wrapper">
-        <MessageBox v-if="alertState === 1">
+        <MessageBox v-if="alertState === 1" :hide="true">
             <slot>
                 <div class="alertIn width100">
                     <h2 class="colorRed largeFont row width100">超级红绿灯</h2>
@@ -19,7 +19,7 @@
                 </div>
             </slot>
         </MessageBox>
-        <MessageBox v-if="alertState === 2">
+        <MessageBox v-if="alertState === 2" :hide="true">
             <slot>
                 <div class="alertIn width100 alertInTwo">
                     <h2 class="colorRed largeFont row width100">超级红绿灯</h2>

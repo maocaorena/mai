@@ -5,7 +5,7 @@
                 <li class="orderItem mb" v-for="item of list">
                     <div class="top flex mb" @click="goDetail(item)">
                         <div class="img">
-                            <img src="../../assets/img/productDetail/1.png" alt="">
+                            <img :src="item.productImage" alt="">
                         </div>
                         <div class="name width100">
                             {{item.productName | nameHandle}}
@@ -56,7 +56,7 @@
                             <button v-if="item.orderState == 1" @click="sendProd(item.id)">
                                 提货
                             </button>
-                            <button v-if="item.upgradeState == 0 && item.upProductId">
+                            <button v-if="item.upgradeState == 0 && item.upProductId" @click="goUp(item.oid)">
                                 升级
                             </button>
                             <button @click="backMoney(item)" v-if="item.upgradeState != 3">
@@ -129,6 +129,14 @@
             
         },
         methods: {
+            goUp(oid){
+                this.$router.push({
+                    name: 'redLight',
+                    query: {
+                        oid: oid
+                    }
+                })
+            },
             sendProd(id){
                 MessageBox.confirm('确定要提货吗？').then(action => {
                     this.$router.push({

@@ -50,8 +50,8 @@
                 {{defaultMessage.region}}
                 {{defaultMessage.address}}
             </div>
-            <div class="jiantou">
-                >
+            <div class="jiantou flex-zhong">
+                <img src="../../assets/img/addr/triangle.png" alt="">
             </div>
         </div>
 
@@ -90,10 +90,11 @@
             </div>
         </div>
 
-        <MessageBox v-if="alertState === 1003">
+        <MessageBox v-if="alertState === 1003" v-on:close="close">
             <slot>
                 <p class="alertOne defaultFont color333"> 您的储值账户余额不足，请充值！</p>
                 <p class="alertOne defaultFont color333 mb"> 当前余额： <span class="colorRed">{{userInfo.balance}}</span></p>
+                <br>
                 <br>
                 <div class="buttons flex flex-hsb">
                     <mt-button type="default" size="small" @click="close">再想想</mt-button>
@@ -102,9 +103,10 @@
             </slot>
         </MessageBox>
 
-        <MessageBox v-if="alertState === 1002">
+        <MessageBox v-if="alertState === 1002" v-on:close="close">
             <slot>
                 <p class="alertOne defaultFont color333"> 应国家政策要求，购买商品前请进行实名认证！</p>
+                <br>
                 <br>
                 <div class="buttons flex flex-hsb">
                     <mt-button type="default" size="small" @click="close">再想想</mt-button>
@@ -127,7 +129,9 @@
                 detail: {},
                 productMoney: 0,
                 carMoney: 0,
-                defaultMessage: {},
+                defaultMessage: {
+                    consignee: ''
+                },
                 userInfo: {}
             }
         },
@@ -281,7 +285,7 @@
                     user: true,
                 }).then(res => {
                     Indicator.close();
-                    if (res.successed) {
+                    if (res.successed && res.returnValue) {
                         this.defaultMessage = res.returnValue;
                     }
                 })

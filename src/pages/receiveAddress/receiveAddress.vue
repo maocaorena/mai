@@ -36,7 +36,7 @@
                 </li>
 
             </ul>
-            <div v-if="defaultShow" class="defaultImg">
+            <div v-if="defaultShow" class="noMore">
                 <p>
                     你还没有添加收货地址，前去添加吧~
                 </p>

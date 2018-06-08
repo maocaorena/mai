@@ -66,11 +66,14 @@
         .jiantou {
             position: absolute;
             right: st(20);
-            bottom: st(40);
+            top: st(80);
             width: st(40);
-            height: st(120);
+            height: st(200);
             line-height: st(120);
             text-align: center;
+            img{
+                width: st(28);
+            }
         }
     }
     .getServer {

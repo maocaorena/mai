@@ -160,7 +160,7 @@
     .server-main{
         position: absolute;
         top: st(80);
-        bottom: st(80);
+        bottom: 0;
         left: 0;
         right: 0;
         width: auto;
@@ -168,17 +168,6 @@
         margin: auto;
         overflow-y: auto;
         text-align: center;
-    }
-    .server-bottom{
-        position: absolute;
-        left: 0;
-        bottom: 0;
-        width: 100%;
-        height: st(80);
-        background: #00a8ff;
-        text-align: center;
-        line-height: st(80);
-        color: #fff;
-        font-size: st(32);
+        line-height: st(56);
     }
 }

@@ -1,11 +1,11 @@
 <template>
     <div id="layout" :class="{'pd40': !$route.meta.hideHeader}">
-        <mt-header fixed style="z-index:999999999" :title="$route.meta.name" v-if="!$route.meta.hideHeader">
+        <mt-header class="header" fixed style="z-index:999999999" v-if="!$route.meta.hideHeader">
             <div slot="left" v-show="$route.meta.showBack">
-                <mt-button icon="back" @click="goBack">返回</mt-button>
+                <mt-button icon="back" @click="goBack">{{$route.meta.name}}</mt-button>
             </div>
             <mt-button slot="right" v-if="$route.meta.tabRight" @click="clickRightBar">
-                {{$route.meta.tabRight}}
+                <span class="color2"> {{$route.meta.tabRight}}</span>
             </mt-button>
         </mt-header>
         <router-view></router-view>

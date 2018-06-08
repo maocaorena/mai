@@ -74,14 +74,13 @@
         data() {
             return {
                 alertSate: 0,
-                defaultMessage: {},
+                defaultMessage: {
+                    openBank: '',
+                    cardNumber: ''
+                },
                 balance: '加载中...',
                 getNum: 0,
                 code: '',
-                item: {
-                    openBank: 'XXXX',
-                    cardNumber: '****'
-                },
                 cutTime: '获取验证码'
             }
         },
@@ -191,7 +190,7 @@
                     user: true,
                 }).then(res => {
                     Indicator.close();
-                    if (res.successed) {
+                    if (res.successed && res.returnValue) {
                         this.defaultMessage = res.returnValue;
                         this.defaultMessage.cardNumber = this.defaultMessage.cardNumber.substr(-4,4);
                     } else {
