@@ -28,7 +28,7 @@
                         {{item.productName}}
                     </div>
                     <div class="four">
-                        {{item.upgradeState == 2?'成功':'失败'}}
+                        {{item.upgradeState == 2?'成功':item.upgradeState==1?'升级中':'失败'}}
                     </div>
                 </li>
             </ul>

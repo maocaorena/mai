@@ -7,15 +7,15 @@
         <div class="rooms page-infinite-wrapper" ref="wrapper">
             <ul ref="roolist" class="list page-infinite-list" v-infinite-scroll="getList" infinite-scroll-disabled="loading"
                 infinite-scroll-distance="60">
-                <template v-for="(item,index) of list">
+                <template v-for="(item,index) of listHandle">
                     <shoppingItem :message="item"> </shoppingItem>
                 </template>
                 <li style="clear: both;"></li>
             </ul>
         </div>
         <p class="noMore flex-zhong" v-show="!noMore">
-                <mt-spinner type="snake"></mt-spinner>
-            </p>
+            <mt-spinner type="snake"></mt-spinner>
+        </p>
         <p class="noMore" v-show="noMore">没有更多数据了</p>
 
     </div>
@@ -38,6 +38,27 @@
                 productClassId: ''
 
             };
+        },
+        computed: {
+            listHandle() {
+                let _list = this.Util.jm(this.list);
+                console.log(_list)
+                if (_list.length > 0 && _list[0].upProductId) {
+                    return _list;
+                };
+                let len = Math.ceil(_list.length / 2);
+                let _list1 = [];
+                for (let i = 0; i < len; i++) {
+                    let _item = [];
+                    _item.push(_list[i * 2]);
+                    if (_list[i * 2 + 1]) {
+                        _item.push(_list[i * 2 + 1]);
+                    };
+                    _list1.push(_item);
+                };
+                return _list1;
+            }
+
         },
         components: {
             "tabbars-v": tabbars,
@@ -96,22 +117,33 @@
                 }).then((res) => {
                     Indicator.close()
                     if (res.successed) {
-                        let len = this.list.filter(v => {
-                            return res.returnValue.list[0].id == v.id
-                        }).length;
-                        if (_productClassId == this.productClassId && len == 0) {
-                            this.list.push(...res.returnValue.list);
-                            if (res.returnValue.list.length < 6) {
+                        let _res = res.returnValue.list;
+
+                        if (_productClassId == this.productClassId) {
+                            if(_res.length == 0){
                                 this.noMore = true;
-                            } else {
-                                this.pageNum++;
-                                this.loading = false;
-                            };
+                            }else{
+                                let len = this.list.filter(v => {
+                                    return _res[0].id == v.id
+                                }).length;
+                                
+                                if(len == 0){
+                                    this.list.push(..._res);
+                                    console.log(_res)
+                                    if (_res.length < 6) {
+                                        this.noMore = true;
+                                    } else {
+                                        this.pageNum++;
+                                        this.loading = false;
+                                    };
+                                }
+                            }
                         }
                     } else {
                         this.Util.myAlert('获取列表失败，请稍后重试');
                     };
-                }).catch(() => {
+                }).catch((err) => {
+                    console.log(err)
                     Indicator.close()
                 })
             },

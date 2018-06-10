@@ -4,8 +4,8 @@
         <h1 class="titile colorRed mb" v-if="productDetail.upProductId">恭喜您获得商品免费升级福利！</h1>
         <h1 class="titile colorRed mb" v-if="!productDetail.upProductId">购买成功！</h1>
     
-        <p class="productTit color333 defaultStyle">当前商品</p>
-        <div class="product defaultStyle flex mb">
+        <p class="productTit color333 defaultStyle" v-if="!productDetail.upProductId">当前商品</p>
+        <div class="product defaultStyle flex mb" v-if="!productDetail.upProductId">
             <div class="left">
                 <img :src="productDetail.productImage" />
             </div>
@@ -19,6 +19,8 @@
                 </div>
             </div>
         </div>
+
+
         <template v-if="productDetail.upProductId">
             <p class="productTit defaultStyle colorRed defaultFont">升级后</p>
             <div class="product defaultStyle flex mb">
@@ -35,17 +37,22 @@
                     </div>
                 </div>
             </div>
+            <p class="pd20 bg1 mb color333 largeFont">
+                升级后增值
+                <span class="colorRed">{{(productDetail.upProductPrice - productDetail.productPrice)*productDetail.orderCount}}</span>
+                元！
+            </p>
         </template>
 
         <div class="upLev defaultStyle flex flex-hsb mb">
             <div class="upLevItem flex flex-s flex-sc"  @click="upLev" v-if="productDetail.upProductId">
-                <img :src="productDetail.productImage" />
+                <img :src="productDetail.upProductImage" />
                 <p class="color2 largeFont">
                     立即升级
                 </p>
             </div>
             <div class="upLevItem flex flex-s flex-sc"  @click="sendProd()">
-                <img :src="productDetail.upProductImage" />
+                <img :src="productDetail.productImage" />
                 <p class="color2 largeFont">
                     直接提货
                 </p>

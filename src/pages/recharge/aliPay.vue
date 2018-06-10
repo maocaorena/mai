@@ -18,9 +18,11 @@
             <mt-button type="default" size="small" @click.native="qqServer" plain>QQ客服</mt-button>
             <mt-button type="default" size="small" @click.native="phoneServer" plain>客服电话</mt-button>
         </div> 
+        <div id="aliSub"></div>
     </div>
 </template>
 <script>
+import { Indicator } from 'mint-ui'; //引入mintUI  indicator组件
 export default {
     data () {
         return {
@@ -31,6 +33,54 @@ export default {
     created () {
     },
     methods: {
+        goCharge(){
+            if(this.Util.trim(this.nickName).length < 1){
+                this.Util.myAlert('请输入支付宝昵称');
+                return;
+            }
+            this.api.postB({
+                url: 'recharge/createOrder',
+                params: {
+                    amount: this.number,
+                    rechargeMethod: 1,
+                    payChannel: 2,
+                    payAccount: this.nickName
+                },
+                user: true
+            }).then(res=>{
+                if(res.successed){
+                    this.pay(res.returnValue)
+                }
+            })
+        },
+        pay(oid){
+            this.api.postB({
+                url: 'recharge/launchPay',
+                params: {
+                    oid: oid,
+                    payTitle: '充值',
+                    clientType: 0,
+                },
+                user: true
+            }).then(res=>{
+                if(res.successed){
+                   var html = res.returnValue.submitFormStr;
+                    var cont = document.getElementById("aliSub");
+                    cont.innerHTML = html;
+                    var oldScript = cont.getElementsByTagName(
+                        "script"
+                    )[0];
+                    cont.removeChild(oldScript);
+                    var newScript = document.createElement(
+                        "script"
+                    );
+                    newScript.type = "text/javascript";
+                    newScript.innerHTML = oldScript.innerHTML;
+                    cont.appendChild(newScript);
+
+                }
+            })
+        },
         qqServer(){
             var kefu101 = "http://wpa.qq.com/msgrd?v=3&uin=5446833281&site=oicqzone.com&menu=yes";
             var kefu102 = "mqqwpa://im/chat?chat_type=wpa&uin=5446833281&version=1&src_type=web&web_src=oicqzone.com";

@@ -15,7 +15,7 @@
             <div style="height: 10px"></div>
 			<menu-bar :togo="'/my/rechargeRecords'" :icon="'icon-favor_light'" :height="50" :title="'账户余额'">
                 <slot>  
-                    <span>（可用）</span> <span class="color333"> {{userInfo.balance}}</span>
+                    <span>（可用）</span> <span class="color3"> {{userInfo.balance}}</span>
                 </slot> 
             </menu-bar>
 			<menu-bar :togo="'/my/recharge'" :icon="'icon-recharge'" :height="50" :title="'充值'"></menu-bar>
@@ -35,13 +35,15 @@
 </template>
 
 <script type="text/javascript">
+    import { Indicator } from 'mint-ui'; //引入mintUI  indicator组件
     import menubar from './menubar.vue'; //引入菜单跳转
     export default {
         name: "me",
         data() {
             return {
                 userInfo: {
-                    balance: '请登录'
+                    balance: '请登录',
+                    face: 'http://file.ydcf1.com/static/face.jpg'
                 },
             }
         },
@@ -66,6 +68,7 @@
                 })
             },
             upImg() { //上传banner
+                let _face = this.userInfo.face;
 				let that = this;
 				let reader = new FileReader();
 				let input = document.getElementById("upbanner");
@@ -82,13 +85,14 @@
 							param.append('file', files[0], files[0].name);
 							param.append('customerId', that.User.getUserId());
 							param.append('userId', that.User.getUserId());
-							//						param.get('file')
+                            // console.log(param.get('file'))
+                            Indicator.open();
 							that.api.postUp('customer/updateFace', param, function(res) {
-								if(res.data.successed) {
-									let _res = res.data.returnValue[0];
-									// that.form.img = _res;
+                                Indicator.close()
+								if(res.successed) {
+                                    let _res = res.returnValue;
+									that.userInfo.face = _res;
 								} else {
-                                    // that.form.img = '';
                                     that.Util.myAlert('上传失败，请重试')
 								}
 							}, function(res) {

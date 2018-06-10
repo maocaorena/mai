@@ -9,8 +9,9 @@
             position: relative;
             height: 100px;
             width: 100%;
-            background: #00a8ff;
-            color: #fff;
+            background: url(../../assets/img/my/my.png) no-repeat center;
+            background-size: 100% 100%;
+            color: #4d2313;
             .top-model{
                 position: absolute;
                 top: 0;
@@ -29,7 +30,7 @@
                     border-radius: 50%;
                 }
                 .userName{
-                    width: 60%;
+                    width: 70%;
                     height: 40px;
                     padding: 5px 0 15px;
                     font-size: 16px;

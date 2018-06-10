@@ -1,42 +1,62 @@
 <template>
     <li class="width100 flex flex-hlr items">
-        <div class="roomItem-in" @click="goDetail(message.id)">
-            <div class="img">
-                <img v-lazy.container="message.image" alt="">
-            </div>
-            <div class="name">
-                {{message.productName}}
-            </div>
-            <div class="price">
-                <div class="left">
-                    ￥{{message.price}}
+        <template v-if="message.length !=2">
+            <div class="roomItem-in" @click="goDetail(message.id)">
+                <div class="img">
+                    <img v-lazy.container="message.image" alt="">
                 </div>
-                <div class="right">
-                    购买
+                <div class="name">
+                    {{message.productName}}
                 </div>
-            </div>
-        </div>
-        <div class="upLv">
-            <img src="../../assets/img/shopping/levUp.png" alt="">
-            <br>
-            <span class="colorRed">升级</span>
-        </div>
-        <div class="roomItem-in" @click="goDetail(message.upProductId)">
-            <div class="img">
-                <img v-lazy.container="message.upProductImage" alt="">
-            </div>
-            <div class="name">
-                {{message.upProductName}}
-            </div>
-            <div class="price">
-                <div class="left">
-                    ￥{{message.upProductPrice}}
-                </div>
-                <div class="right">
-                    购买
+                <div class="price">
+                    <div class="left">
+                        ￥{{message.price}}
+                    </div>
+                    <div class="right">
+                        购买
+                    </div>
                 </div>
             </div>
-        </div>
+            <div class="upLv" @click="goDetail(message.id)">
+                <i class="iconfont icon-youjiantou color3"></i>
+                <br>
+                <span class="colorRed">升级</span>
+            </div>
+            <div class="roomItem-in" @click="goDetail(message.upProductId)">
+                <div class="img">
+                    <img v-lazy.container="message.upProductImage" alt="">
+                </div>
+                <div class="name">
+                    {{message.upProductName}}
+                </div>
+                <div class="price">
+                    <div class="left">
+                        ￥{{message.upProductPrice}}
+                    </div>
+                    <div class="right">
+                        购买
+                    </div>
+                </div>
+            </div>
+        </template>
+        <template v-if="message.length ==2" v-for="item of message">
+            <div class="roomItem-in" @click="goDetail(item.id)">
+                <div class="img">
+                    <img v-lazy.container="item.image" alt="">
+                </div>
+                <div class="name">
+                    {{item.productName}}
+                </div>
+                <div class="price">
+                    <div class="left">
+                        ￥{{item.price}}
+                    </div>
+                    <div class="right">
+                        购买
+                    </div>
+                </div>
+            </div>
+        </template>
     </li>
     
     

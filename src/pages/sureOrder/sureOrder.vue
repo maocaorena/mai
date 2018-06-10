@@ -226,10 +226,10 @@
                         Indicator.close();
                         switch (res.errorCode) {
                             case '500':
-                                Util.myAlert('系统异常，请稍后重试');
+                                this.Util.myAlert('系统异常，请稍后重试');
                                 break;
                             case '1001':
-                                Util.myAlert(res.errorDesc);
+                                this.Util.myAlert(res.errorDesc);
                                 this.api.noLogin();
                                 break;
                             case '1002':
@@ -239,7 +239,7 @@
                                 this.alertState = 1003;
                                 break;
                             default:
-                                Util.myAlert(res.errorDesc);
+                                this.Util.myAlert(res.errorDesc);
                                 break;
                         }
                     }

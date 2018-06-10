@@ -44,6 +44,7 @@
     </div>
 </template>
 <script>
+import { Indicator } from 'mint-ui'; //引入mintUI  indicator组件
 export default {
     data () {
         return {
@@ -72,14 +73,15 @@ export default {
             if(this.number < 2){
                 this.Util.myAlert('充值金额最低为2元')
             }else{
-                // if(this.payType == 1){
-                //     this.$router.push({
-                //         name: 'aliPay',
-                //         query: {
-                //             num: this.number
-                //         }
-                //     })
-                // }else if(this.payType == 0){
+                if(this.payType == 1){
+                    this.$router.push({
+                        name: 'aliPay',
+                        query: {
+                            num: this.number
+                        }
+                    })
+                }else if(this.payType == 0){
+                    Indicator.open()
                     this.api.postB({
                         url: 'recharge/createOrder',
                         params: {
@@ -93,7 +95,7 @@ export default {
                             this.pay(res.returnValue)
                         }
                     })
-                // }
+                }
             }
         },
         pay(oid){
@@ -106,6 +108,7 @@ export default {
                 },
                 user: true
             }).then(res=>{
+                Indicator.close()
                 if(res.successed){
                    var html = res.returnValue.submitFormStr;
                     var cont = document.getElementById("aliSub");

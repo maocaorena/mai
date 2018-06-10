@@ -7,7 +7,7 @@
                     <p class="colors2">{{item.created}}</p>
                 </div>
                 <div class="right">
-                    <p :class="'colors'+item.streamType" class="mb">{{item.amount}}</p>
+                    <p :class="'colors'+item.streamType" class="mb">{{item.streamType|typeHandle}}{{item.amount}}</p>
                     <p class="colors2" >余额：{{item.balance}}</p>
                 </div>
             </li>
@@ -37,6 +37,32 @@
             }
         },
         filters: {
+            typeHandle: function(val){
+                let _val = '';
+                switch (val) {
+                    case 0:
+                        _val = '+'
+                        break;
+                    case 1:
+                        _val = '-'
+                        break;
+                    case 2:
+                        _val = '-'
+                        break;
+                    case 3:
+                        _val = '+'
+                        break;
+                    case 4:
+                        _val = '-'
+                        break;
+                    case 5:
+                        _val = '+'
+                        break;
+                    default:
+                        break;
+                }
+                return _val
+            },
             payChannelHandle: function (val) {
                 let _val = '';
                 switch (val) {

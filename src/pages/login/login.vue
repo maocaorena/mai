@@ -123,7 +123,7 @@
                             if (loginFrom && loginFrom != 'login') {
                                 this.Storage.removeItem('loginFrom')
                                 this.$router.replace({
-                                    name: loginFrom
+                                    path: loginFrom
                                 })
                             } else {
                                 this.$router.replace({

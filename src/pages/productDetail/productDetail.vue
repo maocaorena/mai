@@ -1,9 +1,9 @@
 <template>
     <div id="productDetail" class="wrapper">
         <div class="topImg">
-            <div class="go-home" @click="goHome">
+            <!-- <div class="go-home" @click="goHome">
                 返回首页 
-            </div>
+            </div> -->
             <div class="swiper-container" id="detailSwiper">
 				<div class="swiper-wrapper">
 					<div v-for="item of bannerList" class="swiper-slide">
@@ -24,10 +24,10 @@
             <div class="colorRed smallFont mb" v-if="detail.upProductId">
                 活动提示：该商品购买后可参加升级活动，如升级成功，升级后商品价值999.00元
             </div>
-            <div class="bottomTxt flex flex-hlr mb">
+            <div class="bottomTxt flex flex-hlr mb color999">
                 <!-- <p class="color999">快递：6元</p> -->
-                <p class="colorRed" v-if="detail.stock<=99" >库存剩余：{{detail.stock}}</p>
-                <p class="colorRed" v-else >月销：{{detail.sales}}</p>
+                <p>月销：{{detail.sales}}</p>
+                <p :class="{'colorRed':detail.stock<99}">库存剩余：{{detail.stock>=99? '99+':detail.stock}}</p>
             </div>
         </div>
         <div class="color2 pd20 tc bg1 mb" @click="openServer">

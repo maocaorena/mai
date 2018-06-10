@@ -15,7 +15,7 @@
 		i:nth-child(1){
 			display: block;
 			width: 10%;
-			color: #bcbcbc;
+			color: #feb921;
 			font-size: 24px;
 		}
 		p{
@@ -28,7 +28,7 @@
 			right: 15px;
 			color: #bcbcbc;
 			.iconfont{
-				font-size: 16px;
+                font-size: 16px;
 			}
 		}
 	}

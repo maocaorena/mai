@@ -14,7 +14,7 @@
                     </p>
                     <br>
                     <div class="startGame largeFont flex-zhong" @click="startgame(2)">
-                        开始游戏
+                        
                     </div>
                 </div>
             </slot>
