@@ -19,7 +19,8 @@
             </div>
             <div class="flex fu">
                 <div class="item flex flex-sc">
-                    <input class="my-choekbox" type="checkbox" v-model="agree">
+                    <img v-if="!agree" src="../../assets/img/common/choice_1.png" @click="agree = true" alt="">
+                    <img v-if="agree" src="../../assets/img/common/choice_2.png" @click="agree = false" alt="">
                     <span class="agrement">我同意 <i @click="openServer" class="color2">《用户协议》</i> </span>
                 </div>
             </div>
