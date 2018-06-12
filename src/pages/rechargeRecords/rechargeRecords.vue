@@ -50,7 +50,7 @@
                         _val = '-'
                         break;
                     case 3:
-                        _val = '+'
+                        _val = '-'
                         break;
                     case 4:
                         _val = '-'

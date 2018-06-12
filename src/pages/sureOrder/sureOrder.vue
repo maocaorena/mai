@@ -120,6 +120,7 @@
 <script>
     import server from '@/components/server/server.vue'
     import { Indicator } from "mint-ui"; //引入mintUI  indicator组件
+    import { MessageBox } from 'mint-ui';
     export default {
         data() {
             return {
@@ -136,7 +137,7 @@
             }
         },
         components: {
-            'server-v': server  
+            'server-v': server
         },
         created() {
             this.getProductDetail();
@@ -148,19 +149,19 @@
             };
         },
         methods: {
-            openServer(){
+            openServer() {
                 this.serverState = true;
             },
-            closeServer(){
+            closeServer() {
                 console.log('ddd')
                 this.serverState = false;
             },
-            goRecharge(){
+            goRecharge() {
                 this.$router.push({
                     name: 'recharge'
                 })
             },
-            goTrueName(){
+            goTrueName() {
                 this.$router.push({
                     name: 'trueName',
                 })
@@ -204,46 +205,49 @@
                 this.productMoney = this.detail.price * this.num;
             },
             createdOrder() {
-                Indicator.open();
-                this.api.postBn({
-                    url: 'customerOrder/createOrder',
-                    params: {
-                        productId: this.$route.query.productId,
-                        deliveryAddressId: this.defaultMessage.id,
-                        orderCount: this.num
-                    },
-                    user: true
-                }).then(res => {
-                    Indicator.close();
-                    if (res.successed) {
-                        this.$router.push({
-                            name: 'buySuccess',
-                            query: {
-                                oid: res.returnValue,
-                            }
-                        })
-                    } else {
+                MessageBox.confirm('确定购买？').then(action => {
+                    Indicator.open();
+                    this.api.postBn({
+                        url: 'customerOrder/createOrder',
+                        params: {
+                            productId: this.$route.query.productId,
+                            deliveryAddressId: this.defaultMessage.id,
+                            orderCount: this.num
+                        },
+                        user: true
+                    }).then(res => {
                         Indicator.close();
-                        switch (res.errorCode) {
-                            case '500':
-                                this.Util.myAlert('系统异常，请稍后重试');
-                                break;
-                            case '1001':
-                                this.Util.myAlert(res.errorDesc);
-                                this.api.noLogin();
-                                break;
-                            case '1002':
-                                this.alertState = 1002;
-                                break;
-                            case '1003':
-                                this.alertState = 1003;
-                                break;
-                            default:
-                                this.Util.myAlert(res.errorDesc);
-                                break;
+                        if (res.successed) {
+                            this.$router.push({
+                                name: 'buySuccess',
+                                query: {
+                                    oid: res.returnValue,
+                                }
+                            })
+                        } else {
+                            Indicator.close();
+                            switch (res.errorCode) {
+                                case '500':
+                                    this.Util.myAlert('系统异常，请稍后重试');
+                                    break;
+                                case '1001':
+                                    this.Util.myAlert(res.errorDesc);
+                                    this.api.noLogin();
+                                    break;
+                                case '1002':
+                                    this.alertState = 1002;
+                                    break;
+                                case '1003':
+                                    this.alertState = 1003;
+                                    break;
+                                default:
+                                    this.Util.myAlert(res.errorDesc);
+                                    break;
+                            }
                         }
-                    }
-                })
+                    })
+                });
+
             },
             getProductDetail() {
                 Indicator.open();
@@ -294,8 +298,8 @@
                 this.api.getB({
                     url: 'customer/getByToken',
                     user: true
-                }).then(res=>{
-                    if(res.successed){
+                }).then(res => {
+                    if (res.successed) {
                         this.userInfo = res.returnValue;
                     }
                 })

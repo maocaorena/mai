@@ -1,39 +1,41 @@
 @import "../../assets/scss/rem";
 #redLight {
+    padding-top: st(200);
+    background: url(../../assets/img/redLight/bg1.png) no-repeat left top;
+    background-size: 100%;
+    .redRule{
+        background: #000;
+    }
     .alertIn {
         .row {
             text-align: center;
         }
         .startGame {
             margin: 0 auto;
-            width: st(200);
-            height: st(200);
+            width: st(290);
+            height: st(80);
             background: #409eff;
             color: #fff;
-            border-radius: 50%;
             background: url(../../assets/img/redLight/start.png) no-repeat center;
             background-size: 100% 100%;
         }
     }
+    .alertIn1{
+        width: st(610);
+        height: st(784);
+        padding-top: st(200);
+    }
     .alertInTwo {
+        width: st(610);
+        height: st(784);
+        padding-top: st(200);
         .item {
-            .top {
-                width: st(200);
-                height: st(200);
-                border-radius: 50%;
+            img {
+                width: st(128);
+                height: st(184);
             }
             .bottom {
                 text-align: center;
-            }
-        }
-        .red {
-            .top {
-                background: red;
-            }
-        }
-        .green {
-            .top {
-                background: green;
             }
         }
         .select {
@@ -48,34 +50,42 @@
         }
     }
     .gameRule {
+        margin-top: st(50);
         padding-top: st(20);
         width: 100%;
         text-align: center;
-        border-top: 1px solid #ccc;
+        border-top: 2px solid #ccc;
     }
     .nowTime,
     .endTime {
         text-align: center;
     }
-    .nowTime{
-        margin-top: st(100);
-    }
     .endTime{
         margin-bottom: st(50);
     }
+    .selectLight{
+        padding: st(104) st(40);
+    }
     .lightList{
+        background: url(../../assets/img/redLight/tree.png) no-repeat left bottom;
+        -webkit-background-size: 100%;
+        background-size: 100%;
         .item {
             width: st(200);
             .itemIn{
-                padding: st(20);
                 width: 100%;
-                background: #999;
+            }
+            img{
+                width: 100%;
             }
             .top {
                 margin: 0 auto st(20);
                 width: st(120);
                 height: st(120);
                 border-radius: 50%;
+                img{
+                    width: 100%;
+                }
             }
             .bottom {
                 text-align: center;
@@ -96,5 +106,22 @@
                 word-break:break-all;
             }
         }
+    }
+    .lightList2{
+        padding-top: st(30);
+        height: st(296);
+        background: url(../../assets/img/redLight/road.png) no-repeat left top;
+        -webkit-background-size: 100%;
+        background-size: 100%;
+    }
+    .message{
+        padding: st(10) 0;
+        background: #000;
+    }
+    .redColor{
+        color: red;
+    }
+    .greenColor{
+        color: green;
     }
 }

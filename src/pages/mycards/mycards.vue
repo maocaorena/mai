@@ -116,7 +116,7 @@
                     this.allLoading = false;
                     if (res.successed) {
                         this.Util.myAlert('删除银行卡成功！');
-                        this.getAddrList();
+                        this.getList();
                     }
                 }).catch(() => {
                     this.allLoading = false;

@@ -26,10 +26,10 @@
             
         <div class="item">
             <p class="top">
-                提现金额
+                提现金额（￥）
             </p>
             <div class="bottom flex">
-                <input type="number" v-model="getNum">
+                <input type="number" v-model="getNum" :disabled="isDisable" @change="delZero">
                 <button @click="getAll">
                     全额
                 </button>
@@ -41,7 +41,7 @@
                 短信验证码
             </p>
             <div class="bottom flex">
-                <input type="number" v-model="code">
+                <input type="number" v-model="code" :disabled="isDisable">
                 <button disabled="disabled" v-if="cutTime != '获取验证码'">
                     {{cutTime}}
                 </button>
@@ -81,7 +81,8 @@
                 balance: '加载中...',
                 getNum: 0,
                 code: '',
-                cutTime: '获取验证码'
+                cutTime: '获取验证码',
+                isDisable: true,
             }
         },
         created() {
@@ -98,6 +99,10 @@
         },
         methods: {
             sendCode(){
+                if(this.isDisable){
+                    this.Util.myAlert("请选择银行卡");
+                    return;
+                };
                 Indicator.open();
                 this.api.postB({
                     url: 'customer/sendCustomerMsgValidateCode',
@@ -119,6 +124,9 @@
                     }
                 })
         	},
+            delZero(){
+                this.getNum = this.getNum.replace(/\b(0+)/gi,"")
+            },
             goSelect() {
                 this.$router.push({
                     name: 'myCards',
@@ -128,6 +136,10 @@
                 })
             },
             getAll() {
+                if(this.isDisable){
+                    this.Util.myAlert("请选择银行卡");
+                    return;
+                };
                 if (this.balance != '加载中...') {
                     this.getNum = this.balance;
                 }
@@ -155,7 +167,8 @@
                     user: true
                 }).then(res=>{
                     if(res.successed){
-                        this.Util.myAlert('提现成功')
+                        this.Util.myAlert('提现成功');
+                        this.getMyInfo();
                     }
                 })
             },
@@ -175,6 +188,11 @@
                     user: true
                 }).then(res => {
                     Indicator.close();
+                    if(!res.returnValue){
+                        this.isDisable = true;
+                    }else{
+                        this.isDisable = false;
+                    };
                     if (res.successed) {
                         this.defaultMessage = res.returnValue;
                         this.defaultMessage.cardNumber = this.defaultMessage.cardNumber.substr(-4,4);
@@ -190,6 +208,11 @@
                     user: true,
                 }).then(res => {
                     Indicator.close();
+                    if(!res.returnValue){
+                        this.isDisable = true;
+                    }else{
+                        this.isDisable = false;
+                    };
                     if (res.successed && res.returnValue) {
                         this.defaultMessage = res.returnValue;
                         this.defaultMessage.cardNumber = this.defaultMessage.cardNumber.substr(-4,4);

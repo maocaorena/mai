@@ -1,7 +1,7 @@
 <template>
     <div class="wj-messageBox">
     	<Shade>
-	    	<div class="wj-messageBox-border" :style="{width: inWidth}">
+	    	<div class="wj-messageBox-border" :style="inWidth">
                 <img @click="close" v-show="!hide" class="wj-messageBox-close" src="../../assets/img/common/pop_close.png" alt="" />
 	    		<h3 class="wj-messageBox-tit" v-if="tit" @click="close">
     				<span class="wj-messageBox-tit-left">{{tit}}</span>
@@ -25,7 +25,7 @@ export default {
     props:[
     	'tit',
     	'remark',
-        'width',
+        'instyle',
         'hide'
     ],
     methods:{
@@ -35,7 +35,7 @@ export default {
     },
     computed:{
     	inWidth(){
-            return this.width || ''
+            return this.instyle || {}
         }
     },
     created(){

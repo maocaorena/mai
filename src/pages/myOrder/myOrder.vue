@@ -159,7 +159,8 @@
                     }).then(res=>{
                         Indicator.close();
                         if(res.successed){
-                            this.Util.myAlert('退款成功')
+                            this.Util.myAlert('退款成功');
+                            this.reset()
                         }else{
                             this.Util.myAlert('退款失败')
                         }
@@ -174,6 +175,12 @@
                         oid: item.id
                     }
                 })
+            },
+            reset(){
+                this.pageNum = 1;
+                this.noMore = false;
+                this.list = [];
+                this.getList()
             },
             // 获取列表
             getList() {

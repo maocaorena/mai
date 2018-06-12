@@ -196,7 +196,7 @@ const router = new Router({
                     name: '升级红绿灯',
                     showBack: true,
                     htmlBg: {
-                        'background': '#f2f2f2',
+                        'background': '#bff4ff',
                     }
                 }
             },
