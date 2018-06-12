@@ -56,7 +56,7 @@
                             <button v-if="item.orderState == 1" @click="sendProd(item.id)">
                                 提货
                             </button>
-                            <button v-if="item.upgradeState == 0 && item.upProductId" @click="goUp(item.oid)">
+                            <button v-if="item.upgradeState == 0 && item.upProductId" @click="goUp(item.id)">
                                 升级
                             </button>
                             <button @click="backMoney(item)" v-if="item.upgradeState != 3">
@@ -129,11 +129,11 @@
             
         },
         methods: {
-            goUp(oid){
+            goUp(id){
                 this.$router.push({
                     name: 'redLight',
                     query: {
-                        oid: oid
+                        oid: id
                     }
                 })
             },

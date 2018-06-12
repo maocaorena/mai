@@ -1,41 +1,49 @@
 @import "../../assets/scss/rem";
-.items{
+.items {
     position: relative;
     border-top: 1px solid #f2f2f2;
     background: #fff;
 }
-.roomItem-in{
+
+.roomItem-in {
     position: relative;
     padding: st(20);
-    width: 50%;
-    // height: st(550);
+    width: 50%; // height: st(550);
     border-radius: st(8);
 }
-.img{
+
+.img {
     margin: 0 auto;
     width: st(256);
     height: st(256);
     padding: st(6);
-    img{
+    img {
         width: 100%;
         height: 100%;
         border-radius: st(20);
     }
 }
-.name{
+
+.name {
     width: 100%;
     color: #333;
     font-size: st(28);
     line-height: st(50);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
 }
-.price{
+
+.price {
     width: 100%;
     height: st(100);
     font-weight: 900;
-    div{
+    div {
         height: 100%;
     }
-    .left{
+    .left {
         float: left;
         width: 60%;
         font-size: st(36);
@@ -43,7 +51,7 @@
         text-indent: st(10);
         color: #ff0036;
     }
-    .right{
+    .right {
         margin-top: st(10);
         margin-right: st(20);
         float: right;
@@ -56,7 +64,8 @@
         border-radius: 50%;
     }
 }
-.upLv{
+
+.upLv {
     position: absolute;
     top: 0;
     right: 0;
@@ -66,7 +75,7 @@
     width: st(80);
     height: st(80);
     text-align: center;
-    img{
+    img {
         width: st(60);
         height: st(60);
     }

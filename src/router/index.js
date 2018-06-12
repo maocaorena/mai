@@ -487,8 +487,9 @@ router.beforeEach((to, from, next) => {
         window.location.href = _url;
         return;
     };
+    console.log(from)
     if( to.name === 'login' &&  from.name){
-        Storage.setItem('loginFrom', from.name)
+        Storage.setItem('loginFrom', from.fullPath)
     };
     if( to.meta.login && !User.getToken()){
         next({name:'login'})

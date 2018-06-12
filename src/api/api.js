@@ -188,22 +188,13 @@ class API {
     // -------------------------------------------------------------------------
     //上传图片
     postUp(url, param, callback, progress, err) {
-        // let allUrl = config.baseURL + url;
-        // let upconfig = {
-        //     onUploadProgress: progress,
-        //     // headers: {
-        //     //     token : User.getToken()
-        //     // }
-        // };
-        // return axios.POST(allUrl, param, upconfig).then(callback); //使用post方式
-        let allUrl = bxmApiUrl + url;
+        let allUrl = bxmApiUrl + '/' + url;
 		let upconfig = {
 			onUploadProgress: progress,
 			headers:{
 				"token": User.getToken()
 			}
         };
-        console.log('ddd',param)
 		return axios.post(allUrl, param, upconfig).then(callback).catch(error=>{
 			if(err){
 				err()
