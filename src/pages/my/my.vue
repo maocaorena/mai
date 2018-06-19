@@ -2,7 +2,7 @@
 	<div id="account" class="wrapper">
 		<div class="content">
 			<div class="account-top">
-                <div class="top-model" v-if="!this.userInfo.face" @click="goLogin">
+                <div class="top-model" v-if="!userInfo.id" @click="goLogin">
                 </div>
 				<div class="account-userhead flex flex-sc flex-hsb">
                     <label class="smallHandle" for="upbanner">

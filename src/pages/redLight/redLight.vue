@@ -59,7 +59,7 @@
 					<img v-show="message.stockIndexOneValue.slice(-1)%2==0" src="../../assets/img/redLight/green.png" alt="">
 				</div>
 			</div>
-			<div class="item">
+			<!-- <div class="item">
 				<div class="itemIn">
 					<img v-show="message.stockIndexOneValue.slice(-1)%2==1" src="../../assets/img/redLight/red.png" alt="">
 					<img v-show="message.stockIndexOneValue.slice(-1)%2==0" src="../../assets/img/redLight/green.png" alt="">
@@ -70,7 +70,7 @@
 					<img v-show="message.stockIndexOneValue.slice(-1)%2==1" src="../../assets/img/redLight/red.png" alt="">
 					<img v-show="message.stockIndexOneValue.slice(-1)%2==0" src="../../assets/img/redLight/green.png" alt="">
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<div class="lightList2 lightList flex flex-hsb width100 mb">
 			<div class="item">
@@ -83,7 +83,7 @@
 					</p>
 				</div>
 			</div>
-			<div class="item">
+			<!-- <div class="item">
 				<div class="message" :class="{'redColor':message.stockIndexOneValue.slice(-1)%2==1,'greenColor':message.stockIndexOneValue.slice(-1)%2==0}">
 					<p class="width100">
 						{{message.stockIndexTowName}}
@@ -102,7 +102,7 @@
 						{{message.stockIndexThreeValue}}
 					</p>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </template>

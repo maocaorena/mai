@@ -129,7 +129,6 @@
                                 
                                 if(len == 0){
                                     this.list.push(..._res);
-                                    console.log(_res)
                                     if (_res.length < 6) {
                                         this.noMore = true;
                                     } else {
