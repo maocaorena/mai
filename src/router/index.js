@@ -135,6 +135,7 @@ const router = new Router({
                     name: '商城',
                     showBottomTab: true,
                     hideHeader: true,
+                    keep: true,
                     htmlBg: {
                         'background': '#f2f2f2',
                     }

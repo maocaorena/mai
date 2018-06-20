@@ -7,8 +7,8 @@
  -->
 <template>
 	<div class="tabbars flex">
-        <div class="tabbars-item flex-zhong" v-on:click="clickThis(index)" v-for="(item, index) of itemName">
-            <button :class="{redborder : index == selectthis}">{{item}}</button>
+        <div class="tabbars-item flex-zhong" v-on:click="clickThis(index,item)" v-for="(item, index) of itemName">
+            <button :class="{redborder : item.id == selectthis}">{{item.productClassName}}</button>
         </div>
 	</div>
 </template>
@@ -26,12 +26,17 @@
                 selectthis : 0
             }
         },
-        components:{
+        watch: {
+            'initTab': function(val){
+                console.log(val)
+                this.selectthis = val
+            }
         },
         methods:{
-            clickThis(index){
-                this.selectthis = index;
-                this.$emit('clickThis',index);
+            clickThis(index, item){
+                console.log(index)
+                this.selectthis = item.id;
+                this.$emit('clickThis', index, item);
             }
         },
         created(){
