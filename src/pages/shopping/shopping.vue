@@ -167,7 +167,8 @@
                 _params = {
                     pageNum: this.pageNum,
                     pageSize: 6,
-                    productClassId: this.productClassId
+                    productClassId: this.productClassId,
+                    isOneLevel: 1
                 };
 
                 this.api.getB({
