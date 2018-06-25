@@ -4,6 +4,9 @@
             <!-- <div class="go-home" @click="goHome">
                 返回首页 
             </div> -->
+            <div class="item-tip" v-if="detail.isGiveGold == 1">
+                送黄金
+            </div>
             <div class="swiper-container" id="detailSwiper">
 				<div class="swiper-wrapper">
 					<div v-for="item of bannerList" class="swiper-slide">

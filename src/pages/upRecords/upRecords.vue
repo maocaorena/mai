@@ -19,7 +19,7 @@
                 </li>
                 <li class="row flex" v-for="item of list">
                     <div class="one">
-                        {{item.upgradeTime}}
+                        {{item.gameTime}}
                     </div>
                     <div class="two">
                         {{item.orderCount}}
@@ -58,7 +58,7 @@
             getList() {
                 this.loading = true;
                 this.api.getBn({
-                    url: 'customerOrder/getUpOrderList',
+                    url: 'customerOrder/getGameOrderList',
                     params: {
                         pageNum: this.pageNum,
                         pageSize: 6,

@@ -1,82 +1,51 @@
 @import "../../assets/scss/rem";
 .items {
-    position: relative;
+    padding: st(30);
     border-top: 1px solid #f2f2f2;
     background: #fff;
-}
-
-.roomItem-in {
-    position: relative;
-    padding: st(20);
-    width: 50%; // height: st(550);
-    border-radius: st(8);
-}
-
-.img {
-    margin: 0 auto;
-    width: st(256);
-    height: st(256);
-    padding: st(6);
-    img {
-        width: 100%;
-        height: 100%;
-        border-radius: st(20);
+    .img {
+        position: relative;
+        margin: 0 auto;
+        width: st(250);
+        height: st(250);
+        padding: st(6);
+        img {
+            width: 100%;
+            height: 100%;
+        }
+        .item-tip{
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: yellowgreen;
+            color: #fff;
+            padding: st(10);
+            border-radius: st(10);
+        }
     }
-}
-
-.name {
-    width: 100%;
-    color: #333;
-    font-size: st(28);
-    line-height: st(50);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-}
-
-.price {
-    width: 100%;
-    height: st(100);
-    font-weight: 900;
-    div {
-        height: 100%;
-    }
-    .left {
-        float: left;
-        width: 60%;
-        font-size: st(36);
-        line-height: st(100);
-        text-indent: st(10);
-        color: #ff0036;
-    }
-    .right {
-        margin-top: st(10);
-        margin-right: st(20);
-        float: right;
-        width: st(80);
-        height: st(80);
-        color: #f93069;
-        border: 1px solid #f93069;
-        line-height: st(80);
-        text-align: center;
-        border-radius: 50%;
-    }
-}
-
-.upLv {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: st(240);
-    left: 0;
-    margin: auto;
-    width: st(80);
-    height: st(80);
-    text-align: center;
-    img {
-        width: st(60);
-        height: st(60);
+    .right{
+        margin-left: st(20);
+        width: st(400);
+        .name{
+            display: -webkit-box;    
+            -webkit-box-orient: vertical;    
+            -webkit-line-clamp: 2;    
+            overflow: hidden;
+        }
+        .item-send{
+            margin: st(30) auto;
+            width: 80%;
+            height: st(60);
+            line-height: st(60);
+            text-align: center;
+            border: 1px solid yellowgreen;
+            border-radius: st(10);
+        }
+        .buy{
+            padding: st(15) st(30);
+            background: yellowgreen;
+            color: #fff;
+            border-radius: st(16)
+        }
     }
 }

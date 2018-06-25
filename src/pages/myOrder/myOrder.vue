@@ -3,6 +3,15 @@
         <div class="width100 orders page-infinite-wrapper" ref="wrapper">
             <ul ref="roolist" class="width100 orderList page-infinite-list" v-infinite-scroll="getList" infinite-scroll-disabled="loading" infinite-scroll-distance="60">
                 <li class="orderItem mb" v-for="item of list">
+                    <template v-if="item.orderState == 1">
+                        <div class="item-select flex-zhong" @click="addThis(item.id)" v-show="selectList.indexOf(item.id)<0">
+                            <img src="../../assets/img/common/choice_1.png" alt="">
+                        </div>
+                        <div class="item-select flex-zhong" @click="delThis(item.id)" v-show="selectList.indexOf(item.id)>-1">
+                            <img src="../../assets/img/common/choice_2.png" alt="">
+                        </div>
+
+                    </template>
                     <div class="top flex mb" @click="goDetail(item)">
                         <div class="img">
                             <img :src="item.productImage" alt="">
@@ -45,8 +54,14 @@
                             退款时间：{{item.refundTime}}
                         </template>
                     </p>
-                    <div class="buttons flex flex-hlr">
-                        <template v-if="item.orderState == 0">
+                    <div class="width100 colorRed defaultFont tc" v-if="item.gameState == 2">
+                        恭喜中奖！获得价值 {{item.giveGoldQuantity}} 元的黄金
+                    </div>
+                    <div class="buttons flex flex-hc" v-if="item.isGiveGold == 1 && item.gameState == 0">
+                        <button>
+                            玩游戏 送黄金
+                        </button>
+                        <!-- <template v-if="item.orderState == 0">
                             <button @click="backMoney(item)">
                                 退款
                             </button>
@@ -62,12 +77,15 @@
                             <button @click="backMoney(item)" v-if="item.upgradeState != 3">
                                 退款
                             </button>
-                        </template>
+                        </template> -->
                         
                         
                     </div>
                 </li>
             </ul>
+        </div>
+        <div class="receiveAddress-bottom flex-zhong bottom-bar">
+            <button @click="send">支付运费并提货</button>
         </div>
         <p class="noMore flex-zhong" v-show="!noMore">
                 <mt-spinner type="snake"></mt-spinner>
@@ -85,6 +103,7 @@
                 loading: false, //控制加载，true会停止加载
                 noMore: false, //没有更多
                 pageNum: 1,
+                selectList: [],
             }
         },
         filters: {
@@ -129,6 +148,24 @@
             
         },
         methods: {
+            addThis(id){
+                this.selectList.push(id)
+            },
+            delThis(id){
+                this.selectList.splice(this.selectList.indexOf(id), 1)
+            },
+            send(){
+                if(this.selectList.length <= 0){
+                    this.Util.myAlert('请选择订单');
+                    return;
+                };
+                this.$router.push({
+                    name: 'payCarMonry',
+                    query: {
+                        oid: this.selectList.join(',')
+                    }
+                })
+            },
             goUp(id){
                 this.$router.push({
                     name: 'redLight',

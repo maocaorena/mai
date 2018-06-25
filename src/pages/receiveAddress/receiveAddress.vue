@@ -88,10 +88,9 @@
             //选择收货地址
             selectAddr(id) {
                 this.$router.replace({
-                    name: 'sureOrder',
+                    name: 'payCarMonry',
                     query: {
-                        num: this.$route.query.num,
-                        productId: this.$route.query.productId,
+                        oid: this.$route.query.oid,
                         addrId: id
                     }
                 })

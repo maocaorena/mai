@@ -8,7 +8,7 @@
 	        <div class="rooms page-infinite-wrapper" ref="wrapper">
 	            <ul ref="roolist" class="list page-infinite-list" v-infinite-scroll="getList" infinite-scroll-disabled="loading"
 	                infinite-scroll-distance="60">
-	                <template v-for="(item,index) of listHandle">
+	                <template v-for="(item,index) of list">
 	                    <shoppingItem :message="item"> </shoppingItem>
 	                </template>
 	                <li style="clear: both;"></li>
@@ -41,23 +41,6 @@
             };
         },
         computed: {
-            listHandle() {
-                let _list = this.Util.jm(this.list);
-                if (_list.length > 0 && _list[0].upProductId) {
-                    return _list;
-                };
-                let len = Math.ceil(_list.length / 2);
-                let _list1 = [];
-                for (let i = 0; i < len; i++) {
-                    let _item = [];
-                    _item.push(_list[i * 2]);
-                    if (_list[i * 2 + 1]) {
-                        _item.push(_list[i * 2 + 1]);
-                    };
-                    _list1.push(_item);
-                };
-                return _list1;
-            },
             tag() {
                 return this.$store.getters.tag;
             },
@@ -168,7 +151,6 @@
                     pageNum: this.pageNum,
                     pageSize: 6,
                     productClassId: this.productClassId,
-                    isOneLevel: 1
                 };
 
                 this.api.getB({

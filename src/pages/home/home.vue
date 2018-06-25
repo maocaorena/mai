@@ -39,6 +39,7 @@
         mounted() {
         },
         methods: {
+            // 0商品详情，1内部链接，2外部链接，3通告 ,
             // 获取广告位
 			getBanner() {
 				this.api.getBn({
@@ -66,7 +67,7 @@
 							name: item.linkUrl,
 						});
                         break;
-                    case 1:
+                    case 2:
                         window.location.href = item.linkUrl
 						break;
 					default:

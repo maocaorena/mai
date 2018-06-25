@@ -2,10 +2,18 @@
 #productDetail{
     .topImg{
         position: relative;
-        padding: st(20);
         width: 100%;
-        height: st(750);
         background: #fff;
+        .item-tip{
+            position: absolute;
+            right: 0;
+            top: 0;
+            z-index: 20;
+            background: yellowgreen;
+            color: #fff;
+            padding: st(10) st(30);
+            border-radius: st(10);
+        }
         .go-home{
             position: absolute;
             top: st(40);

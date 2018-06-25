@@ -70,6 +70,10 @@ const sureOrder = () =>
     import ( /* webpackChunkName: "sureOrder" */ '@/pages/sureOrder/sureOrder'); //确认订单
 const buySuccess = () =>
     import ( /* webpackChunkName: "buySuccess" */ '@/pages/buySuccess/buySuccess'); //购买成功
+
+const payCarMonry = () =>
+    import ( /* webpackChunkName: "buySuccess" */ '@/pages/myOrder/payCarMonry'); //合并提货
+
 const sendResult = () =>
     import ( /* webpackChunkName: "buySuccess" */ '@/pages/buySuccess/sendResult'); //提货结果
 const redLight = () =>
@@ -298,6 +302,19 @@ const router = new Router({
                 component: myOrder,
                 meta: {
                     name: '我的订单',
+                    showBack: true,
+                    login: true,
+                    htmlBg: {
+                        'background': '#f2f2f2'
+                    }
+                },
+            },
+            { //和并提货
+                name: 'payCarMonry',
+                path: '/my/payCarMonry',
+                component: payCarMonry,
+                meta: {
+                    name: '支付运费',
                     showBack: true,
                     login: true,
                     htmlBg: {

@@ -3,7 +3,7 @@
         <div class="payState width100 pd20 largeFont">
             交易状态：{{productDetail.orderState | stateHandle}}
         </div>
-        <div class="peopleMessage bg1 pd20 mb">
+        <div class="peopleMessage bg1 pd20 mb" v-if="productDetail.deliveryAddress">
             <div class="one flex flex-hlr mb color333">
                 <p>收货人：{{productDetail.deliveryAddress.consignee}}</p>
                 <p>{{productDetail.deliveryAddress.mobile}}</p>

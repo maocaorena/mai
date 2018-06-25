@@ -2,12 +2,25 @@
 #myOrder{
     .orders{
         padding: st(20);
+        padding-left: st(60);
     }
     .orderItem{
+        position: relative;
         padding: st(20);
         width: 100%;
         background: #fff;
         border-radius: st(10);
+        .item-select{
+            position: absolute;
+            left: st(-48);
+            top: 0;
+            width: st(48);
+            height: 100%;
+            img{
+                width: st(48);
+                height: st(48);
+            }
+        }
         .top{
             width: 100%;
             .img{
@@ -35,12 +48,34 @@
             button{
                 padding-top: st(10);
                 padding-bottom: st(10);
-                width: st(160);
+                width: 80%;
                 border: 1px solid #ccc;
                 border-radius: st(8);
                 background: #409eff;
                 color: #fff;
             }
+        }
+    }
+    .receiveAddress-bottom{
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 10;
+        margin: auto;
+        width: 100%;
+        height: st(100);
+        background: #fff;
+        border-top: 1px solid #d8d8d8;
+        button{
+            width: st(672);
+            height: st(84);
+            background: #ff5b88;
+            border-radius: st(20);
+            text-align: center;
+            font-size: st(28);
+            border: 0;
+            color: #FFF;
         }
     }
 }

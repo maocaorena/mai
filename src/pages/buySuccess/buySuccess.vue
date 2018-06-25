@@ -4,8 +4,8 @@
         <h1 class="titile colorRed mb" v-if="productDetail.upProductId">恭喜您获得商品免费升级福利！</h1>
         <h1 class="titile colorRed mb" v-if="!productDetail.upProductId">购买成功！</h1>
     
-        <p class="productTit color333 defaultStyle" v-if="!productDetail.upProductId">当前商品</p>
-        <div class="product defaultStyle flex mb" v-if="!productDetail.upProductId">
+        <p class="productTit color333 defaultStyle">当前商品</p>
+        <div class="product defaultStyle flex mb">
             <div class="left">
                 <img :src="productDetail.productImage" />
             </div>
@@ -21,9 +21,9 @@
         </div>
 
 
-        <template v-if="productDetail.upProductId">
-            <p class="productTit defaultStyle colorRed defaultFont">升级后</p>
-            <div class="product defaultStyle flex mb">
+        <template  v-if="productDetail.giveGoldQuantity > 0">
+            <p class="productTit defaultStyle colorRed largeFont">玩游戏送黄金！</p>
+            <!-- <div class="product defaultStyle flex mb">
                 <div class="left">
                     <img :src="productDetail.upProductImage" />
                 </div>
@@ -36,19 +36,19 @@
                         <p class="color333">× {{num}}</p>
                     </div>
                 </div>
-            </div>
-            <p class="pd20 bg1 mb color333 largeFont">
-                升级后增值
-                <span class="colorRed">{{(productDetail.upProductPrice - productDetail.productPrice)*productDetail.orderCount}}</span>
-                元！
+            </div> -->
+            <p class="pd20 bg1 mb color333 defaultFont">
+                成功可获得价值
+                <span class="colorRed">{{productDetail.giveGoldQuantity}}</span>
+                元黄金！
             </p>
         </template>
 
         <div class="upLev defaultStyle flex flex-hsb mb">
-            <div class="upLevItem flex flex-s flex-sc"  @click="upLev" v-if="productDetail.upProductId">
-                <img :src="productDetail.upProductImage" />
+            <div class="upLevItem flex flex-s flex-sc"  @click="upLev" v-if="productDetail.giveGoldQuantity > 0">
+                <img :src="productDetail.productImage" />
                 <p class="color2 largeFont">
-                    立即升级
+                    立即玩游戏
                 </p>
             </div>
             <div class="upLevItem flex flex-s flex-sc"  @click="sendProd()">
@@ -106,7 +106,6 @@
                 })
             },
             sendProd() {
-                MessageBox.confirm('选择提货后本次商品不可再参加升级活动！确定要提货吗？').then(action => {
                     // this.api.putB({
                     //     url: 'customerOrder/pickUpGoods',
                     //     user: true,
@@ -119,12 +118,8 @@
                     //     }
                     // })
                     this.$router.push({
-                        name: 'sendResult',
-                        query: {
-                            oid: this.$route.query.oid
-                        }
+                        name: 'myOrder'
                     })
-                });
             },
             close() {
                 this.alertState = 0;

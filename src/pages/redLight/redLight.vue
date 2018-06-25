@@ -6,11 +6,11 @@
 					<h2 class="colorRed largeFont row width100"> </h2>
 					<h6 class="row width100"> </h6>
 					<p>
-						游戏将实时读取3个金融指数的真实数据，每个数据对应一个红绿灯。如数据最后一位数字为奇数，则亮红灯；如数据最后一位数字为偶数，则亮绿灯。
+						游戏将实时读取1个金融指数的真实数据。如数据最后一位数字为奇数，则亮红灯；如数据最后一位数字为偶数，则亮绿灯。
 					</p>
 					<br>
 					<p class="width100" style="color: #ff00e4">
-						游戏开始前玩家预测游戏结束时哪种颜色的灯更多，游戏开始后下一个整分钟时间结束（剩余时间不足30秒顺延至下一分钟），如游戏结束时预测准确，则游戏获胜；如预测错误，则游戏失败。
+						游戏开始前玩家预测游戏结束时是哪种颜色的灯，游戏开始后下一个整分钟时间结束（剩余时间不足30秒顺延至下一分钟），如游戏结束时预测准确，则游戏获胜；如预测错误，则游戏失败。
 					</p>
 					<br>
 					<div class="startGame largeFont flex-zhong" @click="startgame(2)">
@@ -50,7 +50,7 @@
 			距离结束：{{time | times}}
 		</div>
 		<p class="width100 mb selectLight">
-			预测选择：<span class="colorRed">{{select==0?'红灯多':'绿灯多'}}</span>
+			预测选择：<span class="colorRed">{{select==0?'红灯':'绿灯'}}</span>
 		</p>
 		<div class="lightList1 lightList flex flex-hsb width100">
 			<div class="item">

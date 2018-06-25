@@ -2,10 +2,10 @@
     <div id="upLvResult" class="wrapper">
         <template v-if="result===2">
             <p class=" color333 pd20 pb0 width100">
-                预测选择： <span class="colorRed">{{message.upgradeTrafficLights == 0?'红灯多':'绿灯多'}}</span>
+                预测选择： <span class="colorRed">{{message.upgradeTrafficLights == 0?'红灯':'绿灯'}}</span>
             </p>
             <p class=" color333 pd20 pb0 width100">
-                游戏结果：<span class="colorRed">{{message.upgradeResult == 0?'红灯多':'绿灯多'}}</span>
+                游戏结果：<span class="colorRed">{{message.upgradeResult == 0?'红灯':'绿灯'}}</span>
             </p>
             <p class="colorRed pd20 largeFont">
                 恭喜您，升级成功！
@@ -39,10 +39,10 @@
                 参与游戏： <span class="color333">超级红绿灯</span>
             </p>
             <p class=" color333 pd20 pb0 width100">
-                预测选择： <span class="colorRed">{{message.upgradeTrafficLights == 0?'红灯多':'绿灯多'}}</span>
+                预测选择： <span class="colorRed">{{message.upgradeTrafficLights == 0?'红灯':'绿灯'}}</span>
             </p>
             <p class=" color333 pd20 pb0 width100">
-                游戏结果：<span class="colorRed">{{message.upgradeResult == 0?'红灯多':'绿灯多'}}</span>
+                游戏结果：<span class="colorRed">{{message.upgradeResult == 0?'红灯':'绿灯'}}</span>
             </p>
             <p class="colorRed pd20 largeFont">
                 升级失败！
@@ -77,14 +77,6 @@
         <div class="flex flex-hlr pd20 pb0">
             <p>{{message.stockIndexVo.stockIndexOneName}}：{{message.stockIndexVo.stockIndexOneValue}}</p>
             <p class="colorRed" >{{message.stockIndexVo.stockIndexThreeValue.slice(-1)%2==1?'奇数亮红灯':'偶数绿灯亮'}}</p>
-        </div>
-        <div class="flex flex-hlr pd20 pb0">
-            <p>{{message.stockIndexVo.stockIndexTowName}}：{{message.stockIndexVo.stockIndexTowValue}}</p>
-            <p class="colorRed">{{message.stockIndexVo.stockIndexThreeValue.slice(-1)%2==1?'奇数亮红灯':'偶数绿灯亮'}}</p>
-        </div>
-        <div class="flex flex-hlr pd20">
-            <p>{{message.stockIndexVo.stockIndexThreeName}}：{{message.stockIndexVo.stockIndexThreeValue}}</p>
-            <p class="colorRed">{{message.stockIndexVo.stockIndexThreeValue.slice(-1)%2==1?'奇数亮红灯':'偶数绿灯亮'}}</p>
         </div>
     </div>
 </template>

@@ -26,35 +26,6 @@
             </div>
         </div>
         
-        <div class="sendType mb" @click="selectAddr">
-            <div class="one flex flex-hlr">
-                <div class="defaultFont color333">
-                    配送方式
-                </div>
-                <!-- <div class="defaultFont colorRed">
-                    快递 ￥10.00
-                </div> -->
-            </div>
-            <div class="two flex flex-hlr">
-                <div class="defaultFont color333">
-                    收货人：{{defaultMessage.consignee}}
-                </div>
-                <div class="defaultFont color333">
-                    {{defaultMessage.mobile}}
-                </div>
-            </div>
-            <div class="three color333 smallFont">
-                收货地址：
-                {{defaultMessage.province}}
-                {{defaultMessage.city}}
-                {{defaultMessage.region}}
-                {{defaultMessage.address}}
-            </div>
-            <div class="jiantou flex-zhong">
-                <img src="../../assets/img/addr/triangle.png" alt="">
-            </div>
-        </div>
-
         <div class="getServer color2 mb" @click="openServer">
             联系客服
         </div>
@@ -166,16 +137,6 @@
                     name: 'trueName',
                 })
             },
-            selectAddr() {
-                this.$router.push({
-                    name: 'receiveAddress',
-                    query: {
-                        num: this.num,
-                        productId: this.$route.query.productId,
-                        isSelect: 1
-                    }
-                })
-            },
             close() {
                 this.alertState = 0;
             },
@@ -211,7 +172,7 @@
                         url: 'customerOrder/createOrder',
                         params: {
                             productId: this.$route.query.productId,
-                            deliveryAddressId: this.defaultMessage.id,
+                            // deliveryAddressId: 10,
                             orderCount: this.num
                         },
                         user: true
