@@ -33,6 +33,8 @@ const getMoney = () =>
     import ( /* webpackChunkName: "getMoney" */ '@/pages/getMoney/getMoney'); //提现
 const myOrder = () =>
     import ( /* webpackChunkName: "myOrder" */ '@/pages/myOrder/myOrder'); //我的订单
+const myGold = () =>
+    import ( /* webpackChunkName: "myGold" */ '@/pages/myGold/myGold'); //我的黄金
 const orderDetail = () =>
     import ( /* webpackChunkName: "myOrder" */ '@/pages/myOrder/orderDetail'); //订单详情 
 const upRecords = () =>
@@ -177,7 +179,7 @@ const router = new Router({
                     name: '购买成功',
                     showBack: true,
                     htmlBg: {
-                        'background': '#f2f2f2',
+                        'background': '#fff',
                     }
                 }
             },
@@ -328,6 +330,19 @@ const router = new Router({
                 component: orderDetail,
                 meta: {
                     name: '订单详情',
+                    showBack: true,
+                    login: true,
+                    htmlBg: {
+                        'background': '#f2f2f2'
+                    }
+                },
+            },
+            { //我的黄金
+                name: 'myGold',
+                path: '/my/myGold',
+                component: myGold,
+                meta: {
+                    name: '我的黄金',
                     showBack: true,
                     login: true,
                     htmlBg: {

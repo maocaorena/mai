@@ -55,54 +55,22 @@
 		<div class="lightList1 lightList flex flex-hsb width100">
 			<div class="item">
 				<div class="itemIn">
-					<img v-show="message.stockIndexOneValue.slice(-1)%2==1" src="../../assets/img/redLight/red.png" alt="">
-					<img v-show="message.stockIndexOneValue.slice(-1)%2==0" src="../../assets/img/redLight/green.png" alt="">
+					<img v-show="message.dataSourceValue.slice(-1)%2==1" src="../../assets/img/redLight/red.png" alt="">
+					<img v-show="message.dataSourceValue.slice(-1)%2==0" src="../../assets/img/redLight/green.png" alt="">
 				</div>
 			</div>
-			<!-- <div class="item">
-				<div class="itemIn">
-					<img v-show="message.stockIndexOneValue.slice(-1)%2==1" src="../../assets/img/redLight/red.png" alt="">
-					<img v-show="message.stockIndexOneValue.slice(-1)%2==0" src="../../assets/img/redLight/green.png" alt="">
-				</div>
-			</div>
-			<div class="item">
-				<div class="itemIn">
-					<img v-show="message.stockIndexOneValue.slice(-1)%2==1" src="../../assets/img/redLight/red.png" alt="">
-					<img v-show="message.stockIndexOneValue.slice(-1)%2==0" src="../../assets/img/redLight/green.png" alt="">
-				</div>
-			</div> -->
 		</div>
 		<div class="lightList2 lightList flex flex-hsb width100 mb">
 			<div class="item">
-				<div class="message" :class="{'redColor':message.stockIndexOneValue.slice(-1)%2==1,'greenColor':message.stockIndexOneValue.slice(-1)%2==0}">
+				<div class="message" :class="{'redColor':message.dataSourceValue.slice(-1)%2==1,'greenColor':message.dataSourceValue.slice(-1)%2==0}">
 					<p class="width100">
-						{{message.stockIndexOneName}}
+						{{message.dataSourceName}}
 					</p>
 					<p class="width100">
-						{{message.stockIndexOneValue}}
-					</p>
-				</div>
-			</div>
-			<!-- <div class="item">
-				<div class="message" :class="{'redColor':message.stockIndexOneValue.slice(-1)%2==1,'greenColor':message.stockIndexOneValue.slice(-1)%2==0}">
-					<p class="width100">
-						{{message.stockIndexTowName}}
-					</p>
-					<p class="width100">
-						{{message.stockIndexTowValue}}
+						{{message.dataSourceValue}}
 					</p>
 				</div>
 			</div>
-			<div class="item">
-				<div class="message" :class="{'redColor':message.stockIndexOneValue.slice(-1)%2==1,'greenColor':message.stockIndexOneValue.slice(-1)%2==0}">
-					<p class="width100">
-						{{message.stockIndexThreeName}}
-					</p>
-					<p class="width100">
-						{{message.stockIndexThreeValue}}
-					</p>
-				</div>
-			</div> -->
 		</div>
 	</div>
 </template>
@@ -126,9 +94,8 @@
 				alertState: 1,
 				select: 0,
 				message: {
-					stockIndexOneValue: '',
-					stockIndexTowValue: '',
-					stockIndexThreeValue: ''
+					dataSourceName: '',
+					dataSourceValue: ''
 				},
 				time: 0,
 				nowTime: this.Util.dateTime(Date.parse(new Date()), 'time'),
@@ -144,7 +111,7 @@
 			}
 		},
 		created() {
-			this.getNowTime();
+			this.getMessage()
 		},
 		methods: {
 			startThisGame() {
@@ -178,11 +145,11 @@
 				console.log(type)
 				if(type == 3) {
 					this.api.putB({
-						url: 'customerOrder/upgradeGoods',
+						url: 'customerOrder/startGame',
 						user: true,
 						params: {
 							id: this.$route.query.oid,
-							upgradeTrafficLights: this.select //0 红灯多  1绿灯多
+							customerSelect: this.select //0 红灯 奇数  1绿灯 偶数
 						}
 					}).then(res => {
 						if(res.successed) {
@@ -199,7 +166,8 @@
 			},
 			getMessage() {
 				this.api.getBn({
-					url: 'stockIndex/getInfo',
+					url: 'gameDataSource/getInfo',
+					user: true
 				}).then(res => {
 					if(res.successed) {
 						this.message = res.returnValue;

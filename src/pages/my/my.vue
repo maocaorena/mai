@@ -22,6 +22,7 @@
 			<menu-bar :togo="'/my/getMoney'" :icon="'icon-sponsor'" :height="50" :title="'提现'" class="account-menubar" ></menu-bar>
 
 			<menu-bar :togo="'/my/myOrder'" :icon="'icon-dingdan'" :height="50" :title="'我的订单'"></menu-bar>
+			<menu-bar :togo="'/my/myGold'" :icon="'icon-dingdan'" :height="50" :title="'我的黄金'"></menu-bar>
 			<menu-bar :togo="'/my/upRecords'" :icon="'icon-edit'" :height="50" :title="'当天升级记录'"></menu-bar>
 			<menu-bar :togo="'/my/receiveAddress'" :icon="'icon-location'" :height="50" :title="'地址管理'" class="account-menubar"></menu-bar>
 
