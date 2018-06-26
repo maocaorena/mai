@@ -1,4 +1,36 @@
 @import "../../assets/scss/rem";
 #myGold{
-    
+    .myData{
+        margin-bottom: 5px;
+    }
+    .item{
+        background: #fff;
+        margin-bottom: 1px;
+    }
+    .reduce{
+        color: yellowgreen;
+    }
+    .add{
+        color: red;
+    }
+    .alertOne{
+        width: 100%;
+        padding-top: st(30);
+        input{
+            padding: 0 st(20);
+            width: 50%;
+            height: st(80);
+            border:1px solid #ccc;
+            border-radius: st(10);
+        }
+        button{
+            padding: 0 st(20);
+            width: 40%;
+            height: st(80);
+            border: none;
+            background: #409eff;
+            color: #fff;
+            border-radius: st(10);
+        }
+    }
 }

@@ -35,6 +35,8 @@ const myOrder = () =>
     import ( /* webpackChunkName: "myOrder" */ '@/pages/myOrder/myOrder'); //我的订单
 const myGold = () =>
     import ( /* webpackChunkName: "myGold" */ '@/pages/myGold/myGold'); //我的黄金
+const getGold = () =>
+    import ( /* webpackChunkName: "myGold" */ '@/pages/myGold/getGold'); //提取黄金
 const orderDetail = () =>
     import ( /* webpackChunkName: "myOrder" */ '@/pages/myOrder/orderDetail'); //订单详情 
 const upRecords = () =>
@@ -63,7 +65,7 @@ const setting = () =>
     import ( /* webpackChunkName: "setting" */ '@/pages/setting/setting'); //设置
 const question = () =>
     import ( /* webpackChunkName: "question" */ '@/pages/question/question'); //常见问题
-    
+
 const shopping = () =>
     import ( /* webpackChunkName: "shopping" */ '@/pages/shopping/shopping'); //商城
 const productDetail = () =>
@@ -342,7 +344,20 @@ const router = new Router({
                 path: '/my/myGold',
                 component: myGold,
                 meta: {
-                    name: '我的黄金',
+                    name: '黄金账户',
+                    showBack: true,
+                    login: true,
+                    htmlBg: {
+                        'background': '#f2f2f2'
+                    }
+                },
+            },
+            { //我的黄金
+                name: 'getGold',
+                path: '/my/getGold',
+                component: getGold,
+                meta: {
+                    name: '提取黄金',
                     showBack: true,
                     login: true,
                     htmlBg: {
@@ -521,20 +536,20 @@ router.beforeEach((to, from, next) => {
         return;
     };
     console.log(from)
-    if( to.name === 'login' &&  from.name){
+    if (to.name === 'login' && from.name) {
         Storage.setItem('loginFrom', from.fullPath)
     };
-    if( to.meta.login && !User.getToken()){
-        next({name:'login'})
-    }else{
+    if (to.meta.login && !User.getToken()) {
+        next({ name: 'login' })
+    } else {
         next();
     }
 });
 router.afterEach((to, from) => {
     let docs = '';
-    if(document.getElementById('style')){
+    if (document.getElementById('style')) {
         docs = document.getElementById('style');
-    }else{
+    } else {
         docs = document.createElement('style');
         docs.setAttribute('id', 'style')
         document.getElementsByTagName('body')[0].appendChild(docs)

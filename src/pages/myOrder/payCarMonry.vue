@@ -74,44 +74,44 @@ export default {
             })
         },
         getById() {
-                Indicator.open();
-                this.api.getB({
-                    url: 'deliveryAddress/getById',
-                    params: {
-                        id: this.$route.query.addrId
-                    },
-                    user: true
-                }).then(res => {
-                    Indicator.close();
-                    if (res.successed) {
-                        this.defaultMessage = res.returnValue;
-                    }
-                }).catch(() => {
+            Indicator.open();
+            this.api.getB({
+                url: 'deliveryAddress/getById',
+                params: {
+                    id: this.$route.query.addrId
+                },
+                user: true
+            }).then(res => {
+                Indicator.close();
+                if (res.successed) {
+                    this.defaultMessage = res.returnValue;
+                }
+            }).catch(() => {
 
-                })
-            },
-            getDefault() {
-                Indicator.open();
-                this.api.getB({
-                    url: 'deliveryAddress/getDefault',
-                    user: true,
-                }).then(res => {
-                    Indicator.close();
-                    if (res.successed && res.returnValue) {
-                        this.defaultMessage = res.returnValue;
-                    }
-                })
-            },
-            getMyInfo() {
-                this.api.getB({
-                    url: 'customer/getByToken',
-                    user: true
-                }).then(res => {
-                    if (res.successed) {
-                        this.userInfo = res.returnValue;
-                    }
-                })
-            }
+            })
+        },
+        getDefault() {
+            Indicator.open();
+            this.api.getB({
+                url: 'deliveryAddress/getDefault',
+                user: true,
+            }).then(res => {
+                Indicator.close();
+                if (res.successed && res.returnValue) {
+                    this.defaultMessage = res.returnValue;
+                }
+            })
+        },
+        getMyInfo() {
+            this.api.getB({
+                url: 'customer/getByToken',
+                user: true
+            }).then(res => {
+                if (res.successed) {
+                    this.userInfo = res.returnValue;
+                }
+            })
+        }
     },
 }
 </script>

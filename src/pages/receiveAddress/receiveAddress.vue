@@ -87,13 +87,23 @@
         methods: {
             //选择收货地址
             selectAddr(id) {
-                this.$router.replace({
-                    name: 'payCarMonry',
-                    query: {
-                        oid: this.$route.query.oid,
-                        addrId: id
-                    }
-                })
+                if(this.$route.query.from == 'gold'){
+                    this.$router.replace({
+                        name: 'getGold',
+                        query: {
+                            ids: this.$route.query.ids,
+                            addrId: id
+                        }
+                    })
+                }else{
+                    this.$router.replace({
+                        name: 'payCarMonry',
+                        query: {
+                            oid: this.$route.query.oid,
+                            addrId: id
+                        }
+                    })
+                }
             },
             //新增地址
             addAddr() {

@@ -1,0 +1,80 @@
+@import "../../assets/scss/rem";
+#getGold{
+    .sendType {
+        position: relative;
+        padding: 0 st(20);
+        width: 100%;
+        background: #fff;
+        .one {
+            padding-top: st(20);
+            padding-bottom: st(20);
+            border-bottom: 1px solid #ccc;
+        }
+        .two {
+            padding-top: st(20);
+            padding-bottom: st(20);
+            padding-right: st(50);
+        }
+        .three {
+            padding-top: st(20);
+            padding-bottom: st(20);
+            padding-right: st(50);
+        }
+        .jiantou {
+            position: absolute;
+            right: st(20);
+            top: st(80);
+            width: st(40);
+            height: st(160);
+            line-height: st(120);
+            text-align: center;
+            img{
+                width: st(28);
+            }
+        }
+    }
+    .item{
+        position: relative;
+        background: #fff;
+        margin-bottom: 1px;
+        .left{
+            margin-right: st(30);
+            width: st(150);
+            height: st(150);
+            img{
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .middle{
+            width: st(400);
+            .colorRed{
+                padding: st(20);
+                border: 1px solid yellowgreen;
+                border-radius: st(20);
+                text-align: center
+            }
+        }
+        .right{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: st(100);
+            height: 100%;
+            img{
+                width: st(48);
+                height: st(48);
+            }
+        }
+    }
+    .bottomTabIn{
+        padding: st(20);
+        .buy{
+            width: st(200);
+            height: st(80);
+            background: #ff0000;
+            color: #fff;
+            border-radius: st(80);
+        }
+    }
+}
