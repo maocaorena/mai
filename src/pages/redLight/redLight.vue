@@ -78,6 +78,7 @@
 	import { MessageBox } from 'mint-ui';
 	import { Util } from '@/assets/js/util.js'
 	var timer = null;
+	var timer1 = null;
 	export default {
 		data() {
 			return {
@@ -111,7 +112,8 @@
 			}
 		},
 		created() {
-			this.getMessage()
+			this.getMessage();
+            this.getNowTime()
 		},
 		methods: {
 			startThisGame() {
@@ -181,7 +183,7 @@
 				})
 			},
 			getNowTime() {
-				setInterval(() => {
+				timer1 = setInterval(() => {
 					this.nowTime = this.Util.dateTime(Date.parse(new Date()), 'time');
 				}, 1000)
 			},
@@ -211,6 +213,9 @@
 		beforeDestroy() {
 			if(timer) {
 				clearInterval(timer)
+			}
+            if(timer1) {
+				clearInterval(timer1)
 			}
 		}
 	}

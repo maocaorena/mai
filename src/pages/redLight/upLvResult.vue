@@ -58,7 +58,7 @@
 		<p class=" color333 pd20 pb0 width100">
             本次游戏结果数据
         </p>
-        <div class="flex flex-hlr pd20 pb0">
+        <div class="flex flex-hlr pd20 pb0" v-if="message.gameData">
             <p>{{message.gameData.dataSourceName}}：{{message.gameData.dataSourceValue}}</p>
             <p class="colorRed" >{{message.gameData.dataSourceValue.slice(-1)%2==1?'奇数亮红灯':'偶数绿灯亮'}}</p>
         </div>
@@ -66,6 +66,7 @@
 </template>
 <script>
 	import { Indicator } from "mint-ui"; //引入mintUI  indicator组件
+    var timer = null;
 	export default {
 		data() {
 			return {
@@ -75,12 +76,20 @@
 						stockIndexOneValue: '',
 						stockIndexTowValue: '',
 						stockIndexThreeValue: ''
-					}
+					},
 				}
 			}
 		},
 		created() {
 			this.getResult();
+            timer = setInterval(()=>{
+                this.getResult()
+            },1000)
+		},
+        beforeDestroy() {
+			if(timer) {
+				clearInterval(timer)
+			}
 		},
 		methods: {
 			goOrder() {
@@ -102,6 +111,7 @@
 				})
 			},
 			getResult() {
+                console.log('dddd')
 				Indicator.open();
 				this.api.getB({
 					url: 'customerOrder/getOrderGameResult',
@@ -114,6 +124,10 @@
 					if(res.successed) {
 						this.message = res.returnValue;
 						this.result = res.returnValue.gameState;
+                        if(this.result == 2 || this.result == 3){
+                            clearInterval(timer)
+                        }
+                        console.log(res)
 					}
 				})
 			}
