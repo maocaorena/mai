@@ -58,7 +58,7 @@
                         恭喜中奖！获得价值 {{item.giveGoldQuantity}} 元的黄金
                     </div>
                     <div class="buttons flex flex-hc" v-if="item.isGiveGold == 1 && item.gameState == 0">
-                        <button>
+                        <button @click="goUp(item.id)">
                             玩游戏 送黄金
                         </button>
                         <!-- <template v-if="item.orderState == 0">

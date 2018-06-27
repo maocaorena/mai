@@ -6,9 +6,8 @@
                     <span class="color999">恭喜</span>
                     用户 
                     <span class="color333"> {{item.nickname}} </span> 
-                    <span class="color999">升级成功</span> 
                     获得
-                    <span class="colorRed">{{item.giveGoldAmount}} 元</span> 
+                    <span class="colorRed">{{item.giveGoldQuantity}} 克</span> 
                     黄金
 
                 </div>

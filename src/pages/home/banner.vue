@@ -5,6 +5,7 @@
                 <img @click="goUrl(item)" :src="item.img" alt="">
             </div>
         </div>
+        <div class="swiper-pagination"></div>
     </div>
 </template>
 
@@ -35,6 +36,8 @@
                             loop: true,
                             autoplay: 1000,
                             autoplayDisableOnInteraction: false,
+                            // 如果需要分页器
+                            pagination: '.swiper-pagination',
                         });
                     })
                 });
