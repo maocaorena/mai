@@ -89,9 +89,9 @@
             selectAddr(id) {
                 if(this.$route.query.from == 'gold'){
                     this.$router.replace({
-                        name: 'getGold',
+                        name: 'sureGold',
                         query: {
-                            ids: this.$route.query.ids,
+                            id: this.$route.query.id,
                             addrId: id
                         }
                     })

@@ -5,7 +5,7 @@
                 您当前拥有：<span class="colorRed largeFont">{{message.goldBalance}}</span> 克黄金
             </p>
             <div class="flex mb">
-                <mt-button size="small" type="primary" @click="open">回购</mt-button>
+                <mt-button :disabled="isDisable" size="small" type="primary" @click="open">回购</mt-button>
                 <div class="pd20"></div>
                 <div class="pd20"></div>
                 <mt-button size="small" type="primary" @click="getGold">提取黄金</mt-button>
@@ -45,17 +45,17 @@
             <slot>
                 <p class="alertOne defaultFont color333"> 您当前拥有 <span class="colorRed">{{message.goldBalance}}</span> 克黄金！</p>
                 <p class="alertOne defaultFont color333"> 
-                    <input type="number">
-                    <button>
+                    <input type="number" v-model="getNum" @change="delZero">
+                    <button @click="getAll">
                         全部
                     </button>
                 </p>
-                <p class="alertOne defaultFont color333"> 折合现金：<span class="colorRed">222</span> 元</p>
+                <p class="alertOne defaultFont color333"> 可获得现金：<span class="colorRed">{{getNum*message.goldPrice}}</span> 元</p>
                 <p class="alertOne defaultFont color333"> 当前金价：{{message.goldPrice}} 元/克</p>
                 <br>
                 <br>
                 <div class="buttons flex flex-hsb">
-                    <mt-button type="primary" size="small" >确定 </mt-button>
+                    <mt-button type="primary" size="small" @click="getGoldMoney">确定 </mt-button>
                     <mt-button type="default" size="small" @click="close"> 取消 </mt-button>
                 </div>
             </slot>
@@ -63,6 +63,8 @@
     </div>
 </template>
 <script>
+    import { Indicator } from "mint-ui"; //引入mintUI  indicator组件
+    import { MessageBox } from 'mint-ui';
     export default {
         data() {
             return {
@@ -71,7 +73,9 @@
                 noMore: false, //没有更多
                 pageNum: 1,
                 alertState: 0,
-                message: {}
+                message: {},
+                getNum: 0,
+                isDisable: true,
             }
         },
         filters: {
@@ -105,7 +109,6 @@
                     case 2:
                         _val = '-';
                         break;
-                
                     default:
                         break;
                 };
@@ -116,6 +119,34 @@
             this.getMessage()  
         },
         methods: {
+            getGoldMoney(){
+                MessageBox.confirm('确定回购？').then(action => {
+                    Indicator.open();
+                    this.api.postB({
+                        url: 'customerGoldFinance/buyBack',
+                        params: {
+                            buyBackGoldQuantity: this.getNum,
+                        },
+                        user: true
+                    }).then(res => {
+                        Indicator.close();
+                        if (res.successed) {
+                            this.Util.myAlert('回购成功');
+                            this.getMessage();
+                            this.close();
+                            this.list = [];
+                            this.noMore = false;
+                            this.loading = false;
+                        }
+                    })
+                });
+            },
+            getAll(){
+                this.getNum = this.message.goldBalance
+            },
+            delZero(){
+                this.getNum = this.getNum.replace(/\b(0+)/gi,"")
+            },
             getGold(){
                 this.$router.push({
                     name: 'getGold'
@@ -126,14 +157,19 @@
             },
             close() {
                 this.alertState = 0;
+                this.getNum = 0;
             },
             getMessage(){
+                Indicator.open();
+                this.isDisable = true;
                 this.api.getB({
                     url: 'customerGoldFinance/getGoldAccount',
                     user: true
                 }).then((res) => {
+                    Indicator.close();
                     if (res.successed) {
                         this.message = res.returnValue;
+                        this.isDisable = false;
                     }
                 }).catch(err=>{
                     this.noMore = true;

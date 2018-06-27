@@ -37,6 +37,8 @@ const myGold = () =>
     import ( /* webpackChunkName: "myGold" */ '@/pages/myGold/myGold'); //我的黄金
 const getGold = () =>
     import ( /* webpackChunkName: "myGold" */ '@/pages/myGold/getGold'); //提取黄金
+const sureGold = () =>
+    import ( /* webpackChunkName: "myGold" */ '@/pages/myGold/sureGold'); //确认黄金订单
 const orderDetail = () =>
     import ( /* webpackChunkName: "myOrder" */ '@/pages/myOrder/orderDetail'); //订单详情 
 const upRecords = () =>
@@ -352,12 +354,25 @@ const router = new Router({
                     }
                 },
             },
-            { //我的黄金
+            { //提取黄金
                 name: 'getGold',
                 path: '/my/getGold',
                 component: getGold,
                 meta: {
                     name: '提取黄金',
+                    showBack: true,
+                    login: true,
+                    htmlBg: {
+                        'background': '#f2f2f2'
+                    }
+                },
+            },
+            { //确认黄金订单
+                name: 'sureGold',
+                path: '/my/sureGold',
+                component: sureGold,
+                meta: {
+                    name: '确认订单',
                     showBack: true,
                     login: true,
                     htmlBg: {

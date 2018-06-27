@@ -1,5 +1,14 @@
 <template>
-    <div id="payCarMonry">
+    <div id="sureGold" class="wrapper">
+        <div class="item pd20 flex">
+            <div class="left">
+                <img :src="item.image" alt="">
+            </div>
+            <div class="middle">
+                <p class="mb width100 ellipsis">{{item.productName}}</p>
+                <p class="colorRed">{{item.costGoldQuantity}} 克</p>
+            </div>
+        </div>
         <div class="sendType mb" @click="selectAddr">
             <div class="one flex flex-hlr">
                 <div class="defaultFont color333">
@@ -26,30 +35,12 @@
             </div>
         </div>
         <div class="bottomTab">
-            <div class="bottomTabIn flex flex-hlr flex-sc">
-                <p>
-                    共 <span class="colorRed"> {{$route.query.oid.split(',').length}} </span>件商品
-                    &nbsp;
-                    &nbsp;
-                    共 <span class="colorRed"> {{freight.freightAmount}} </span>元
-                </p>
-                <div class="buy flex-zhong" @click="pay">
-                    确定支付
+            <div class="bottomTabIn flex-zhong">
+                <div class="buy flex-zhong" @click="getGold">
+                    确定提取
                 </div>
             </div>
         </div>
-        <MessageBox v-if="alertState === 1003" v-on:close="close">
-            <slot>
-                <p class="alertOne defaultFont color333"> 您的储值账户余额不足，请充值！</p>
-                <p class="alertOne defaultFont color333 mb"> 当前余额： <span class="colorRed">{{userInfo.balance}}</span></p>
-                <br>
-                <br>
-                <div class="buttons flex flex-hsb">
-                    <mt-button type="default" size="small" @click="close">再想想</mt-button>
-                    <mt-button type="primary" size="small" @click="goRecharge">去充值</mt-button>
-                </div>
-            </slot>
-        </MessageBox>
     </div>
 </template>
 <script>
@@ -61,65 +52,40 @@ export default {
             defaultMessage: {
                 consignee: ''
             },
-            alertState: 0,
-            freight: {
-
-            },
-            userInfo:{}
+            item: {}
         }
     },
     created () {
         if (this.$route.query.addrId) {
-            this.getById()
+            this.getById();
         } else {
             this.getDefault();
         };
+        this.getDetailById();
+    },
+    mounted () {
+        
     },
     methods: {
-        close() {
-            this.alertState = 0;
-        },
-        goRecharge() {
-            this.$router.push({
-                name: 'recharge'
-            })
-        },
-        pay(){
-            MessageBox.confirm('确定支付？').then(action => {
+        getGold(){
+            MessageBox.confirm('确定提取？').then(action => {
                 Indicator.open();
                 this.api.postB({
-                    url: 'customerOrder/pickUpGoods',
+                    url: 'customerGoldFinance/pickUp',
                     params: {
-                        customerOrderIds: this.$route.query.oid,
-                        deliveryAddressId: this.defaultMessage.id
+                        goldProductId: this.$route.query.id,
+                        deliveryAddressId: this.defaultMessage.id,
+                        orderCount: 1
                     },
                     user: true
                 }).then(res => {
                     Indicator.close();
                     if (res.successed) {
-                        this.Util.myAlert('支付成功');
-                        this.$router.replace({
-                            name: 'myOrder'
-                        })
-                    }else{
-                        switch (res.errorCode) {
-                            case '500':
-                                this.Util.myAlert('系统异常，请稍后重试');
-                                break;
-                            case '1001':
-                                this.Util.myAlert(res.errorDesc);
-                                this.api.noLogin();
-                                break;
-                            case '1002':
-                                this.alertState = 1002;
-                                break;
-                            case '1003':
-                                this.alertState = 1003;
-                                break;
-                            default:
-                                this.Util.myAlert(res.errorDesc);
-                                break;
-                        }
+                        MessageBox.alert('黄金将由商城合作的黄金厂家生产并发货，预计3-5工作日内发出，请留意黄金厂家发货的物流信息，如有疑问请联系客服。', '提取成功！').then(()=>{
+                            this.$router.replace({
+                                name: 'getGold'
+                            })
+                        });
                     }
                 })
             });
@@ -128,23 +94,24 @@ export default {
             this.$router.push({
                 name: 'receiveAddress',
                 query: {
-                    oid: this.$route.query.oid,
-                    isSelect: 1
+                    id: this.$route.query.id,
+                    isSelect: 1,
+                    from: 'gold'
                 }
             })
         },
-        getFreight(){
-            this.api.putB({
-                url: 'customerOrder/getPickUpGoodsInfo',
+        getDetailById(){
+            Indicator.open();
+            this.api.getB({
+                url: 'customerGoldFinance/getGoldProductDetail',
                 params: {
-                    customerOrderIds: this.$route.query.oid,
-                    deliveryAddressId: this.defaultMessage.id
+                    id: this.$route.query.id
                 },
                 user: true
             }).then(res => {
                 Indicator.close();
                 if (res.successed) {
-                    this.freight = res.returnValue;
+                    this.item = res.returnValue;
                 }
             }).catch(() => {
 
@@ -162,7 +129,6 @@ export default {
                 Indicator.close();
                 if (res.successed) {
                     this.defaultMessage = res.returnValue;
-                    this.getFreight();
                 }
             }).catch(() => {
 
@@ -177,7 +143,6 @@ export default {
                 Indicator.close();
                 if (res.successed && res.returnValue) {
                     this.defaultMessage = res.returnValue;
-                    this.getFreight();
                 }
             })
         },
@@ -194,10 +159,43 @@ export default {
     },
 }
 </script>
-
 <style lang="scss" scoped>
     @import "../../assets/scss/rem";
-    #payCarMonry{
+    #sureGold{
+        .item{
+            position: relative;
+            background: #fff;
+            margin-bottom: 5px;
+            .left{
+                margin-right: st(30);
+                width: st(150);
+                height: st(150);
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            .middle{
+                width: st(400);
+                .colorRed{
+                    padding: st(20);
+                    border: 1px solid yellowgreen;
+                    border-radius: st(20);
+                    text-align: center
+                }
+            }
+            .right{
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: st(150);
+                height: 100%;
+                img{
+                    width: st(48);
+                    height: st(48);
+                }
+            }
+        }
         .sendType {
             position: relative;
             padding: 0 st(20);
@@ -223,7 +221,7 @@ export default {
                 right: st(20);
                 top: st(80);
                 width: st(40);
-                height: st(200);
+                height: st(160);
                 line-height: st(120);
                 text-align: center;
                 img{
@@ -234,22 +232,11 @@ export default {
         .bottomTabIn{
             padding: st(20);
             .buy{
-                width: st(200);
+                width: st(600);
                 height: st(80);
                 background: #ff0000;
                 color: #fff;
                 border-radius: st(80);
-            }
-        }
-        .alertOne{
-            width: 100%;
-            padding-top: st(30);
-            input{
-                padding: 0 st(20);
-                width: 100%;
-                height: st(80);
-                border:1px solid #ccc;
-                border-radius: st(10);
             }
         }
     }

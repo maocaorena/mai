@@ -32,7 +32,7 @@
     @import "../../assets/scss/rem";
     .wj-shade {
         position: fixed;
-        z-index: 99999;
+        z-index: 999;
         top: 0;
         bottom: 0;
         right: 0;

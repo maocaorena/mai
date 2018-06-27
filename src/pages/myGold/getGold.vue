@@ -1,34 +1,9 @@
 <template>
     <div id="getGold" class="wrapper">
-        <div class="sendType mb" @click="selectAddr">
-            <div class="one flex flex-hlr">
-                <div class="defaultFont color333">
-                    配送方式
-                </div>
-            </div>
-            <div class="two flex flex-hlr">
-                <div class="defaultFont color333">
-                    收货人：{{defaultMessage.consignee}}
-                </div>
-                <div class="defaultFont color333">
-                    {{defaultMessage.mobile}}
-                </div>
-            </div>
-            <div class="three color333 smallFont">
-                收货地址：
-                {{defaultMessage.province}}
-                {{defaultMessage.city}}
-                {{defaultMessage.region}}
-                {{defaultMessage.address}}
-            </div>
-            <div class="jiantou flex-zhong">
-                <img src="../../assets/img/addr/triangle.png" alt="">
-            </div>
-        </div>
         <div class="rooms page-infinite-wrapper" ref="wrapper">
             <ul ref="roolist" class="list page-infinite-list" v-infinite-scroll="getList" infinite-scroll-disabled="loading"
                 infinite-scroll-distance="60">
-                <li v-for="(item,index) of list" class="item pd20 flex" @click="isThis(item.id)">
+                <li v-for="(item,index) of list" class="item pd20 flex">
                     <div class="left">
                         <img :src="item.image" alt="">
                     </div>
@@ -37,8 +12,9 @@
                         <p class="colorRed">{{item.costGoldQuantity}} 克</p>
                     </div>
                     <div class="right flex-zhong">
-                        <img src="../../assets/img/common/choice_1.png" v-show="selectList.indexOf(item.id) <= -1" alt="">
-                        <img src="../../assets/img/common/choice_2.png" v-show="selectList.indexOf(item.id) > -1" alt="">
+                        <mt-button size="small" type="primary" @click="getGold(item.id)">提取</mt-button>
+                        <!-- <img src="../../assets/img/common/choice_1.png" v-show="selectList.indexOf(item.id) <= -1" alt="">
+                        <img src="../../assets/img/common/choice_2.png" v-show="selectList.indexOf(item.id) > -1" alt=""> -->
                     </div>
                 </li>
             </ul>
@@ -47,17 +23,6 @@
             <mt-spinner type="snake"></mt-spinner>
         </p>
         <p class="noMore" v-show="noMore">没有更多数据了</p>
-        <div class="bottomTab">
-            <div class="bottomTabIn flex flex-sc flex-hlr">
-                <p>
-                    已选 {{selectList.length}} 件，
-                    重 {{allMoney}} 克
-                </p>
-                <div class="buy flex-zhong" @click="getGold">
-                    确定提取
-                </div>
-            </div>
-        </div>
     </div>
 </template>
 <script>
@@ -70,51 +35,54 @@ export default {
             loading: false, //控制加载，true会停止加载
             noMore: false, //没有更多
             pageNum: 1,
-            defaultMessage: {
-                consignee: ''
-            },
-            selectList: [],
-            allMoney: 0
+            // selectList: [],
+            // allMoney: 0
         }
     },
     created () {
-        if (this.$route.query.addrId) {
-            this.getById();
-            this.selectList = this.$route.query.ids.split(',').map(res=>{
-                return parseFloat(res)
-            });
-        } else {
-            this.getDefault();
-        };
+        // if (this.$route.query.addrId) {
+        //     this.getById();
+        //     this.selectList = this.$route.query.ids.split(',').map(res=>{
+        //         return parseFloat(res)
+        //     });
+        // } else {
+        //     this.getDefault();
+        // };
     },
     methods: {
-        getGold(){
-            if(this.selectList.length == 0){
-                this.Util.myAlert('请选择商品');
-                return;
-            };
-             MessageBox.confirm('确定提取？').then(action => {
-                    Indicator.open();
-                    this.api.postBn({
-                        url: 'customerGoldFinance/pickUp',
-                        params: {
-                            goldProductId: this.selectList.join(','),
-                            deliveryAddressId: this.defaultMessage.id,
-                            orderCount: this.selectList.length
-                        },
-                        user: true
-                    }).then(res => {
-                        Indicator.close();
-                        if (res.successed) {
-                            this.Util.myAlert('提取成功！');
-                            setTimeout(() => {
-                                this.$router.replace({
-                                    name: 'myGold'
-                                })
-                            }, 800);
-                        }
-                    })
-                });
+        getGold(id){
+            this.$router.push({
+                name: 'sureGold',
+                query: {
+                    id: id
+                }
+            })
+            // if(this.selectList.length == 0){
+            //     this.Util.myAlert('请选择商品');
+            //     return;
+            // };
+            // MessageBox.confirm('确定提取？').then(action => {
+            //     Indicator.open();
+            //     this.api.postBn({
+            //         url: 'customerGoldFinance/pickUp',
+            //         params: {
+            //             goldProductId: this.selectList.join(','),
+            //             deliveryAddressId: this.defaultMessage.id,
+            //             orderCount: this.selectList.length
+            //         },
+            //         user: true
+            //     }).then(res => {
+            //         Indicator.close();
+            //         if (res.successed) {
+            //             this.Util.myAlert('提取成功！');
+            //             setTimeout(() => {
+            //                 this.$router.replace({
+            //                     name: 'myGold'
+            //                 })
+            //             }, 800);
+            //         }
+            //     })
+            // });
         },
         isThis(id){
             this.selectList = [];
