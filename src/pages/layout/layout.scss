@@ -10,7 +10,7 @@
     border-bottom: 1px solid #eee;
 }
 .footer-wrapper{
-    height: st(100);
+    height: st(98);
 }
 .pd40{
     padding-top: 40px;
@@ -30,14 +30,14 @@
         text-align: center;
         border-top: 1px solid #f0f1f2;
         font-size: st(28);
-        color: #337ab7;
+        color: #999;
         p {
             width: 100%;
         }
         .icon{
             height: st(50);
             i{
-                font-size: st(50);
+                font-size: st(44);
             }
         }
         .txt{
@@ -52,7 +52,7 @@
         display: inline-block;
     }
     .router-link-active {
-        color: #d0ac76;
+        color: #ff5b88;
     }
 }
 

@@ -15,12 +15,13 @@
 		.ss{
 			display: block;
 			width: 10%;
-			color: #feb921;
+			color: #ff5b88;
 			font-size: 24px;
 		}
 		p{
 			width: 80%;
-			color: #666;
+            color: #666;
+            font-weight: 600;
 		}
 		.flex{
 			height: 100%;
