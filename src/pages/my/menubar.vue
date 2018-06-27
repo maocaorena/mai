@@ -1,9 +1,9 @@
 <template>
 	<router-link class="menubar flex-zhong" :style="{ height: (height || 45)+'px' }" :to="togo">
-		<i class="iconfont" :class="icon"></i>
+		<i class="iconfont ss" :class="icon"></i>
 		<p><span>{{title}}</span> <slot></slot> </p>
 		<div class="flex flex-sc">
-			<i class="iconfont icon-xiangyou1"></i>
+			<i class="iconfont icon-xiangyou1 color999"></i>
 		</div>
 	</router-link>
 </template>
@@ -12,7 +12,7 @@
 		width: 100%;
 		position: relative;
 		border-bottom: 1px solid #eee;
-		i:nth-child(1){
+		.ss{
 			display: block;
 			width: 10%;
 			color: #feb921;
