@@ -8,7 +8,7 @@
         </h1>
         <div class="item" @click="upLev" v-if="productDetail.isGiveGold == 1">
             <div class="img">
-
+                <img src="../../assets/img/common/game.png" alt="">
             </div>
             <div class="one-tit defaultStyle color333 largeFont">
                 玩游戏送黄金
@@ -19,13 +19,13 @@
         </div>
         <div class="item" @click="sendProd()">
             <div class="img">
-
+                <img src="../../assets/img/common/send.png" alt="">
             </div>
             <div class="one-tit defaultStyle color333 largeFont">
                 直接提货
             </div>
         </div>
-        <div class="bottons defaultStyle flex flex-hsb mb">
+        <div class="bottons defaultStyle flex flex-sc flex-hsb">
             <p @click="goHome">
                 返回首页>
             </p>

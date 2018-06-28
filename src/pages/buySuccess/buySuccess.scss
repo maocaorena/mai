@@ -14,9 +14,12 @@
     }
     .item{
         background: #fff;
-        margin: 0 auto st(20);
+        margin: 0 auto st(40);
         width: st(700);
         border: 1px solid #eee;
+        border-radius: st(10);
+        overflow: hidden;
+        box-shadow: 0 0 10px 5px #e8e8e8;
         .img{
             width: 100%;
             height: st(250);
@@ -31,6 +34,9 @@
         }
     }
     .bottons{
+        position: fixed;
+        left: 0;
+        bottom: 0;
         border-top: 1px solid #eee;
         p{
             width: 50%;

@@ -14,7 +14,7 @@
 			<br>
 			<div class="buttons flex flex-hsb mb">
 				<mt-button type="danger" @click="send">存黄金</mt-button>
-				<mt-button type="danger">厂商回购</mt-button>
+				<mt-button type="danger" @click="send">厂商回购</mt-button>
 			</div>
 		</template>
 		<!--失败-->
@@ -104,10 +104,7 @@
 			},
 			send() {
 				this.$router.push({
-					name: 'sendResult',
-					query: {
-						oid: this.$route.query.oid
-					}
+					name: 'myGold',
 				})
 			},
 			getResult() {
