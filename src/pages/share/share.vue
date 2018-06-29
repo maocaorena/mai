@@ -9,42 +9,49 @@
 
         </div>
         <p class="pd20 width100 tc">
-            推荐码：66668888
+            推荐码：{{message.shareCode}}
         </p>
     </div>
 </template>
 <script>
-import code from 'qrcodejs2'
+import code from 'qrcodejs2';
+import { Indicator } from "mint-ui"; //引入mintUI  indicator组件
 export default {
     data () {
         return {
-            
+            message: {
+                
+            }
         }
     },
     created () {
-        this.api.getB({
-            url: 'customer/getByToken',
-            user: true
-        }).then(res=>{
-            if(res.successed){
-            }else{
-            }
-        })
     },
     mounted() {
+        this.getCode()
         // Toast({
         //     message: '请截屏后分享给朋友哦！',
         //     duration: 3000,
         //     className: 'shareToast'
         // });
-        let allUrl = JSON.stringify(window.location.href);
-        let _redicUrl = allUrl.slice(1, allUrl.indexOf("#")-1);
-        let shareUrl = this.Util.goSearch(_redicUrl, {
-            shareCode: this.User.getShareCode()
-        }, 'n')
-        console.log(shareUrl)
-        let code1 = new code('qrcode');
-        code1.makeCode(shareUrl);
+        
+    },
+    methods: {
+        getCode(){
+            Indicator.open();
+            this.api.getB({
+                url: 'customer/getChannelInfo',
+                user: true
+            }).then(res => {
+                Indicator.close();
+                if (res.successed) {
+                    this.message = res.returnValue;
+                    let code1 = new code('qrcode');
+                    code1.makeCode(this.message.shareLink);
+                }
+            }).catch(error=>{
+                console.log('sss',error)
+            })
+        }
     }
 }
 </script>
