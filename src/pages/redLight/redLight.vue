@@ -100,7 +100,7 @@ export default {
                 'background': 'url(./static/img/redLight/selectBg.png) no-repeat left top',
                 'background-size': '100% 100%'
             },
-            alertState: 0,
+            alertState: 1,
             select: 0,
             message: {
                 dataSourceName: '',
