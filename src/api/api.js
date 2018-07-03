@@ -29,6 +29,11 @@ axios.interceptors.response.use(function(response) {
     return Promise.reject(error);
 });
 class API {
+    noShowNum(){
+        return [
+            'PDkQH40JlQJZDdrN4OyqjKodKxl7EkJl'
+        ]
+    };
     //随机数
     allNum() {
         let randomNum1 = parseInt(Math.random() * 10);
@@ -47,7 +52,7 @@ class API {
                     Indicator.close();
                     switch (res.errorCode) {
                         case '1001':
-                            Util.myAlert(res.errorDesc);
+                            // Util.myAlert(res.errorDesc);
                             this.noLogin();
                             break;
                         case '500':

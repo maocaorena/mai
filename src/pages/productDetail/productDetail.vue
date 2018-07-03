@@ -132,7 +132,7 @@
                     Indicator.close();
                     if (res.successed) {
                         this.detail = res.returnValue;
-                        this.bannerList.push(...res.returnValue.images, 'https://klbf-file.oss-cn-hangzhou.aliyuncs.com/2018/06/25/6a371f2809f442aca288a1241e7213e8.png')
+                        this.bannerList.push(...res.returnValue.images)
                     }
                 }).then(() => {
                     let mySwiper = new Swiper('#detailSwiper', {

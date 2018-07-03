@@ -2,7 +2,7 @@
     <div id="shopping" class="wrapper">
     	<div class="content" ref="content">
 	        <tabbars-v class="tab" :initTab="initTab" v-on:clickThis="isThis" :names='tabList' v-if="tabList.length > 0"></tabbars-v>
-	        <div class="qipao" @click="dddd">
+	        <div class="qipao" @click="dddd" v-if="!isHide">
 	            <qipao></qipao>
 	        </div>
 	        <div class="rooms page-infinite-wrapper" ref="wrapper">
@@ -37,7 +37,8 @@
                 noMore: false, //没有更多
                 pageNum: 1,
                 productClassId: '',
-                initTab: ''
+                initTab: '',
+                isHide: this.api.noShowNum().indexOf(this.User.getShareCode()) < 0? false: true,
             };
         },
         computed: {

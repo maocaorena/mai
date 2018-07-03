@@ -188,7 +188,7 @@ export default {
             console.log(val)
             MessageBox({
                 title: '游戏成功！',
-                message: '您获得了' + val.giveGoldQuantity +'克黄金',
+                message: '您获得了价值' + val.giveGoldQuantity +'元黄金',
                 showCancelButton: true,
                 cancelButtonText: '厂商回购',
                 confirmButtonText: '委托代存',

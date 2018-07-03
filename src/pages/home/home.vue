@@ -3,7 +3,7 @@
         <div class="content" ref="content">
             <banner v-on:goUrl="goUrl"></banner>
             <notice></notice>
-            <div class="qipao">
+            <div class="qipao" v-if="!isHide">
                 <qipao></qipao>
             </div>
             <ul class="home-list">
@@ -24,6 +24,7 @@
         data() {
             return {
                 list: [],
+                isHide: this.api.noShowNum().indexOf(this.User.getShareCode()) < 0? false: true,
             }
         },
         components: {

@@ -1,5 +1,6 @@
 @import "../../assets/scss/rem";
 #shopping {
+    padding-top: st(76);
     .tab{
         position: fixed;
         top: 0;
@@ -7,7 +8,6 @@
         z-index: 10;
     }
     .qipao{
-        margin-top: st(76);
         margin-bottom: st(16);
         padding-top: st(20);
         width: 100%;
