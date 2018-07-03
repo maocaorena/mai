@@ -50,7 +50,7 @@
                         全部
                     </button>
                 </p>
-                <p class="alertOne defaultFont color333"> 可获得现金：<span class="colorRed">{{getNum*message.goldPrice}}</span> 元</p>
+                <p class="alertOne defaultFont color333"> 可获得现金：<span class="colorRed">{{Math.floor((getNum*message.goldPrice) * 100) / 100}}</span> 元</p>
                 <p class="alertOne defaultFont color333"> 当前金价：{{message.goldPrice}} 元/克</p>
                 <br>
                 <br>
