@@ -78,6 +78,17 @@
                 </div>
             </div>
         </div>
+        <MessageBox v-if="alertState1 === 1002" v-on:close="close">
+            <slot>
+                <p class="alertOne defaultFont color333"> 应国家政策要求，购买商品前请进行实名认证！</p>
+                <br>
+                <br>
+                <div class="buttons flex flex-hsb">
+                    <mt-button type="default" size="small" @click="close">再想想</mt-button>
+                    <mt-button type="primary" size="small" @click="goTrueName">前去实名</mt-button>
+                </div>
+            </slot>
+        </MessageBox>
     </div>
 </template>
 <script>
@@ -90,6 +101,7 @@ var timer2 = null;
 export default {
     data() {
         return {
+            alertState1: 0,
             alertStyle1: {
                 'padding': 0,
                 'background': 'url(./static/img/redLight/redBg.png) no-repeat left top',
@@ -272,7 +284,7 @@ export default {
         startgame(type) {
             console.log(type)
             if (type == 3) {
-                this.api.putB({
+                this.api.putBn({
                     url: 'customerOrder/startGame',
                     user: true,
                     params: {
@@ -283,6 +295,25 @@ export default {
                     if (res.successed) {
                         this.alertState = 0;
                         this.startThisGame();
+                    }else{
+                        switch (res.errorCode) {
+                            case '500':
+                                this.Util.myAlert('系统异常，请稍后重试');
+                                break;
+                            case '1001':
+                                this.Util.myAlert(res.errorDesc);
+                                this.api.noLogin();
+                                break;
+                            case '1002':
+                                this.alertState1 = 1002;
+                                break;
+                            case '1003':
+                                this.alertState1 = 1003;
+                                break;
+                            default:
+                                this.Util.myAlert(res.errorDesc);
+                                break;
+                        }
                     }
                 })
             } else {
@@ -291,6 +322,14 @@ export default {
                     this.alertState = type;
                 })
             }
+        },
+        goTrueName() {
+            this.$router.push({
+                name: 'trueName',
+            })
+        },
+        close() {
+            this.alertState1 = 0;
         },
         getMessage() {
             this.api.getBn({

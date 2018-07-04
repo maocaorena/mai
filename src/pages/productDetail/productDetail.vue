@@ -137,7 +137,7 @@
                 }).then(() => {
                     let mySwiper = new Swiper('#detailSwiper', {
                         loop: true,
-                        autoplay: 2000,
+                        // autoplay: 2000,
                         autoplayDisableOnInteraction: false,
                         // 如果需要分页器
                         pagination: '.swiper-pagination',

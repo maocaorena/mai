@@ -2,7 +2,7 @@
     <div id="sureOrder" class="wrapper">
         <div class="product flex mb">
             <div class="left">
-                <img v-lazy.container="detail.image" />
+                <img v-lazy.container="detail.images[0]" />
             </div>
             <div class="right">
                 <div class="top color333">
@@ -53,7 +53,7 @@
             <div class="bottomTabIn flex flex-sc flex-hlr">
                 <p>
                     <span class="color666 defaultFont"> 合计： </span> 
-                    <span class="colorRed defaultFont">￥{{productMoney+carMoney}}</span>
+                    <span class="colorRed defaultFont">￥{{productMoney}}</span>
                 </p>
                 <div class="buy flex-zhong" @click="createdOrder">
                     提交订单
@@ -98,7 +98,9 @@
                 serverState: false,
                 num: 1,
                 alertState: 0,
-                detail: {},
+                detail: {
+                    images: []
+                },
                 productMoney: 0,
                 carMoney: 0,
                 defaultMessage: {
@@ -113,11 +115,6 @@
         created() {
             this.getProductDetail();
             this.getMyInfo();
-            if (this.$route.query.addrId) {
-                this.getById()
-            } else {
-                this.getDefault();
-            };
         },
         methods: {
             openServer() {
@@ -220,38 +217,10 @@
                 }).then(res => {
                     Indicator.close();
                     if (res.successed) {
+                        console.log(res)
                         this.detail = res.returnValue;
                         this.num = this.$route.query.num;
                         this.allAmount();
-                    }
-                })
-            },
-            getById() {
-                Indicator.open();
-                this.api.getB({
-                    url: 'deliveryAddress/getById',
-                    params: {
-                        id: this.$route.query.addrId
-                    },
-                    user: true
-                }).then(res => {
-                    Indicator.close();
-                    if (res.successed) {
-                        this.defaultMessage = res.returnValue;
-                    }
-                }).catch(() => {
-
-                })
-            },
-            getDefault() {
-                Indicator.open();
-                this.api.getB({
-                    url: 'deliveryAddress/getDefault',
-                    user: true,
-                }).then(res => {
-                    Indicator.close();
-                    if (res.successed && res.returnValue) {
-                        this.defaultMessage = res.returnValue;
                     }
                 })
             },

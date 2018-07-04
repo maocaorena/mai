@@ -168,7 +168,9 @@
                 }).then(res=>{
                     if(res.successed){
                         this.Util.myAlert('提现成功');
-                        this.getMyInfo();
+                        this.$router.push({
+                            name: 'my'
+                        })
                     }
                 })
             },

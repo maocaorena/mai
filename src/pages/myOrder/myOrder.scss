@@ -32,11 +32,12 @@
                 }
             }
             .name{
+                width: st(400);
                 padding-left: st(20);
                 padding-right: st(20);
             }
             .state{
-                width: st(300);
+                width: st(180);
                 text-align: right;
             }
         }

@@ -2,7 +2,7 @@
     <div id="trueName" class="wrapper">
         <mt-field label="姓名" :disabled="disabled" placeholder="请输入您的姓名" v-model="username"></mt-field>
         <div class="line"></div>
-        <mt-field label="身份证" :disabled="disabled" placeholder="请输入您的身份证号码" type="number" v-model="cardNum"></mt-field>
+        <mt-field label="身份证" :disabled="disabled" placeholder="请输入您的身份证号码" v-model="cardNum"></mt-field>
         <div class="line"></div>
         <br>
         <mt-button class="goCharge" @click.native="sure" type="primary">提交认证</mt-button>

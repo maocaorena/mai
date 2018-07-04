@@ -2,9 +2,9 @@
     <div id="shopping" class="wrapper">
     	<div class="content" ref="content">
 	        <tabbars-v class="tab" :initTab="initTab" v-on:clickThis="isThis" :names='tabList' v-if="tabList.length > 0"></tabbars-v>
-	        <div class="qipao" @click="dddd" v-if="!isHide">
+	        <!-- <div class="qipao" @click="dddd" v-if="!isHide">
 	            <qipao></qipao>
-	        </div>
+	        </div> -->
 	        <div class="rooms page-infinite-wrapper" ref="wrapper">
 	            <ul ref="roolist" class="list page-infinite-list" v-infinite-scroll="getList" infinite-scroll-disabled="loading"
 	                infinite-scroll-distance="60">

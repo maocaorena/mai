@@ -3,9 +3,9 @@
         <div class="content" ref="content">
             <banner v-on:goUrl="goUrl"></banner>
             <notice></notice>
-            <div class="qipao" v-if="!isHide">
+            <!-- <div class="qipao" v-if="!isHide">
                 <qipao></qipao>
-            </div>
+            </div> -->
             <ul class="home-list">
                 <li class="home-item" v-for="item of list" @click="goUrl(item)">
                     <img :src="item.img" alt="">

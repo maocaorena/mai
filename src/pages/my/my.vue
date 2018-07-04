@@ -15,7 +15,7 @@
             <div style="height: 10px; background:#f2f2f2;"></div>
 			<menu-bar :togo="'/my/rechargeRecords'" :icon="'icon-favor_light'" :height="50" :title="'账户余额'">
                 <slot>  
-                    <span>（可用）</span> <span class="color333"> {{userInfo.balance}}</span>
+                    <span>（可用）</span> <span style="color: #ffb400;"> {{userInfo.balance}}</span>
                 </slot> 
             </menu-bar>
 			<menu-bar :togo="'/my/recharge'" :icon="'icon-recharge'" :height="50" :title="'充值'"></menu-bar>
@@ -104,7 +104,7 @@
 				};
 			},
             getMyInfo() {
-                this.api.getBn({
+                this.api.getB({
                     url: 'customer/getByToken',
                     user: true
                 }).then(res=>{

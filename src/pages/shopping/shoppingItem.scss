@@ -15,9 +15,9 @@
         }
         .item-tip{
             position: absolute;
-            right: 0;
+            left: 0;
             top: 0;
-            background: yellowgreen;
+            background: #f6376d;
             color: #fff;
             padding: st(10);
             border-radius: st(10);
@@ -33,19 +33,17 @@
             overflow: hidden;
         }
         .item-send{
-            margin: st(30) auto;
-            width: 80%;
+            margin: st(30) 0;
+            width: 100%;
             height: st(60);
             line-height: st(60);
-            text-align: center;
-            border: 1px solid yellowgreen;
-            border-radius: st(10);
+            color: #ffb400;
         }
         .buy{
             padding: st(15) st(30);
-            background: yellowgreen;
-            color: #fff;
-            border-radius: st(16)
+            color: #f6376d;
+            border-radius: st(16);
+            border: 1px solid #f6376d;
         }
     }
 }

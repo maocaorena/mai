@@ -15,7 +15,7 @@
 		.ss{
 			display: block;
 			width: 10%;
-			color: #ff5b88;
+			color: #ffb400;
 			font-size: 24px;
 		}
 		p{

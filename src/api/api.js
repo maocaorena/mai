@@ -109,6 +109,17 @@ class API {
         })
         return
     };
+
+    putBn(msg, type) {
+        msg.type = 'PUT';
+        return new Promise((resolve, reject) => {
+            this.ajaxB(msg).then(res => {
+                resolve(res);
+            }).catch(error => {
+                reject(error)
+            });
+        })
+    }
     //post
     postB(msg) {
         msg.type = 'POST';

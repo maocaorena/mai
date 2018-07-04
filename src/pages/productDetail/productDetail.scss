@@ -9,7 +9,7 @@
             right: 0;
             top: 0;
             z-index: 20;
-            background: yellowgreen;
+            background: #f6376d;
             color: #fff;
             padding: st(10) st(30);
             border-radius: st(10);
@@ -105,12 +105,11 @@
         border-top: 1px solid #ddd;
         background: #f8f8f8;
         button{
-            width: 90%;
-            height: st(70);
+            width: 100%;
+            height: st(80);
             border: none;
             background: #f93069;
             color: #fff;
-            border-radius: st(8);
             font-size: st(32);
         }
     }

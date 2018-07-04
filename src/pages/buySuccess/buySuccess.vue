@@ -33,6 +33,17 @@
                 查看订单>
             </p>
         </div>
+        <MessageBox v-if="alertState1 === 1002" v-on:close="close1">
+            <slot>
+                <p class="alertOne defaultFont color333"> 应国家政策要求，购买商品前请进行实名认证！</p>
+                <br>
+                <br>
+                <div class="buttons flex flex-hsb">
+                    <mt-button type="default" size="small" @click="close1">再想想</mt-button>
+                    <mt-button type="primary" size="small" @click="goTrueName">前去实名</mt-button>
+                </div>
+            </slot>
+        </MessageBox>
     </div>
 </template>
 <script>
@@ -46,7 +57,8 @@
                 productDetail: {
                     orderCount: '',
                     productName: ''
-                }
+                },
+                alertState1: 0
             }
         },
         components: {
@@ -59,11 +71,31 @@
 
         },
         methods: {
-            upLev() {
+            goTrueName() {
                 this.$router.push({
-                    name: 'redLight',
-                    query: {
-                        oid: this.$route.query.oid
+                    name: 'trueName',
+                })
+            },
+            close1() {
+                console.log('ddd')
+                this.alertState1 = 0;
+            },
+            upLev() {
+                this.api.getB({
+                    url: 'customer/getByToken',
+                    user: true
+                }).then(res=>{
+                    if(res.successed){
+                        if(res.returnValue.identityState == 1){
+                            this.$router.push({
+                                name: 'redLight',
+                                query: {
+                                    oid: this.$route.query.oid
+                                }
+                            })
+                        }else{
+                            this.alertState1 = 1002;
+                        }
                     }
                 })
             },

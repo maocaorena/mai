@@ -12,11 +12,11 @@
                         </div>
 
                     </template>
-                    <div class="top flex mb" @click="goDetail(item)">
+                    <div class="top flex flex-hlr mb" @click="goDetail(item)">
                         <div class="img">
                             <img :src="item.productImage" alt="">
                         </div>
-                        <div class="name width100">
+                        <div class="name">
                             {{item.productName | nameHandle}}
                         </div>
                         <div class="state">
@@ -27,7 +27,8 @@
                     <div class="row flex flex-hlr mb" @click="goDetail(item)">
                         <p>共{{item.orderCount}}件商品</p>
                         <p>
-                            合计:<span class="colorRed">￥{{item.orderAmount}}</span>(含运费<span class="colorRed">￥{{item.freightAmount}}</span>)
+                            合计:<span class="colorRed">￥{{item.orderAmount}}</span>
+                            <!-- (含运费<span class="colorRed">￥{{item.freightAmount}}</span>) -->
                         </p>
                     </div>
                     <p class="mb orderNum">

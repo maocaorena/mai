@@ -47,4 +47,15 @@
     .tip1{
         padding-bottom: st(100);
     }
+    .alertOne{
+        width: 100%;
+        padding-top: st(30);
+        input{
+            padding: 0 st(20);
+            width: 100%;
+            height: st(80);
+            border:1px solid #ccc;
+            border-radius: st(10);
+        }
+    }
 }
