@@ -2,7 +2,7 @@
 #myOrder{
     .orders{
         padding: st(20);
-        padding-left: st(60);
+        padding-right: st(60);
     }
     .orderItem{
         position: relative;
@@ -11,8 +11,9 @@
         background: #fff;
         border-radius: st(10);
         .item-select{
+            background: #fff;
             position: absolute;
-            left: st(-48);
+            right: st(-52);
             top: 0;
             width: st(48);
             height: 100%;

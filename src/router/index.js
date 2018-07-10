@@ -385,7 +385,7 @@ const router = new Router({
                 path: '/my/upRecords',
                 component: upRecords,
                 meta: {
-                    name: '当天升级记录',
+                    name: '幸运记录',
                     showBack: true,
                     login: true,
                     htmlBg: {

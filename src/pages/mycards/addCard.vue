@@ -18,6 +18,14 @@
         </div>
         <div class="add-item">
             <p class="add-tip">
+                预留手机号码
+            </p>
+            <p class="add-bottom">
+                <input type="tel" v-model="carddetail.bankMobile" placeholder="预留手机号码" />
+            </p>
+        </div>
+        <div class="add-item">
+            <p class="add-tip">
                 银行卡卡号
             </p>
             <p class="add-bottom">
@@ -48,7 +56,8 @@
                     cardholder: '',
                     identityNumber: '',
                     cardNumber: '',
-                    openBank: ''
+                    openBank: '',
+                    bankMobile: ''
                 },
                 cardNum: ''
             }
@@ -66,6 +75,9 @@
                     return;
                 } else if (this.carddetail.identityNumber.length == 0) {
                     this.Util.myAlert('请填写身份证号码')
+                    return;
+                } else if (!(/^1[3|4|5|7|8]\d{9}$/.test(this.carddetail.bankMobile))) {
+                    this.Util.myAlert('请填写正确的手机号码');
                     return;
                 } else if (this.carddetail.cardNumber.length == 0) {
                     this.Util.myAlert('请填写银行卡卡号')

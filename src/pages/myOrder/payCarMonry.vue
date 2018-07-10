@@ -27,12 +27,16 @@
         </div>
         <div class="bottomTab">
             <div class="bottomTabIn flex flex-hlr flex-sc">
-                <p>
-                    共 <span class="colorRed"> {{$route.query.oid.split(',').length}} </span>件商品
-                    &nbsp;
-                    &nbsp;
-                    共 <span class="colorRed"> {{freight.freightAmount}} </span>元
-                </p>
+                <div class="flex flex-s">
+                    <p>
+                        共 <span class="colorRed"> {{$route.query.oid.split(',').length}} </span>件商品
+                        &nbsp;
+                        共 <span class="colorRed"> {{freight.freightAmount}} </span>元
+                    </p>
+                    <p class="smallFont color999">
+                        首件商品运费10元，之后每件加5元
+                    </p>
+                </div>
                 <div class="buy flex-zhong" @click="pay">
                     确定支付
                 </div>
@@ -85,6 +89,10 @@ export default {
             })
         },
         pay(){
+            if(!this.defaultMessage.id){
+                this.Util.myAlert('请选择地址');
+                return
+            };
             MessageBox.confirm('确定支付？').then(action => {
                 Indicator.open();
                 this.api.postB({

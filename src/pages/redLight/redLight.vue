@@ -208,9 +208,9 @@ export default {
                 if (state == 'cancel') {
                     Indicator.open();
                     this.api.postB({
-                        url: 'customerGoldFinance/buyBack',
+                        url: 'customerGoldFinance/buyBackbyOrder',
                         params: {
-                            buyBackGoldQuantity: val.giveGoldQuantity,
+                            orderId: this.$route.query.oid,
                         },
                         user: true
                     }).then(res => {

@@ -5,7 +5,7 @@
                 infinite-scroll-distance="60">
                 <li class="row flex tit">
                     <div class="one">
-                        升级时间
+                        参与时间
                     </div>  
                     <div class="two">
                         订单数量
@@ -28,7 +28,7 @@
                         {{item.productName}}
                     </div>
                     <div class="four">
-                        {{item.upgradeState == 2?'成功':item.upgradeState==1?'升级中':'失败'}}
+                        {{item.gameState == 2?'成功':item.gameState==1?'参与中':'失败'}}
                     </div>
                 </li>
             </ul>
