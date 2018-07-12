@@ -246,7 +246,12 @@ export default {
                 Indicator.close()
                 if (res.successed) {
                     if(this.payType == 4){
-                        this.Util.myAler('充值成功');
+                        this.$router.push({
+                            name: 'rechargeResult',
+                            query:{
+                                orderNum: this.oid
+                            }
+                        })
                     }else{
                         var html = res.returnValue.submitFormStr;
                         var cont = document.getElementById("aliSub");

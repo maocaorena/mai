@@ -5,7 +5,7 @@
                 <h1 class="largeFont colorRed"> 充值成功 </h1>
             </div>
             <div class="button-item">
-                <router-link class="noborder" tag="button" to="/my/recharge">
+                <router-link class="noborder" tag="button" to="/my/recharge" replace>
                     继续充值
                 </router-link>
                 <button class="nobg" @click="goBack()">
@@ -18,7 +18,7 @@
                 <h1 class="largeFont colorRed"> 充值失败 </h1>
             </div>
             <div class="button-item">
-                <router-link class="noborder" tag="button" to="/my/recharge">
+                <router-link class="noborder" tag="button" to="/my/recharge" replace>
                     重新充值
                 </router-link>
                 <button class="nobg" @click="goBack()">
@@ -52,10 +52,10 @@
                     },
                     user: true
                 }).then((res) => {
+                    console.log(res)
                     if (res.successed) {
                         Indicator.close();
-                        this.payResult = res.returnValue;
-                        this.getWabiBalance()
+                        this.payResult.state = res.returnValue;
                         clearInterval(timer);
                     } else {
                         if (this.nn >= 9) {
@@ -67,6 +67,7 @@
                     }
                 }).catch((error) => {
                     Indicator.close();
+                    console.log(error)
                     this.Util.myAlert("网络错误，请稍后重试!")
                 })
             },
@@ -89,7 +90,7 @@
                             this.getPayResult();
                         }
                     }, 1000);
-                }, 2000);
+                }, 1000);
             } else {
                 this.payResult.state = 0;
             };
