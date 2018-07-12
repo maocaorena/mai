@@ -64,12 +64,21 @@
         methods: {
             // 选择银行卡
             selectAddr(id) {
-                this.$router.replace({
-                    name: 'getMoney',
-                    query: {
-                        id: id
-                    }
-                })
+                if(this.$route.query.isSelect == 1){
+                    this.$router.replace({
+                        name: 'getMoney',
+                        query: {
+                            id: id
+                        }
+                    })
+                }else{
+                    this.$router.replace({
+                        name: 'recharge',
+                        query: {
+                            id: id
+                        }
+                    })
+                }
             },
             //编辑银行卡
             handleAddr(id) {

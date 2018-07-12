@@ -1,7 +1,7 @@
 <template>
     <div id="rechargeRechords" class="wrapper">
         <ul class="rechargeRechords-list page-infinite-list" v-infinite-scroll="getList" infinite-scroll-disabled="loading" infinite-scroll-distance="60">
-            <li class="rechargeRechords-item flex page-infinite-listitem" v-for="(item,index) of list" @click="showVideo(item.gameVideoUrl,item.productPictureUrl)">
+            <li class="rechargeRechords-item flex page-infinite-listitem" v-for="(item,index) of list">
                 <div class="left">
                     <p class="colors2 mb">{{item.streamType | payChannelHandle}}成功</p>
                     <p class="colors2">{{item.created}}</p>

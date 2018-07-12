@@ -236,7 +236,7 @@ export default {
                     })
                 } else {
                     MessageBox({
-                        title: '您的' + val.giveGoldQuantity +'克黄金将由商城代存。',
+                        title: '您的价值' + val.giveGoldQuantity +'元的黄金将由商城代存。',
                         message: '注：委托存金的黄金，商城代为保存的到下个月末，到期如不提取实体黄金产品系统将自动委托厂商回购',
                         showCancelButton: true,
                         cancelButtonText: '继续购物',

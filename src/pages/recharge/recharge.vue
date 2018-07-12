@@ -50,7 +50,7 @@
 
         <div class="rechargeItem flex flex-sc" @click="selectThis(4)">
             <div class="left">
-                <img src="../../assets/img/recharge/alipay.png" alt="">
+                <img src="../../assets/img/recharge/bank.png" alt="">
             </div>
             <div class="middle">
                 <div class="top">
@@ -84,7 +84,7 @@
             </div>
         </div> -->
         <br>
-        <mt-button class="goCharge" @click.native="goCharge" type="primary">去充值</mt-button>
+        <mt-button class="goCharge" @click.native="pay" type="primary">去充值</mt-button>
         <div id="aliSub"></div>
     </div>
 </template>
@@ -107,7 +107,8 @@ export default {
             ],
             num: 0,
             isThis: '',
-            amount: 0
+            amount: 0,
+            oid: ''
         }
     },
     created() {
@@ -127,7 +128,7 @@ export default {
             this.$router.push({
                 name: 'myCards',
                 query: {
-                    isSelect: 1
+                    isSelect: 2
                 }
             })
         },
@@ -190,19 +191,12 @@ export default {
                 return;
             };
 
-            if(type!=1 && this.Util.trim(this.code).length < 1){
-                this.Util.myAlert("请填写验证码");
-                return;
-            };
             let _amonut = '';
             if(this.number ==  this.list.length){
                 _amonut = this.amount;
             }else{
                 _amonut = this.list[this.number]
             }
-            if (_amonut < 2) {
-                this.Util.myAlert('充值金额最低为2元')
-            } else {
                 if (this.payType == 1) {
                     this.$router.push({
                         name: 'aliPay',
@@ -222,21 +216,26 @@ export default {
                         user: true
                     }).then(res => {
                         if (res.successed) {
+                            this.oid = res.returnValue;
                             if(type === 1){
                                 this.sendCode(res.returnValue)
                             }else{
-                                this.pay(res.returnValue)
+                                this.pay()
                             }
                         }
                     })
                 }
-            }
         },
-        pay(oid) {
+        pay() {
+            if(this.Util.trim(this.code).length < 1){
+                this.Util.myAlert("请填写验证码");
+                return;
+            };
+            Indicator.open();
             this.api.postB({
                 url: 'recharge/launchPay',
                 params: {
-                    oid: oid,
+                    oid: this.oid,
                     payTitle: '充值',
                     clientType: 0,//客户端类型，0：h5，1：app，2：微信，3：QQ，4：其他，默认0
                     customerBankCardId: this.defaultMessage.id,
@@ -246,19 +245,23 @@ export default {
             }).then(res => {
                 Indicator.close()
                 if (res.successed) {
-                    var html = res.returnValue.submitFormStr;
-                    var cont = document.getElementById("aliSub");
-                    cont.innerHTML = html;
-                    var oldScript = cont.getElementsByTagName(
-                        "script"
-                    )[0];
-                    cont.removeChild(oldScript);
-                    var newScript = document.createElement(
-                        "script"
-                    );
-                    newScript.type = "text/javascript";
-                    newScript.innerHTML = oldScript.innerHTML;
-                    cont.appendChild(newScript);
+                    if(this.payType == 4){
+                        this.Util.myAler('充值成功');
+                    }else{
+                        var html = res.returnValue.submitFormStr;
+                        var cont = document.getElementById("aliSub");
+                        cont.innerHTML = html;
+                        var oldScript = cont.getElementsByTagName(
+                            "script"
+                        )[0];
+                        cont.removeChild(oldScript);
+                        var newScript = document.createElement(
+                            "script"
+                        );
+                        newScript.type = "text/javascript";
+                        newScript.innerHTML = oldScript.innerHTML;
+                        cont.appendChild(newScript);
+                    }
 
                 }else{
                     this.code = ''

@@ -14,7 +14,6 @@ let bxmApiUrl = 'http://116.62.63.100:16889';
 if (process.env.NODE_ENV == 'production') {
     if (process.env.BUILD_ENV == 't') {
         //测试环境打包
-        bxmApiUrl = config.WWJ_TEST_URL + '/depthtask'
     } else {
         //线上环境打包
 
